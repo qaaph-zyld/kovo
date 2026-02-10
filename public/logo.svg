@@ -1,6 +1,38 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none">
-  <rect x="2" y="8" width="34" height="34" rx="2" stroke="#1F1F1F" stroke-width="3" fill="none"/>
-  <text x="48" y="38" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="700" letter-spacing="8" fill="#1F1F1F">KOVO</text>
-  <line x1="10" y1="25" x2="28" y2="25" stroke="#B45309" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="19" y1="16" x2="19" y2="34" stroke="#B45309" stroke-width="2.5" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 50" fill="none">
+  <g transform="translate(2, 3) scale(0.52)">
+    <!-- Top-left bracket -->
+    <path d="M8,8 L8,30 L18,20 L28,30 L28,8 Z" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linejoin="round"/>
+    <!-- Top-right bracket -->
+    <path d="M56,8 L56,30 L46,20 L36,30 L36,8 Z" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linejoin="round"/>
+    <!-- Bottom-left bracket -->
+    <path d="M8,56 L8,34 L18,44 L28,34 L28,56 Z" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linejoin="round"/>
+    <!-- Bottom-right bracket -->
+    <path d="M56,56 L56,34 L46,44 L36,34 L36,56 Z" stroke="#1A1A1A" stroke-width="4" fill="none" stroke-linejoin="round"/>
+    <!-- Connection nodes - corners -->
+    <circle cx="8" cy="8" r="3.5" fill="#1A1A1A"/>
+    <circle cx="56" cy="8" r="3.5" fill="#1A1A1A"/>
+    <circle cx="8" cy="56" r="3.5" fill="#1A1A1A"/>
+    <circle cx="56" cy="56" r="3.5" fill="#1A1A1A"/>
+    <!-- Connection nodes - middle edges -->
+    <circle cx="32" cy="8" r="3" fill="#1A1A1A"/>
+    <circle cx="32" cy="56" r="3" fill="#1A1A1A"/>
+    <circle cx="8" cy="32" r="3" fill="#1A1A1A"/>
+    <circle cx="56" cy="32" r="3" fill="#1A1A1A"/>
+    <!-- Connection nodes - inner joints -->
+    <circle cx="18" cy="20" r="2.5" fill="#1A1A1A"/>
+    <circle cx="46" cy="20" r="2.5" fill="#1A1A1A"/>
+    <circle cx="18" cy="44" r="2.5" fill="#1A1A1A"/>
+    <circle cx="46" cy="44" r="2.5" fill="#1A1A1A"/>
+    <!-- Center connection lines -->
+    <line x1="18" y1="20" x2="28" y2="30" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/>
+    <line x1="46" y1="20" x2="36" y2="30" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/>
+    <line x1="18" y1="44" x2="28" y2="34" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/>
+    <line x1="46" y1="44" x2="36" y2="34" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/>
+    <!-- Center node -->
+    <circle cx="32" cy="32" r="2.5" fill="#1A1A1A"/>
+  </g>
+  <!-- KOVO text -->
+  <text x="48" y="35" font-family="'DM Sans', sans-serif" font-size="30" font-weight="500" letter-spacing="10" fill="#1A1A1A">KOVO</text>
+  <!-- Tagline -->
+  <text x="48" y="48" font-family="'DM Sans', sans-serif" font-size="7.5" font-weight="300" letter-spacing="3.5" fill="#1A1A1A">MODULAR WROUGHT IRON</text>
 </svg>

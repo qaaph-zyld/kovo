@@ -10,7 +10,6 @@ import {
   QrCode,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 
 const steps = [
   {
@@ -76,94 +75,121 @@ const guarantees = [
 
 export default function KakoFunkcionisePage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+    <>
       {/* Header */}
-      <div className="mb-12 text-center">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Kako funkcioniše
-        </h1>
-        <p className="mx-auto mt-3 max-w-2xl text-lg text-muted-foreground">
-          Od porudžbine do gotovog nameštaja na vašoj terasi — u 3 jednostavna
-          koraka. Bez alata iz garaže, bez komplikovanih uputstava.
-        </p>
-      </div>
+      <section className="relative overflow-hidden bg-workshop-gray py-16 sm:py-20">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-forge-amber/[0.02] to-transparent" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber">
+              Proces
+            </p>
+            <h1 className="font-display text-3xl tracking-tight sm:text-4xl lg:text-5xl">
+              Kako funkcioniše
+            </h1>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+              Od porudžbine do gotovog nameštaja na vašoj terasi — u 3 jednostavna
+              koraka. Bez alata iz garaže, bez komplikovanih uputstava.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Steps */}
-      <div className="space-y-12">
-        {steps.map((step, index) => (
-          <div
-            key={step.number}
-            className={`flex flex-col gap-8 lg:flex-row lg:items-center ${
-              index % 2 === 1 ? "lg:flex-row-reverse" : ""
-            }`}
-          >
-            <div className="flex-1">
-              <div className="flex items-center gap-3">
-                <span className="text-5xl font-bold text-amber-700/20">
-                  {step.number}
-                </span>
-                <step.icon className="h-8 w-8 text-amber-700" />
+      <section className="py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="space-y-20">
+            {steps.map((step, index) => (
+              <div
+                key={step.number}
+                className={`flex flex-col gap-10 lg:flex-row lg:items-center ${
+                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                }`}
+              >
+                <div className="flex-1">
+                  <div className="flex items-center gap-4">
+                    <span className="font-mono text-5xl font-bold text-forge-amber/15">
+                      {step.number}
+                    </span>
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-forge-amber/10">
+                      <step.icon className="h-6 w-6 text-forge-amber" />
+                    </div>
+                  </div>
+                  <h2 className="mt-4 font-display text-2xl tracking-tight sm:text-3xl">{step.title}</h2>
+                  <p className="mt-3 leading-relaxed text-muted-foreground">{step.description}</p>
+                  <ul className="mt-5 space-y-2.5">
+                    {step.details.map((detail) => (
+                      <li key={detail} className="flex items-start gap-2.5 text-sm">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-600" />
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="relative aspect-video flex-1 overflow-hidden rounded-2xl bg-workshop-gray">
+                  <div className="absolute inset-0 dot-grid opacity-40" />
+                  <div className="flex h-full items-center justify-center">
+                    <step.icon className="h-16 w-16 text-foreground/8" />
+                  </div>
+                </div>
               </div>
-              <h2 className="mt-3 text-2xl font-bold">{step.title}</h2>
-              <p className="mt-2 text-muted-foreground">{step.description}</p>
-              <ul className="mt-4 space-y-2">
-                {step.details.map((detail) => (
-                  <li key={detail} className="flex items-start gap-2 text-sm">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-600" />
-                    {detail}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="aspect-video flex-1 rounded-xl bg-secondary" />
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      </section>
 
       {/* Guarantees */}
-      <div className="mt-20">
-        <h2 className="mb-8 text-center text-2xl font-bold">
-          Zašto modularno?
-        </h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {guarantees.map((g) => (
-            <Card key={g.title} className="border-border/60 text-center">
-              <CardContent className="p-6">
-                <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-amber-50 text-amber-700">
-                  <g.icon className="h-6 w-6" />
+      <section className="relative overflow-hidden bg-workshop-gray py-20 sm:py-28">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-forge-amber/[0.02] to-transparent" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber">
+              Garancije
+            </p>
+            <h2 className="font-display text-2xl tracking-tight sm:text-3xl">
+              Zašto modularno?
+            </h2>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {guarantees.map((g) => (
+              <div key={g.title} className="rounded-2xl border border-border/50 bg-card p-7 text-center transition-all duration-300 hover:shadow-warm">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-forge-amber/10">
+                  <g.icon className="h-6 w-6 text-forge-amber" />
                 </div>
-                <h3 className="font-semibold">{g.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
+                <h3 className="font-semibold tracking-tight">{g.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
                   {g.description}
                 </p>
-              </CardContent>
-            </Card>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* CTA */}
-      <div className="mt-16 text-center">
-        <h2 className="text-2xl font-bold">Spremni da probate?</h2>
-        <p className="mt-2 text-muted-foreground">
-          Pogledajte LINEA kolekciju i poručite sa dostavom širom Srbije.
-        </p>
-        <div className="mt-6 flex justify-center gap-3">
-          <Button
-            asChild
-            size="lg"
-            className="bg-amber-700 text-white hover:bg-amber-800"
-          >
-            <Link href="/proizvodi">
-              Pogledajte proizvode
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-          <Button asChild variant="outline" size="lg">
-            <Link href="/kontakt">Kontaktirajte nas</Link>
-          </Button>
+      <section className="py-20 sm:py-28">
+        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="font-display text-2xl tracking-tight sm:text-3xl">Spremni da probate?</h2>
+          <p className="mt-3 text-muted-foreground">
+            Pogledajte LINEA kolekciju i poručite sa dostavom širom Srbije.
+          </p>
+          <div className="mt-8 flex justify-center gap-3">
+            <Button
+              asChild
+              size="lg"
+              className="bg-forge-amber px-8 font-semibold text-white transition-all duration-200 hover:bg-forge-amber-light hover:scale-[1.02]"
+            >
+              <Link href="/proizvodi">
+                Pogledajte proizvode
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="px-8">
+              <Link href="/kontakt">Kontaktirajte nas</Link>
+            </Button>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }

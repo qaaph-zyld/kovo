@@ -1,23 +1,20 @@
 import Link from "next/link";
-import Image from "next/image";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import KovoLogo from "@/components/KovoLogo";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-zinc-950 text-zinc-300">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="relative overflow-hidden bg-iron-black text-white/80">
+      {/* Atmospheric amber gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_oklch(0.55_0.14_55_/_0.06),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_oklch(0.55_0.14_55_/_0.04),transparent_50%)]" />
+
+      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
-          <div className="space-y-4">
-            <Image
-              src="/logo.svg"
-              alt="KOVO"
-              width={120}
-              height={32}
-              className="brightness-0 invert"
-            />
-            <p className="text-sm leading-relaxed text-zinc-400">
+          <div className="space-y-5">
+            <KovoLogo className="h-10 w-auto" inverted showTagline />
+            <p className="text-sm leading-relaxed text-white/50">
               Modularni kovani nameštaj premium izgleda. Projektovan za isplativ
               transport, brzu montažu i trajnost.
             </p>
@@ -25,10 +22,10 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-100">
+            <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-white/40">
               Navigacija
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {[
                 { href: "/proizvodi", label: "Proizvodi" },
                 { href: "/setovi", label: "Setovi" },
@@ -40,7 +37,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-zinc-400 transition-colors hover:text-white"
+                    className="text-sm text-white/50 transition-colors duration-200 hover:text-forge-amber-light"
                   >
                     {link.label}
                   </Link>
@@ -51,28 +48,28 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-100">
+            <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-white/40">
               Kontakt
             </h4>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-2 text-sm text-zinc-400">
-                <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" />
+            <ul className="space-y-3.5">
+              <li className="flex items-start gap-2.5 text-sm text-white/50">
+                <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-forge-amber" />
                 <span>Loznica, Srbija</span>
               </li>
-              <li className="flex items-start gap-2 text-sm text-zinc-400">
-                <Phone className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" />
-                <a href="tel:+381600000000" className="hover:text-white">
+              <li className="flex items-start gap-2.5 text-sm text-white/50">
+                <Phone className="mt-0.5 h-4 w-4 flex-shrink-0 text-forge-amber" />
+                <a href="tel:+381600000000" className="transition-colors hover:text-white">
                   +381 60 000 0000
                 </a>
               </li>
-              <li className="flex items-start gap-2 text-sm text-zinc-400">
-                <Mail className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" />
-                <a href="mailto:info@kovo.rs" className="hover:text-white">
+              <li className="flex items-start gap-2.5 text-sm text-white/50">
+                <Mail className="mt-0.5 h-4 w-4 flex-shrink-0 text-forge-amber" />
+                <a href="mailto:info@kovo.rs" className="transition-colors hover:text-white">
                   info@kovo.rs
                 </a>
               </li>
-              <li className="flex items-start gap-2 text-sm text-zinc-400">
-                <Clock className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" />
+              <li className="flex items-start gap-2.5 text-sm text-white/50">
+                <Clock className="mt-0.5 h-4 w-4 flex-shrink-0 text-forge-amber" />
                 <span>Pon–Pet: 08–16h<br />Sub: 08–13h</span>
               </li>
             </ul>
@@ -80,24 +77,25 @@ export default function Footer() {
 
           {/* B2B */}
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-zinc-100">
+            <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-white/40">
               Za ugostiteljstvo
             </h4>
-            <p className="mb-3 text-sm text-zinc-400">
+            <p className="mb-4 text-sm leading-relaxed text-white/50">
               Opremite vaš kafić, restoran ili hotel. Setovi na paleti, montaža za 45 min.
             </p>
             <Link
               href="/kontakt?tip=b2b"
-              className="inline-block rounded-md bg-amber-700 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-amber-800"
+              className="inline-block rounded-lg bg-forge-amber px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-forge-amber-light hover:scale-[1.02]"
             >
               Zatražite ponudu
             </Link>
           </div>
         </div>
 
-        <Separator className="my-8 bg-zinc-800" />
+        {/* Divider */}
+        <div className="my-10 h-px bg-gradient-to-r from-transparent via-forge-amber/20 to-transparent" />
 
-        <div className="flex flex-col items-center justify-between gap-2 text-xs text-zinc-500 sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-3 text-xs text-white/30 sm:flex-row">
           <p>&copy; {new Date().getFullYear()} KOVO. Sva prava zadržana.</p>
           <p>Kovačka radnja Cotrić — Loznica, Srbija</p>
         </div>

@@ -1,14 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
-import { ShoppingCart, Menu, X, Phone } from "lucide-react";
+import { ShoppingCart, Menu, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { useCartStore } from "@/store/cart";
 import CartDrawer from "@/components/CartDrawer";
+import KovoLogo from "@/components/KovoLogo";
 
 const navLinks = [
   { href: "/", label: "Početna" },
@@ -25,11 +25,11 @@ export default function Header() {
   const itemCount = useCartStore((s) => s.getItemCount());
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-oak-white/90 backdrop-blur-md supports-[backdrop-filter]:bg-oak-white/75">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.svg" alt="KOVO" width={140} height={36} priority />
+        <Link href="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
+          <KovoLogo className="h-10 w-auto" showTagline={false} />
         </Link>
 
         {/* Desktop Nav */}
@@ -38,7 +38,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-secondary hover:text-foreground"
+              className="nav-underline px-3 py-2 text-[13px] font-medium uppercase tracking-[0.08em] text-foreground/70 transition-colors hover:text-foreground"
             >
               {link.label}
             </Link>
@@ -46,61 +46,73 @@ export default function Header() {
         </nav>
 
         {/* Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <a
             href="tel:+381600000000"
-            className="hidden items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:flex"
+            className="hidden items-center gap-1.5 text-[13px] font-medium tracking-wide text-muted-foreground transition-colors hover:text-foreground sm:flex"
           >
-            <Phone className="h-4 w-4" />
+            <Phone className="h-3.5 w-3.5" />
             <span className="hidden xl:inline">Pozovite nas</span>
           </a>
 
           {/* Cart button */}
           <Sheet open={cartOpen} onOpenChange={setCartOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="relative">
+              <Button variant="ghost" size="icon" className="relative h-10 w-10">
                 <ShoppingCart className="h-5 w-5" />
                 {itemCount > 0 && (
-                  <Badge className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-amber-700 p-0 text-[10px] text-white">
+                  <Badge className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-forge-amber p-0 text-[10px] font-semibold text-white">
                     {itemCount}
                   </Badge>
                 )}
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-full sm:max-w-md">
+              <SheetTitle className="sr-only">Korpa</SheetTitle>
               <CartDrawer onClose={() => setCartOpen(false)} />
             </SheetContent>
           </Sheet>
 
-          {/* Mobile menu */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="lg:hidden"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
+          {/* Mobile menu trigger */}
+          <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="h-10 w-10 lg:hidden">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] bg-iron-black p-0 text-white sm:w-[360px]">
+              <SheetTitle className="sr-only">Navigacija</SheetTitle>
+              <div className="flex h-full flex-col">
+                <div className="border-b border-white/10 px-6 py-6">
+                  <KovoLogo className="h-8 w-auto" inverted showTagline={false} />
+                </div>
+                <nav className="flex flex-1 flex-col gap-1 px-4 py-6">
+                  {navLinks.map((link, i) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="animate-slide-right rounded-lg px-4 py-3.5 text-[15px] font-medium tracking-wide text-white/80 transition-colors hover:bg-white/5 hover:text-white"
+                      style={{ animationDelay: `${i * 60}ms` }}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </nav>
+                <div className="border-t border-white/10 px-6 py-5">
+                  <a
+                    href="tel:+381600000000"
+                    className="flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-white"
+                  >
+                    <Phone className="h-4 w-4" />
+                    +381 60 000 0000
+                  </a>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
-
-      {/* Mobile Nav */}
-      {mobileOpen && (
-        <div className="border-t border-border bg-white lg:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col px-4 py-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="rounded-md px-3 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:bg-secondary hover:text-foreground"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      )}
     </header>
   );
 }

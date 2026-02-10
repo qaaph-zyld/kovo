@@ -15,7 +15,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
 import { Suspense } from "react";
 
 function ContactForm() {
@@ -28,9 +27,9 @@ function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-xl border border-green-200 bg-green-50 p-12 text-center">
+      <div className="flex flex-col items-center justify-center rounded-2xl border border-green-200 bg-green-50/50 p-14 text-center">
         <CheckCircle2 className="h-16 w-16 text-green-600" />
-        <h3 className="mt-4 text-xl font-bold">Poruka poslata!</h3>
+        <h3 className="mt-5 font-display text-xl">Poruka poslata!</h3>
         <p className="mt-2 text-muted-foreground">
           Odgovorićemo vam u roku od 24 sata. Hvala na interesovanju!
         </p>
@@ -41,12 +40,12 @@ function ContactForm() {
   return (
     <div>
       {/* Type selector */}
-      <div className="mb-6 flex gap-2">
+      <div className="mb-7 flex gap-2">
         <Button
           variant={formType === "b2c" ? "default" : "outline"}
           onClick={() => setFormType("b2c")}
           className={
-            formType === "b2c" ? "bg-zinc-900 hover:bg-zinc-800" : ""
+            formType === "b2c" ? "bg-iron-black hover:bg-forge-amber" : "border-border/60"
           }
         >
           <User className="mr-2 h-4 w-4" />
@@ -56,7 +55,7 @@ function ContactForm() {
           variant={formType === "b2b" ? "default" : "outline"}
           onClick={() => setFormType("b2b")}
           className={
-            formType === "b2b" ? "bg-amber-700 hover:bg-amber-800" : ""
+            formType === "b2b" ? "bg-forge-amber hover:bg-forge-amber-light" : "border-border/60"
           }
         >
           <Building2 className="mr-2 h-4 w-4" />
@@ -69,42 +68,42 @@ function ContactForm() {
           e.preventDefault();
           setSubmitted(true);
         }}
-        className="space-y-4"
+        className="space-y-5"
       >
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label className="mb-1 block text-sm font-medium">Ime *</label>
-            <Input placeholder="Vaše ime" required />
+            <label className="mb-1.5 block text-sm font-medium">Ime *</label>
+            <Input placeholder="Vaše ime" required className="rounded-xl border-border/60 bg-workshop-gray focus:border-forge-amber focus:ring-forge-amber/20" />
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium">
+            <label className="mb-1.5 block text-sm font-medium">
               Prezime *
             </label>
-            <Input placeholder="Vaše prezime" required />
+            <Input placeholder="Vaše prezime" required className="rounded-xl border-border/60 bg-workshop-gray focus:border-forge-amber focus:ring-forge-amber/20" />
           </div>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-5 sm:grid-cols-2">
           <div>
-            <label className="mb-1 block text-sm font-medium">Email *</label>
-            <Input type="email" placeholder="email@primer.com" required />
+            <label className="mb-1.5 block text-sm font-medium">Email *</label>
+            <Input type="email" placeholder="email@primer.com" required className="rounded-xl border-border/60 bg-workshop-gray focus:border-forge-amber focus:ring-forge-amber/20" />
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium">Telefon</label>
-            <Input type="tel" placeholder="+381 60 ..." />
+            <label className="mb-1.5 block text-sm font-medium">Telefon</label>
+            <Input type="tel" placeholder="+381 60 ..." className="rounded-xl border-border/60 bg-workshop-gray focus:border-forge-amber focus:ring-forge-amber/20" />
           </div>
         </div>
 
         {formType === "b2b" && (
           <>
             <div>
-              <label className="mb-1 block text-sm font-medium">
+              <label className="mb-1.5 block text-sm font-medium">
                 Naziv objekta / firme *
               </label>
-              <Input placeholder="Naziv kafića, restorana, hotela..." required />
+              <Input placeholder="Naziv kafića, restorana, hotela..." required className="rounded-xl border-border/60 bg-workshop-gray focus:border-forge-amber focus:ring-forge-amber/20" />
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-5 sm:grid-cols-2">
               <div>
-                <label className="mb-1 block text-sm font-medium">
+                <label className="mb-1.5 block text-sm font-medium">
                   Broj komada (okvirno) *
                 </label>
                 <Input
@@ -112,20 +111,21 @@ function ContactForm() {
                   placeholder="npr. 20"
                   min={1}
                   required
+                  className="rounded-xl border-border/60 bg-workshop-gray focus:border-forge-amber focus:ring-forge-amber/20"
                 />
               </div>
               <div>
-                <label className="mb-1 block text-sm font-medium">
+                <label className="mb-1.5 block text-sm font-medium">
                   Tip proizvoda
                 </label>
-                <Input placeholder="Stolice, stolovi, setovi..." />
+                <Input placeholder="Stolice, stolovi, setovi..." className="rounded-xl border-border/60 bg-workshop-gray focus:border-forge-amber focus:ring-forge-amber/20" />
               </div>
             </div>
           </>
         )}
 
         <div>
-          <label className="mb-1 block text-sm font-medium">Poruka *</label>
+          <label className="mb-1.5 block text-sm font-medium">Poruka *</label>
           <Textarea
             placeholder={
               formType === "b2b"
@@ -134,13 +134,14 @@ function ContactForm() {
             }
             rows={5}
             required
+            className="rounded-xl border-border/60 bg-workshop-gray focus:border-forge-amber focus:ring-forge-amber/20"
           />
         </div>
 
         <Button
           type="submit"
           size="lg"
-          className="w-full bg-amber-700 text-white hover:bg-amber-800"
+          className="w-full bg-forge-amber font-semibold text-white transition-all duration-200 hover:bg-forge-amber-light hover:scale-[1.01] active:scale-[0.98]"
         >
           <Send className="mr-2 h-4 w-4" />
           {formType === "b2b" ? "Zatražite ponudu" : "Pošaljite poruku"}
@@ -152,10 +153,13 @@ function ContactForm() {
 
 export default function KontaktPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="mb-10">
-        <h1 className="text-3xl font-bold tracking-tight">Kontakt</h1>
-        <p className="mt-2 text-muted-foreground">
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+      <div className="mb-12">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber">
+          Javite nam se
+        </p>
+        <h1 className="font-display text-3xl tracking-tight sm:text-4xl">Kontakt</h1>
+        <p className="mt-3 text-muted-foreground">
           Javite nam se za pitanja, ponude ili saradnju.
         </p>
       </div>
@@ -163,69 +167,65 @@ export default function KontaktPage() {
       <div className="grid gap-10 lg:grid-cols-3">
         {/* Contact info */}
         <div className="space-y-6">
-          <Card className="border-border/60">
-            <CardContent className="p-6">
-              <h3 className="mb-4 font-semibold">Podaci za kontakt</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-700" />
-                  <div>
-                    <p className="text-sm font-medium">Adresa</p>
-                    <p className="text-sm text-muted-foreground">
-                      Loznica, Srbija
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Phone className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-700" />
-                  <div>
-                    <p className="text-sm font-medium">Telefon</p>
-                    <a
-                      href="tel:+381600000000"
-                      className="text-sm text-muted-foreground hover:text-foreground"
-                    >
-                      +381 60 000 0000
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Mail className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-700" />
-                  <div>
-                    <p className="text-sm font-medium">Email</p>
-                    <a
-                      href="mailto:info@kovo.rs"
-                      className="text-sm text-muted-foreground hover:text-foreground"
-                    >
-                      info@kovo.rs
-                    </a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Clock className="mt-0.5 h-5 w-5 flex-shrink-0 text-amber-700" />
-                  <div>
-                    <p className="text-sm font-medium">Radno vreme</p>
-                    <p className="text-sm text-muted-foreground">
-                      Pon–Pet: 08–16h
-                      <br />
-                      Sub: 08–13h
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+          <div className="rounded-2xl border border-border/50 bg-card p-7">
+            <h3 className="mb-5 font-semibold tracking-tight">Podaci za kontakt</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0 text-forge-amber" />
+                <div>
+                  <p className="text-sm font-medium">Adresa</p>
+                  <p className="text-sm text-muted-foreground">
+                    Loznica, Srbija
+                  </p>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <Phone className="mt-0.5 h-5 w-5 flex-shrink-0 text-forge-amber" />
+                <div>
+                  <p className="text-sm font-medium">Telefon</p>
+                  <a
+                    href="tel:+381600000000"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    +381 60 000 0000
+                  </a>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <Mail className="mt-0.5 h-5 w-5 flex-shrink-0 text-forge-amber" />
+                <div>
+                  <p className="text-sm font-medium">Email</p>
+                  <a
+                    href="mailto:info@kovo.rs"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  >
+                    info@kovo.rs
+                  </a>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <Clock className="mt-0.5 h-5 w-5 flex-shrink-0 text-forge-amber" />
+                <div>
+                  <p className="text-sm font-medium">Radno vreme</p>
+                  <p className="text-sm text-muted-foreground">
+                    Pon–Pet: 08–16h
+                    <br />
+                    Sub: 08–13h
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
 
-          <Card className="border-amber-200 bg-amber-50">
-            <CardContent className="p-6">
-              <h3 className="font-semibold text-amber-900">
-                Lično preuzimanje
-              </h3>
-              <p className="mt-2 text-sm text-amber-800">
-                Dođite u našu radionicu u Loznici i uštedite 5% na celokupnu
-                porudžbinu. Vidite nameštaj uživo pre kupovine!
-              </p>
-            </CardContent>
-          </Card>
+          <div className="rounded-2xl border border-forge-amber/20 bg-forge-amber/5 p-7">
+            <h3 className="font-semibold tracking-tight text-foreground">
+              Lično preuzimanje
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Dođite u našu radionicu u Loznici i uštedite 5% na celokupnu
+              porudžbinu. Vidite nameštaj uživo pre kupovine!
+            </p>
+          </div>
         </div>
 
         {/* Form */}

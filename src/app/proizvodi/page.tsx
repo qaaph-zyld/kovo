@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Filter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/ProductCard";
 import { products, Product } from "@/data/products";
@@ -25,17 +24,19 @@ export default function ProizvodiPage() {
       : products.filter((p) => p.category === activeCategory);
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Proizvodi</h1>
-        <p className="mt-2 text-muted-foreground">
-          LINEA kolekcija — modularni kovani nameštaj za terase i dvorišta
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+      <div className="mb-10">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber">
+          LINEA Kolekcija
+        </p>
+        <h1 className="font-display text-3xl tracking-tight sm:text-4xl">Proizvodi</h1>
+        <p className="mt-3 max-w-lg text-muted-foreground">
+          Modularni kovani nameštaj za terase i dvorišta
         </p>
       </div>
 
       {/* Filters */}
-      <div className="mb-8 flex flex-wrap items-center gap-2">
-        <Filter className="mr-1 h-4 w-4 text-muted-foreground" />
+      <div className="mb-10 flex flex-wrap items-center gap-2">
         {categories.map((cat) => (
           <Button
             key={cat.value}
@@ -44,8 +45,8 @@ export default function ProizvodiPage() {
             onClick={() => setActiveCategory(cat.value)}
             className={
               activeCategory === cat.value
-                ? "bg-zinc-900 text-white hover:bg-zinc-800"
-                : ""
+                ? "bg-iron-black text-white hover:bg-forge-amber"
+                : "border-border/60 hover:border-forge-amber/40 hover:text-forge-amber"
             }
           >
             {cat.label}
@@ -54,14 +55,14 @@ export default function ProizvodiPage() {
       </div>
 
       {/* Product grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
 
       {filtered.length === 0 && (
-        <div className="py-20 text-center text-muted-foreground">
+        <div className="py-24 text-center text-muted-foreground">
           Nema proizvoda u ovoj kategoriji.
         </div>
       )}

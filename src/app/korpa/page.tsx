@@ -13,8 +13,6 @@ import {
   CreditCard,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useCartStore } from "@/store/cart";
@@ -73,13 +71,13 @@ export default function KorpaPage() {
 
   if (items.length === 0 && step !== "success") {
     return (
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-24 sm:px-6 lg:px-8">
-        <ShoppingBag className="h-20 w-20 text-muted-foreground/30" />
-        <h1 className="mt-6 text-2xl font-bold">Korpa je prazna</h1>
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-28 sm:px-6 lg:px-8">
+        <ShoppingBag className="h-20 w-20 text-muted-foreground/20" />
+        <h1 className="mt-6 font-display text-2xl tracking-tight">Korpa je prazna</h1>
         <p className="mt-2 text-muted-foreground">
           Dodajte proizvode iz LINEA kolekcije
         </p>
-        <Button asChild className="mt-6 bg-amber-700 hover:bg-amber-800">
+        <Button asChild className="mt-6 bg-forge-amber px-8 font-semibold text-white hover:bg-forge-amber-light">
           <Link href="/proizvodi">Pregledajte proizvode</Link>
         </Button>
       </div>
@@ -88,43 +86,53 @@ export default function KorpaPage() {
 
   if (step === "success") {
     return (
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-24 text-center sm:px-6 lg:px-8">
-        <div className="flex h-20 w-20 items-center justify-center rounded-full bg-green-100 text-green-600">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-28 text-center sm:px-6 lg:px-8">
+        <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-green-100 text-green-600">
           <ShoppingBag className="h-10 w-10" />
         </div>
-        <h1 className="mt-6 text-2xl font-bold">Porudžbina primljena!</h1>
-        <p className="mt-2 max-w-md text-muted-foreground">
+        <h1 className="mt-6 font-display text-2xl tracking-tight">Porudžbina primljena!</h1>
+        <p className="mt-3 max-w-md text-muted-foreground">
           Hvala vam na porudžbini. Kontaktiraćemo vas u roku od 24h sa
           potvrdom i detaljima isporuke.
         </p>
-        <Button asChild className="mt-6">
+        <Button asChild className="mt-6 bg-forge-amber px-8 font-semibold text-white hover:bg-forge-amber-light">
           <Link href="/">Nazad na početnu</Link>
         </Button>
       </div>
     );
   }
 
+  const inputCls = "rounded-xl border-border/60 bg-workshop-gray focus:border-forge-amber focus:ring-forge-amber/20";
+
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <h1 className="mb-8 text-3xl font-bold tracking-tight">
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+      {/* Progress indicator */}
+      <div className="mb-10 flex items-center gap-3">
+        <div className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ${step === "cart" ? "bg-forge-amber text-white" : "bg-workshop-gray text-muted-foreground"}`}>1</div>
+        <div className="h-px flex-1 bg-border" />
+        <div className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ${step === "checkout" ? "bg-forge-amber text-white" : "bg-workshop-gray text-muted-foreground"}`}>2</div>
+      </div>
+
+      <h1 className="mb-10 font-display text-3xl tracking-tight sm:text-4xl">
         {step === "cart" ? "Vaša korpa" : "Završite porudžbinu"}
       </h1>
 
-      <div className="grid gap-8 lg:grid-cols-3">
+      <div className="grid gap-10 lg:grid-cols-3">
         {/* Main content */}
         <div className="lg:col-span-2">
           {step === "cart" && (
             <div className="space-y-4">
               {items.map((item) => (
-                <Card key={item.product.id} className="border-border/60">
-                  <CardContent className="flex gap-4 p-4">
-                    <div className="h-24 w-24 flex-shrink-0 rounded-md bg-secondary" />
+                <div key={item.product.id} className="flex gap-4 rounded-2xl border border-border/50 bg-card p-5">
+                    <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-xl bg-workshop-gray">
+                      <div className="absolute inset-0 dot-grid opacity-30" />
+                    </div>
                     <div className="flex flex-1 flex-col">
                       <div className="flex items-start justify-between">
                         <div>
                           <Link
                             href={`/proizvodi/${item.product.slug}`}
-                            className="font-semibold hover:text-amber-700"
+                            className="font-display text-base leading-tight transition-colors hover:text-forge-amber"
                           >
                             {item.product.name}
                           </Link>
@@ -146,7 +154,7 @@ export default function KorpaPage() {
                           <Button
                             variant="outline"
                             size="icon"
-                            className="h-8 w-8"
+                            className="h-8 w-8 rounded-lg border-border/60"
                             onClick={() =>
                               updateQuantity(
                                 item.product.id,
@@ -156,13 +164,13 @@ export default function KorpaPage() {
                           >
                             <Minus className="h-3 w-3" />
                           </Button>
-                          <span className="w-10 text-center text-sm font-medium">
+                          <span className="w-10 text-center font-mono text-sm font-medium">
                             {item.quantity}
                           </span>
                           <Button
                             variant="outline"
                             size="icon"
-                            className="h-8 w-8"
+                            className="h-8 w-8 rounded-lg border-border/60"
                             onClick={() =>
                               updateQuantity(
                                 item.product.id,
@@ -173,29 +181,27 @@ export default function KorpaPage() {
                             <Plus className="h-3 w-3" />
                           </Button>
                         </div>
-                        <span className="text-lg font-bold">
+                        <span className="font-mono text-lg font-bold">
                           {formatPrice(item.product.price * item.quantity)}
                         </span>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
+                </div>
               ))}
             </div>
           )}
 
           {step === "checkout" && (
-            <div className="space-y-6">
+            <div className="space-y-7">
               {/* Contact info */}
-              <Card className="border-border/60">
-                <CardContent className="p-6">
-                  <h3 className="mb-4 flex items-center gap-2 font-semibold">
-                    <MapPin className="h-4 w-4 text-amber-700" />
+              <div className="rounded-2xl border border-border/50 bg-card p-7">
+                  <h3 className="mb-5 flex items-center gap-2 font-semibold tracking-tight">
+                    <MapPin className="h-4 w-4 text-forge-amber" />
                     Podaci za dostavu
                   </h3>
-                  <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="grid gap-5 sm:grid-cols-2">
                     <div>
-                      <label className="mb-1 block text-sm font-medium">
+                      <label className="mb-1.5 block text-sm font-medium">
                         Ime *
                       </label>
                       <Input
@@ -204,10 +210,11 @@ export default function KorpaPage() {
                           setForm({ ...form, ime: e.target.value })
                         }
                         placeholder="Vaše ime"
+                        className={inputCls}
                       />
                     </div>
                     <div>
-                      <label className="mb-1 block text-sm font-medium">
+                      <label className="mb-1.5 block text-sm font-medium">
                         Prezime *
                       </label>
                       <Input
@@ -216,10 +223,11 @@ export default function KorpaPage() {
                           setForm({ ...form, prezime: e.target.value })
                         }
                         placeholder="Vaše prezime"
+                        className={inputCls}
                       />
                     </div>
                     <div>
-                      <label className="mb-1 block text-sm font-medium">
+                      <label className="mb-1.5 block text-sm font-medium">
                         Email *
                       </label>
                       <Input
@@ -229,10 +237,11 @@ export default function KorpaPage() {
                           setForm({ ...form, email: e.target.value })
                         }
                         placeholder="email@primer.com"
+                        className={inputCls}
                       />
                     </div>
                     <div>
-                      <label className="mb-1 block text-sm font-medium">
+                      <label className="mb-1.5 block text-sm font-medium">
                         Telefon *
                       </label>
                       <Input
@@ -242,10 +251,11 @@ export default function KorpaPage() {
                           setForm({ ...form, telefon: e.target.value })
                         }
                         placeholder="+381 60 ..."
+                        className={inputCls}
                       />
                     </div>
                     <div className="sm:col-span-2">
-                      <label className="mb-1 block text-sm font-medium">
+                      <label className="mb-1.5 block text-sm font-medium">
                         Adresa *
                       </label>
                       <Input
@@ -254,10 +264,11 @@ export default function KorpaPage() {
                           setForm({ ...form, adresa: e.target.value })
                         }
                         placeholder="Ulica i broj"
+                        className={inputCls}
                       />
                     </div>
                     <div>
-                      <label className="mb-1 block text-sm font-medium">
+                      <label className="mb-1.5 block text-sm font-medium">
                         Grad *
                       </label>
                       <Input
@@ -266,10 +277,11 @@ export default function KorpaPage() {
                           setForm({ ...form, grad: e.target.value })
                         }
                         placeholder="Grad"
+                        className={inputCls}
                       />
                     </div>
                     <div>
-                      <label className="mb-1 block text-sm font-medium">
+                      <label className="mb-1.5 block text-sm font-medium">
                         Poštanski broj *
                       </label>
                       <Input
@@ -278,10 +290,11 @@ export default function KorpaPage() {
                           setForm({ ...form, postanskiBroj: e.target.value })
                         }
                         placeholder="15000"
+                        className={inputCls}
                       />
                     </div>
                     <div className="sm:col-span-2">
-                      <label className="mb-1 block text-sm font-medium">
+                      <label className="mb-1.5 block text-sm font-medium">
                         Napomena (opciono)
                       </label>
                       <Textarea
@@ -291,27 +304,26 @@ export default function KorpaPage() {
                         }
                         placeholder="Dodatne napomene uz porudžbinu..."
                         rows={3}
+                        className={inputCls}
                       />
                     </div>
                   </div>
-                </CardContent>
-              </Card>
+              </div>
 
               {/* Delivery method */}
-              <Card className="border-border/60">
-                <CardContent className="p-6">
-                  <h3 className="mb-4 flex items-center gap-2 font-semibold">
-                    <Truck className="h-4 w-4 text-amber-700" />
+              <div className="rounded-2xl border border-border/50 bg-card p-7">
+                  <h3 className="mb-5 flex items-center gap-2 font-semibold tracking-tight">
+                    <Truck className="h-4 w-4 text-forge-amber" />
                     Način dostave
                   </h3>
                   <div className="space-y-3">
                     {deliveryOptions.map((opt) => (
                       <label
                         key={opt.value}
-                        className={`flex cursor-pointer items-center justify-between rounded-lg border p-4 transition-colors ${
+                        className={`flex cursor-pointer items-center justify-between rounded-xl border p-4 transition-colors ${
                           delivery === opt.value
-                            ? "border-amber-700 bg-amber-50"
-                            : "border-border hover:bg-secondary/50"
+                            ? "border-forge-amber/40 bg-forge-amber/5"
+                            : "border-border/50 hover:bg-workshop-gray"
                         }`}
                       >
                         <div className="flex items-center gap-3">
@@ -321,7 +333,7 @@ export default function KorpaPage() {
                             value={opt.value}
                             checked={delivery === opt.value}
                             onChange={() => setDelivery(opt.value)}
-                            className="accent-amber-700"
+                            className="accent-[oklch(0.55_0.14_55)]"
                           />
                           <div>
                             <p className="text-sm font-medium">{opt.label}</p>
@@ -330,7 +342,7 @@ export default function KorpaPage() {
                             </p>
                           </div>
                         </div>
-                        <span className="text-sm font-semibold">
+                        <span className="font-mono text-sm font-semibold">
                           {opt.price === 0
                             ? "Besplatno"
                             : formatPrice(opt.price)}
@@ -338,22 +350,20 @@ export default function KorpaPage() {
                       </label>
                     ))}
                   </div>
-                </CardContent>
-              </Card>
+              </div>
 
               {/* Payment method */}
-              <Card className="border-border/60">
-                <CardContent className="p-6">
-                  <h3 className="mb-4 flex items-center gap-2 font-semibold">
-                    <CreditCard className="h-4 w-4 text-amber-700" />
+              <div className="rounded-2xl border border-border/50 bg-card p-7">
+                  <h3 className="mb-5 flex items-center gap-2 font-semibold tracking-tight">
+                    <CreditCard className="h-4 w-4 text-forge-amber" />
                     Način plaćanja
                   </h3>
                   <div className="space-y-3">
                     <label
-                      className={`flex cursor-pointer items-center gap-3 rounded-lg border p-4 transition-colors ${
+                      className={`flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition-colors ${
                         form.placanje === "pouzecem"
-                          ? "border-amber-700 bg-amber-50"
-                          : "border-border hover:bg-secondary/50"
+                          ? "border-forge-amber/40 bg-forge-amber/5"
+                          : "border-border/50 hover:bg-workshop-gray"
                       }`}
                     >
                       <input
@@ -364,7 +374,7 @@ export default function KorpaPage() {
                         onChange={() =>
                           setForm({ ...form, placanje: "pouzecem" })
                         }
-                        className="accent-amber-700"
+                        className="accent-[oklch(0.55_0.14_55)]"
                       />
                       <div>
                         <p className="text-sm font-medium">Pouzećem</p>
@@ -374,10 +384,10 @@ export default function KorpaPage() {
                       </div>
                     </label>
                     <label
-                      className={`flex cursor-pointer items-center gap-3 rounded-lg border p-4 transition-colors ${
+                      className={`flex cursor-pointer items-center gap-3 rounded-xl border p-4 transition-colors ${
                         form.placanje === "kartica"
-                          ? "border-amber-700 bg-amber-50"
-                          : "border-border hover:bg-secondary/50"
+                          ? "border-forge-amber/40 bg-forge-amber/5"
+                          : "border-border/50 hover:bg-workshop-gray"
                       }`}
                     >
                       <input
@@ -388,7 +398,7 @@ export default function KorpaPage() {
                         onChange={() =>
                           setForm({ ...form, placanje: "kartica" })
                         }
-                        className="accent-amber-700"
+                        className="accent-[oklch(0.55_0.14_55)]"
                       />
                       <div>
                         <p className="text-sm font-medium">Platnom karticom</p>
@@ -398,19 +408,17 @@ export default function KorpaPage() {
                       </div>
                     </label>
                   </div>
-                </CardContent>
-              </Card>
+              </div>
             </div>
           )}
         </div>
 
         {/* Order summary sidebar */}
         <div>
-          <Card className="sticky top-24 border-border/60">
-            <CardContent className="p-6">
-              <h3 className="mb-4 font-semibold">Pregled porudžbine</h3>
+          <div className="sticky top-24 rounded-2xl border border-border/50 bg-card p-7">
+              <h3 className="mb-5 font-semibold tracking-tight">Pregled porudžbine</h3>
 
-              <div className="space-y-2">
+              <div className="space-y-2.5">
                 {items.map((item) => (
                   <div
                     key={item.product.id}
@@ -419,29 +427,29 @@ export default function KorpaPage() {
                     <span className="text-muted-foreground">
                       {item.product.name} × {item.quantity}
                     </span>
-                    <span>
+                    <span className="font-mono">
                       {formatPrice(item.product.price * item.quantity)}
                     </span>
                   </div>
                 ))}
               </div>
 
-              <Separator className="my-4" />
+              <div className="my-5 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-              <div className="space-y-2 text-sm">
+              <div className="space-y-2.5 text-sm">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Međuzbir</span>
-                  <span>{formatPrice(subtotal)}</span>
+                  <span className="font-mono">{formatPrice(subtotal)}</span>
                 </div>
                 {pickupDiscount > 0 && (
                   <div className="flex justify-between text-green-600">
                     <span>Popust (lično preuzimanje)</span>
-                    <span>-{formatPrice(pickupDiscount)}</span>
+                    <span className="font-mono">-{formatPrice(pickupDiscount)}</span>
                   </div>
                 )}
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Dostava</span>
-                  <span>
+                  <span className="font-mono">
                     {selectedDelivery.price === 0
                       ? "Besplatno"
                       : formatPrice(selectedDelivery.price)}
@@ -449,16 +457,16 @@ export default function KorpaPage() {
                 </div>
               </div>
 
-              <Separator className="my-4" />
+              <div className="my-5 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
               <div className="flex items-center justify-between text-lg font-bold">
                 <span>Ukupno</span>
-                <span>{formatPrice(total)}</span>
+                <span className="font-mono">{formatPrice(total)}</span>
               </div>
 
               {step === "cart" && (
                 <Button
-                  className="mt-6 w-full bg-amber-700 text-white hover:bg-amber-800"
+                  className="mt-7 w-full bg-forge-amber font-semibold text-white transition-all duration-200 hover:bg-forge-amber-light hover:scale-[1.01] active:scale-[0.98]"
                   size="lg"
                   onClick={() => setStep("checkout")}
                 >
@@ -468,9 +476,9 @@ export default function KorpaPage() {
               )}
 
               {step === "checkout" && (
-                <div className="mt-6 space-y-2">
+                <div className="mt-7 space-y-2">
                   <Button
-                    className="w-full bg-amber-700 text-white hover:bg-amber-800"
+                    className="w-full bg-forge-amber font-semibold text-white transition-all duration-200 hover:bg-forge-amber-light hover:scale-[1.01] active:scale-[0.98]"
                     size="lg"
                     onClick={() => {
                       clearCart();
@@ -490,11 +498,10 @@ export default function KorpaPage() {
                 </div>
               )}
 
-              <p className="mt-4 text-center text-xs text-muted-foreground">
+              <p className="mt-5 text-center text-xs text-muted-foreground">
                 Sigurna kupovina. Kontaktiraćemo vas za potvrdu.
               </p>
-            </CardContent>
-          </Card>
+          </div>
         </div>
       </div>
     </div>

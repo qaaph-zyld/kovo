@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Truck, MapPin, Package, Clock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const zones = [
@@ -60,131 +59,145 @@ const faq = [
 
 export default function DostavaPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="mb-10">
-        <h1 className="text-3xl font-bold tracking-tight">
-          Dostava i isporuka
-        </h1>
-        <p className="mt-2 text-muted-foreground">
-          Transparentne cene, sigurno pakovanje, dostava širom Srbije.
-        </p>
-      </div>
+    <>
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div className="mb-12">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber">
+            Transport
+          </p>
+          <h1 className="font-display text-3xl tracking-tight sm:text-4xl">
+            Dostava i isporuka
+          </h1>
+          <p className="mt-3 text-muted-foreground">
+            Transparentne cene, sigurno pakovanje, dostava širom Srbije.
+          </p>
+        </div>
 
-      {/* Delivery zones */}
-      <div className="mb-16 grid gap-6 sm:grid-cols-3">
-        {zones.map((zone) => (
-          <Card
-            key={zone.zone}
-            className={`border-border/60 ${
-              zone.highlight ? "ring-2 ring-amber-700" : ""
-            }`}
-          >
-            <CardContent className="p-6">
+        {/* Delivery zones */}
+        <div className="mb-20 grid gap-7 sm:grid-cols-3">
+          {zones.map((zone) => (
+            <div
+              key={zone.zone}
+              className={`rounded-2xl border p-7 transition-all duration-300 hover:shadow-warm ${
+                zone.highlight ? "border-forge-amber/40 ring-2 ring-forge-amber/20" : "border-border/50"
+              }`}
+            >
               {zone.highlight && (
-                <Badge className="mb-3 bg-amber-700 text-white">
+                <Badge className="mb-4 bg-forge-amber font-semibold text-white">
                   Preporučeno
                 </Badge>
               )}
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-amber-50 text-amber-700">
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-forge-amber/10">
                 {zone.zone.includes("Lično") ? (
-                  <MapPin className="h-5 w-5" />
+                  <MapPin className="h-5 w-5 text-forge-amber" />
                 ) : zone.zone.includes("Kurir") ? (
-                  <Package className="h-5 w-5" />
+                  <Package className="h-5 w-5 text-forge-amber" />
                 ) : (
-                  <Truck className="h-5 w-5" />
+                  <Truck className="h-5 w-5 text-forge-amber" />
                 )}
               </div>
-              <h3 className="text-lg font-semibold">{zone.zone}</h3>
+              <h3 className="text-lg font-semibold tracking-tight">{zone.zone}</h3>
               <p className="mt-1 text-sm text-muted-foreground">
                 {zone.location}
               </p>
-              <div className="mt-4 space-y-1">
+              <div className="mt-5 space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">Cena</span>
-                  <span className="font-semibold">{zone.price}</span>
+                  <span className="font-mono font-semibold">{zone.price}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">Rok</span>
-                  <span className="flex items-center gap-1 text-sm">
-                    <Clock className="h-3 w-3" />
+                  <span className="flex items-center gap-1 font-mono text-sm">
+                    <Clock className="h-3 w-3 text-forge-amber/60" />
                     {zone.time}
                   </span>
                 </div>
               </div>
-              <p className="mt-4 rounded-md bg-secondary p-2 text-xs text-muted-foreground">
+              <p className="mt-5 rounded-xl bg-workshop-gray p-3 text-xs leading-relaxed text-muted-foreground">
                 {zone.note}
               </p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      {/* Packaging info */}
-      <div className="mb-16 rounded-xl bg-zinc-950 p-8 text-white sm:p-12">
-        <h2 className="text-2xl font-bold">Kako pakujemo</h2>
-        <p className="mt-3 text-zinc-400">
-          Svaki proizvod je dizajniran da putuje sigurno. Naš standard
-          pakovanja:
-        </p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            "Euro-paleta + streč folija",
-            "Kartonski uglovi (edge protectors)",
-            "Pena 3–5mm na kontaktnim tačkama",
-            "Talasasti karton kao rukav oko ramova",
-            "Ništa metal-na-metal, ništa drvo-na-metal",
-            "Kesica: šrafovi + imbus + QR uputstvo",
-          ].map((item) => (
-            <div
-              key={item}
-              className="flex items-start gap-2 text-sm text-zinc-300"
-            >
-              <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber-500" />
-              {item}
             </div>
           ))}
         </div>
       </div>
 
-      {/* FAQ */}
-      <div className="mb-16">
-        <h2 className="mb-8 text-2xl font-bold">Česta pitanja</h2>
-        <div className="grid gap-4 sm:grid-cols-2">
-          {faq.map((item) => (
-            <Card key={item.q} className="border-border/60">
-              <CardContent className="p-6">
-                <h3 className="font-semibold">{item.q}</h3>
+      {/* Packaging info */}
+      <section className="noise-overlay relative overflow-hidden bg-iron-deep py-20 text-white sm:py-28">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_oklch(0.55_0.14_55_/_0.08),transparent_60%)]" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber-light">
+            Pakovanje
+          </p>
+          <h2 className="font-display text-2xl tracking-tight sm:text-3xl">Kako pakujemo</h2>
+          <p className="mt-4 text-white/50">
+            Svaki proizvod je dizajniran da putuje sigurno. Naš standard
+            pakovanja:
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              "Euro-paleta + streč folija",
+              "Kartonski uglovi (edge protectors)",
+              "Pena 3–5mm na kontaktnim tačkama",
+              "Talasasti karton kao rukav oko ramova",
+              "Ništa metal-na-metal, ništa drvo-na-metal",
+              "Kesica: šrafovi + imbus + QR uputstvo",
+            ].map((item) => (
+              <div
+                key={item}
+                className="flex items-start gap-2.5 text-sm text-white/60"
+              >
+                <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-forge-amber" />
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
+        {/* FAQ */}
+        <div className="mb-20">
+          <div className="mb-10 text-center">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber">
+              FAQ
+            </p>
+            <h2 className="font-display text-2xl tracking-tight sm:text-3xl">Česta pitanja</h2>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {faq.map((item) => (
+              <div key={item.q} className="rounded-2xl border border-border/50 bg-card p-7 transition-all duration-300 hover:shadow-warm">
+                <h3 className="font-semibold tracking-tight">{item.q}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {item.a}
                 </p>
-              </CardContent>
-            </Card>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* CTA */}
-      <div className="text-center">
-        <h2 className="text-2xl font-bold">Imate još pitanja?</h2>
-        <p className="mt-2 text-muted-foreground">
-          Kontaktirajte nas — rado ćemo pomoći.
-        </p>
-        <div className="mt-6 flex justify-center gap-3">
-          <Button
-            asChild
-            size="lg"
-            className="bg-amber-700 text-white hover:bg-amber-800"
-          >
-            <Link href="/kontakt">
-              Kontaktirajte nas
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-          <Button asChild variant="outline" size="lg">
-            <Link href="/proizvodi">Pogledajte proizvode</Link>
-          </Button>
+        {/* CTA */}
+        <div className="text-center">
+          <h2 className="font-display text-2xl tracking-tight sm:text-3xl">Imate još pitanja?</h2>
+          <p className="mt-3 text-muted-foreground">
+            Kontaktirajte nas — rado ćemo pomoći.
+          </p>
+          <div className="mt-8 flex justify-center gap-3">
+            <Button
+              asChild
+              size="lg"
+              className="bg-forge-amber px-8 font-semibold text-white transition-all duration-200 hover:bg-forge-amber-light hover:scale-[1.02]"
+            >
+              <Link href="/kontakt">
+                Kontaktirajte nas
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="px-8">
+              <Link href="/proizvodi">Pogledajte proizvode</Link>
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

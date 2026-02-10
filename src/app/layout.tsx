@@ -1,12 +1,25 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans, DM_Serif_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   variable: "--font-sans",
   subsets: ["latin", "latin-ext"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+const dmSerif = DM_Serif_Display({
+  variable: "--font-display",
+  subsets: ["latin", "latin-ext"],
+  weight: "400",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -31,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sr">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className={`${dmSans.variable} ${dmSerif.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
