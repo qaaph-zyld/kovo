@@ -1,9 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
-  Package,
   Truck,
   Timer,
   Shield,
+  Package,
   Wrench,
   ArrowRight,
   Star,
@@ -71,6 +72,7 @@ export default function Home() {
         <div className="absolute right-0 top-0 h-full w-1/2 opacity-30 dot-grid" />
 
         <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-7xl items-center px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="max-w-2xl">
             <Badge className="animate-settle mb-8 border border-forge-amber/30 bg-forge-amber/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-forge-amber-light hover:bg-forge-amber/15">
               LINEA Kolekcija — Novo
@@ -105,6 +107,20 @@ export default function Home() {
                 <Link href="/kako-funkcionise">Kako funkcioniše</Link>
               </Button>
             </div>
+          </div>
+          <div className="hidden lg:block">
+            <div className="animate-settle stagger-2 relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+              <Image
+                src="/images/products/set-family-garden.png"
+                alt="LINEA Family Set — baštanski nameštaj od kovanog gvožđa"
+                fill
+                className="object-cover"
+                sizes="50vw"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-iron-deep/30 to-transparent" />
+            </div>
+          </div>
           </div>
         </div>
       </section>

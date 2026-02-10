@@ -1,7 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Flame, Hammer, Heart, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import KovoLogo from "@/components/KovoLogo";
 
 export default function ONamaPage() {
   return (
@@ -30,10 +30,13 @@ export default function ONamaPage() {
               </p>
             </div>
             <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-workshop-gray">
-              <div className="absolute inset-0 dot-grid opacity-40" />
-              <div className="flex h-full items-center justify-center">
-                <KovoLogo className="h-20 w-20 opacity-10" iconOnly />
-              </div>
+              <Image
+                src="/images/products/set-family-garden.png"
+                alt="KOVO kovani nameštaj — set u bašti"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
             </div>
           </div>
         </div>

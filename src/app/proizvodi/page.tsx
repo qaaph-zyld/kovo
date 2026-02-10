@@ -11,6 +11,8 @@ const categories: { value: Product["category"] | "all"; label: string }[] = [
   { value: "sto", label: "Stolovi" },
   { value: "klupa", label: "Klupe" },
   { value: "set", label: "Setovi" },
+  { value: "lezaljka", label: "Ležaljke" },
+  { value: "salon", label: "Salon" },
 ];
 
 export default function ProizvodiPage() {

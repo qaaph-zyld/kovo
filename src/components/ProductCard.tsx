@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Package, Clock, Layers } from "lucide-react";
+import Image from "next/image";
+import { Clock, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Product, formatPrice } from "@/data/products";
@@ -18,11 +19,13 @@ export default function ProductCard({ product }: ProductCardProps) {
     <div className="group overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-warm-lg">
       <Link href={`/proizvodi/${product.slug}`}>
         <div className="relative aspect-[4/3] overflow-hidden bg-workshop-gray">
-          {/* Geometric placeholder pattern */}
-          <div className="absolute inset-0 dot-grid opacity-40" />
-          <div className="flex h-full items-center justify-center">
-            <Package className="h-14 w-14 text-foreground/10" />
-          </div>
+          <Image
+            src={product.images[0]}
+            alt={product.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
           {product.originalPrice && (
             <Badge className="absolute left-3 top-3 bg-forge-amber font-semibold text-white">
               -{Math.round((1 - product.price / product.originalPrice) * 100)}%

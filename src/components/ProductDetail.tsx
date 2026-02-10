@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
-  Package,
   Clock,
   Layers,
   Weight,
@@ -11,6 +11,7 @@ import {
   Minus,
   Plus,
   CheckCircle2,
+  Package,
 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -27,6 +28,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const addItem = useCartStore((s) => s.addItem);
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+  const [activeImage, setActiveImage] = useState(0);
 
   const handleAddToCart = () => {
     addItem(product, quantity);
@@ -51,16 +53,45 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Image area */}
-        <div className="relative aspect-square overflow-hidden rounded-2xl bg-workshop-gray">
-          <div className="absolute inset-0 dot-grid opacity-30" />
-          <div className="flex h-full items-center justify-center">
-            <Package className="h-28 w-28 text-foreground/8" />
+        <div className="space-y-3">
+          <div className="relative aspect-square overflow-hidden rounded-2xl bg-workshop-gray">
+            <Image
+              src={product.images[activeImage]}
+              alt={`${product.name} — fotografija ${activeImage + 1}`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
+            {product.originalPrice && (
+              <Badge className="absolute left-4 top-4 bg-forge-amber px-3 py-1 font-semibold text-white">
+                -{Math.round((1 - product.price / product.originalPrice) * 100)}%
+                ušteda
+              </Badge>
+            )}
           </div>
-          {product.originalPrice && (
-            <Badge className="absolute left-4 top-4 bg-forge-amber px-3 py-1 font-semibold text-white">
-              -{Math.round((1 - product.price / product.originalPrice) * 100)}%
-              ušteda
-            </Badge>
+          {product.images.length > 1 && (
+            <div className="flex gap-2">
+              {product.images.map((img, i) => (
+                <button
+                  key={img}
+                  onClick={() => setActiveImage(i)}
+                  className={`relative aspect-square w-20 overflow-hidden rounded-xl border-2 transition-all ${
+                    i === activeImage
+                      ? "border-forge-amber shadow-warm"
+                      : "border-border/50 opacity-60 hover:opacity-100"
+                  }`}
+                >
+                  <Image
+                    src={img}
+                    alt={`${product.name} — thumbnail ${i + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="80px"
+                  />
+                </button>
+              ))}
+            </div>
           )}
         </div>
 

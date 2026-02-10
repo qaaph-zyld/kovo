@@ -1,12 +1,23 @@
 import Link from "next/link";
-import { Camera, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import KovoLogo from "@/components/KovoLogo";
 
-const placeholders = Array.from({ length: 9 }, (_, i) => ({
-  id: i + 1,
-  alt: `KOVO LINEA nameštaj — fotografija ${i + 1}`,
-}));
+const galleryImages = [
+  { src: "/images/products/set-family-garden.png", alt: "LINEA Family Set — baštanski nameštaj na travi", span: "lg:col-span-2 lg:row-span-2" },
+  { src: "/images/products/chair-1.png", alt: "LINEA Stolica — kovana stolica sa drvenim naslonima", span: "" },
+  { src: "/images/products/bench-1.png", alt: "LINEA Klupa — kovana klupa sa drvenim sedištem", span: "" },
+  { src: "/images/products/set-family-1.png", alt: "LINEA Family Set — sto sa stolicama i klupom", span: "lg:col-span-2" },
+  { src: "/images/products/table-family-1.png", alt: "LINEA Sto Family — kvadratni sto sa kovanim nogama", span: "" },
+  { src: "/images/products/set-terasa-1.png", alt: "LINEA Terasa Set — beli set na terasi", span: "" },
+  { src: "/images/products/salon-set-1.png", alt: "LINEA Salon Set — luksuzni set za dnevni boravak", span: "" },
+  { src: "/images/products/lezaljka-1.png", alt: "LINEA Ležaljka — baštenska ležaljka od kovanog gvožđa", span: "lg:col-span-2" },
+  { src: "/images/products/table-bistro-1.png", alt: "LINEA Sto Bistro — okrugli bistro stolovi", span: "" },
+  { src: "/images/products/chair-2.png", alt: "LINEA Stolica — bela varijanta", span: "" },
+  { src: "/images/products/bench-2.png", alt: "LINEA Klupa — moderna varijanta sa drvenim naslonom", span: "" },
+  { src: "/images/products/set-bistro-1.png", alt: "LINEA Bistro Set — barski set sa visokim stolicama", span: "" },
+  { src: "/images/products/set-hero.png", alt: "LINEA kolekcija — kompletni setovi kovanog nameštaja", span: "" },
+];
 
 export default function GalerijaPage() {
   return (
@@ -21,17 +32,20 @@ export default function GalerijaPage() {
         </p>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {placeholders.map((item) => (
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {galleryImages.map((item) => (
           <div
-            key={item.id}
-            className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-workshop-gray"
+            key={item.src}
+            className={`group relative aspect-[4/3] overflow-hidden rounded-2xl bg-workshop-gray ${item.span}`}
           >
-            <div className="absolute inset-0 dot-grid opacity-30" />
-            <div className="flex h-full items-center justify-center">
-              <KovoLogo className="h-10 w-10 opacity-8" iconOnly />
-            </div>
-            <div className="absolute inset-0 flex items-end bg-gradient-to-t from-iron-black/50 to-transparent opacity-0 transition-all duration-300 group-hover:opacity-100">
+            <Image
+              src={item.src}
+              alt={item.alt}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes={item.span.includes("col-span-2") ? "(max-width: 1024px) 100vw, 66vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
+            />
+            <div className="absolute inset-0 flex items-end bg-gradient-to-t from-iron-black/60 to-transparent opacity-0 transition-all duration-300 group-hover:opacity-100">
               <p className="p-5 text-sm font-medium text-white">{item.alt}</p>
             </div>
           </div>
@@ -39,11 +53,10 @@ export default function GalerijaPage() {
       </div>
 
       <div className="mt-16 rounded-2xl border border-border/50 bg-workshop-gray p-10 text-center sm:p-14">
-        <Camera className="mx-auto h-10 w-10 text-muted-foreground/30" />
-        <h2 className="mt-5 font-display text-xl tracking-tight">Fotografije uskoro</h2>
+        <h2 className="font-display text-xl tracking-tight">Sviđa vam se ono što vidite?</h2>
         <p className="mx-auto mt-3 max-w-md text-muted-foreground">
-          LINEA kolekcija je u pripremi. Profesionalne fotografije proizvoda i
-          instalacija biće dostupne uskoro.
+          Pogledajte kompletnu LINEA kolekciju i pronađite savršen nameštaj za
+          vaš prostor.
         </p>
         <Button
           asChild
