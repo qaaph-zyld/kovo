@@ -8,8 +8,13 @@ import {
   CheckCircle2,
   ArrowRight,
   QrCode,
+  Puzzle,
+  Repeat2,
+  Replace,
+  Layers,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const steps = [
   {
@@ -52,24 +57,24 @@ const steps = [
 
 const guarantees = [
   {
-    icon: Shield,
-    title: "Antikorozivna zaštita",
-    description: "Prajmer + 2 sloja završne boje za trajnost na otvorenom",
+    icon: Puzzle,
+    title: "Deljeni moduli",
+    description: "Stolica i klupa dele iste naslone. Sto Bistro i Family dele istu bazu.",
+  },
+  {
+    icon: Replace,
+    title: "Zamenski delovi",
+    description: "Svaki drveni modul se menja nezavisno — sedište, daske, ploča.",
   },
   {
     icon: Timer,
-    title: "Brza montaža",
-    description: "Stolica 15 min, sto 10 min, klupa 30 min, set do 45 min",
-  },
-  {
-    icon: CheckCircle2,
-    title: "Skriveni spojevi",
-    description: "Šrafovi sa unutrašnje strane — izgled ostaje premium",
+    title: "Montaža 15–45 min",
+    description: "Imbus ključ + pozicioni pinovi — delovi se sami poravnavaju.",
   },
   {
     icon: QrCode,
-    title: "Video uputstvo",
-    description: "QR kod u svakom paketu — skenirajte i pratite korak po korak",
+    title: "QR video uputstvo",
+    description: "60-sekundni video korak po korak — skenirajte QR iz paketa.",
   },
 ];
 
@@ -88,10 +93,101 @@ export default function KakoFunkcionisePage() {
               Kako funkcioniše
             </h1>
             <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-              Od porudžbine do gotovog nameštaja na vašoj terasi — u 3 jednostavna
-              koraka. Bez alata iz garaže, bez komplikovanih uputstava.
+              Modularni sistem: isti delovi se dele između proizvoda, menjaju se bez
+              kupovine novog komada, i stavljaju se za 15–45 minuta.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Modular System Explanation */}
+      <section className="noise-overlay relative overflow-hidden bg-iron-deep py-20 text-white sm:py-28">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_oklch(0.55_0.14_55_/_0.1),transparent_60%)]" />
+        <div className="absolute left-0 top-0 h-full w-1/3 opacity-20 dot-grid" />
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <ScrollReveal className="mb-12">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber-light">
+              Modularna platforma
+            </p>
+            <h2 className="font-display text-2xl tracking-tight sm:text-3xl lg:text-4xl">
+              Šta znači &ldquo;modularno&rdquo; kod nas
+            </h2>
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/50">
+              Svaki LINEA proizvod je sastavljen od standardizovanih modula — delova
+              koji se dele između različitih proizvoda, menjaju se nezavisno, i spajaju
+              istim spojevima.
+            </p>
+          </ScrollReveal>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <ScrollReveal delay={0} className="rounded-2xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-sm">
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-forge-amber/10">
+                <Repeat2 className="h-5 w-5 text-forge-amber-light" />
+              </div>
+              <h3 className="text-lg font-semibold">Zamenljivi nasloni</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/50">
+                Stolica i klupa koriste isti naslon panel. Birate između 3 dizajna:
+                Klasik, Rešetka ili Luk. Iste rupe, isti šrafovi — zamena za 3 minuta.
+              </p>
+              <p className="mt-3 font-mono text-xs text-forge-amber-light">
+                M8 hex × 2–4 + slot rupe
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.1} className="rounded-2xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-sm">
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-forge-amber/10">
+                <Layers className="h-5 w-5 text-forge-amber-light" />
+              </div>
+              <h3 className="text-lg font-semibold">Univerzalna baza stola</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/50">
+                Jedna čelična nogara nosi okruglu Ø60cm i kvadratnu 80×80cm ploču.
+                Kupite Bistro danas, nadogradite na Family sutra — baza ostaje.
+              </p>
+              <p className="mt-3 font-mono text-xs text-forge-amber-light">
+                M10 hex × 4 + flanš pločica + centering pin
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2} className="rounded-2xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-sm">
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-forge-amber/10">
+                <Replace className="h-5 w-5 text-forge-amber-light" />
+              </div>
+              <h3 className="text-lg font-semibold">Zamena drvenih delova</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/50">
+                Sedište stolice, daske klupe, ploča stola — svaki drveni modul se
+                skida i menja nezavisno. Osvežite nameštaj novim drvom posle 5+ sezona.
+              </p>
+              <p className="mt-3 font-mono text-xs text-forge-amber-light">
+                M8 hex × 4–6 na sedalni okvir
+              </p>
+            </ScrollReveal>
+          </div>
+
+          {/* Connection system detail */}
+          <ScrollReveal delay={0.3} className="mt-10 rounded-2xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-sm sm:p-8">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber-light">
+              Sistem spojeva
+            </p>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              <div>
+                <p className="text-sm font-semibold">M8/M10 inox hex</p>
+                <p className="mt-0.5 text-xs text-white/40">Standardni šrafovi za sve spojeve</p>
+              </div>
+              <div>
+                <p className="text-sm font-semibold">Pozicioni pinovi</p>
+                <p className="mt-0.5 text-xs text-white/40">Delovi se sami poravnavaju</p>
+              </div>
+              <div>
+                <p className="text-sm font-semibold">Slot rupe</p>
+                <p className="mt-0.5 text-xs text-white/40">Tolerancije za farbanu površinu</p>
+              </div>
+              <div>
+                <p className="text-sm font-semibold">Skriveni spojevi</p>
+                <p className="mt-0.5 text-xs text-white/40">Sve sa unutrašnje strane</p>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -147,7 +243,7 @@ export default function KakoFunkcionisePage() {
               Garancije
             </p>
             <h2 className="font-display text-2xl tracking-tight sm:text-3xl">
-              Zašto modularno?
+              Zašto modularan nameštaj?
             </h2>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

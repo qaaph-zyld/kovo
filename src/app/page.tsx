@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import KovoLogo from "@/components/KovoLogo";
 import ScrollReveal from "@/components/ScrollReveal";
+import PlatformShowcase from "@/components/PlatformShowcase";
 
 const features = [
   {
@@ -78,14 +79,13 @@ export default function Home() {
               LINEA Kolekcija — Novo
             </Badge>
             <h1 className="animate-settle stagger-1 font-display text-5xl leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              Kovani nameštaj
+              Jedna platforma,
               <br />
-              <span className="text-forge-amber-light">bez stresa</span>
+              <span className="text-forge-amber-light">više lica</span>
             </h1>
             <p className="animate-settle stagger-2 mt-8 max-w-lg text-lg font-light leading-relaxed text-white/60">
-              Modularni nameštaj premium izgleda koji stiže flat-pack, montira
-              se za 30 minuta i traje godinama. Za terase, dvorišta i
-              ugostiteljske objekte.
+              Modularan kovani nameštaj: zamenljivi nasloni, univerzalne baze stolova,
+              delovi koji se dele između proizvoda. Stiže flat-pack, sklapa se za 15–45 min.
             </p>
             <div className="animate-settle stagger-3 mt-10 flex flex-col gap-3 sm:flex-row">
               <Button
@@ -176,6 +176,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Platform Showcase — modularity explained */}
+      <PlatformShowcase />
 
       {/* How it works */}
       <section className="relative overflow-hidden bg-workshop-gray py-20 sm:py-28">

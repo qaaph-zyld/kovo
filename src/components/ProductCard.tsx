@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Clock, Layers } from "lucide-react";
+import { Clock, Layers, Puzzle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Product, formatPrice } from "@/data/products";
@@ -51,6 +51,15 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.shortDescription}
           </p>
         </Link>
+
+        {product.modularHighlight && (
+          <div className="mt-2 inline-flex items-center gap-1.5 rounded-md border border-forge-amber/20 bg-forge-amber/5 px-2 py-1">
+            <Puzzle className="h-3 w-3 text-forge-amber" />
+            <span className="text-[10px] font-semibold text-forge-amber">
+              {product.modularHighlight}
+            </span>
+          </div>
+        )}
 
         <div className="mt-3 flex items-center gap-3 text-xs text-muted-foreground">
           <span className="flex items-center gap-1">
