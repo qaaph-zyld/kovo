@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KOVO — Modular Wrought Iron Furniture
+
+**Kovačka radnja Cotrić, Loznica** — premium wrought iron furniture engineered for flat-pack transport, fast assembly, and modular customization.
+
+## What is KOVO?
+
+KOVO is the digital storefront and product platform for the **LINEA collection** — a modern line of modular outdoor furniture where every piece shares the same connection system, design language, and interchangeable parts.
+
+### LINEA Collection (3 Hero SKUs)
+
+| Product | Price (RSD) | Assembly | Key Feature |
+|---------|-------------|----------|-------------|
+| **LINEA Stolica** | 12,900 | 15 min | Stackable ×6, interchangeable backrest panels |
+| **LINEA Sto** | 15,900–19,900 | 10–15 min | Universal base — swap Bistro/Family tabletop |
+| **LINEA Klupa 120** | 22,900 | 30 min | Shares backrest panels with chair |
+
+**Sets**: Bistro Set (37,500), Family Set (62,900), Terasa Set (74,900), Salon Set (119,900)
+
+### Modular Platform
+
+- **Connection system**: M8/M10 inox hex bolts + centering pins + slot holes
+- **Shared parts**: Backrest panels fit both chair and bench
+- **Replaceable wood**: Seats, planks, and tabletops are spare-orderable
+- **Single tool**: Allen key included in every package
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Styling**: Tailwind CSS v4 + shadcn/ui
+- **Language**: TypeScript
+- **Deployment**: Netlify
+- **Data**: `src/data/products.ts` and `src/data/modules.ts`
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Documentation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All product development, research, and business planning lives in [`docs/`](./docs/):
 
-## Learn More
+- **[Documentation Index](./docs/README.md)** — links to all docs
+- **[Product Development](./docs/product-development.md)** — LINEA modular system spec, modules, connections
+- **[Research References](./docs/research-references.md)** — competitors, benchmarks, connection research
+- **[Manufacturing Plan](./docs/manufacturing-plan.md)** — prototype schedule, hardware & packaging BOM
+- **[Business Model](./docs/business-model.md)** — B2C/B2B strategy, pricing, spare parts revenue
+- **[Original Brainstorm](./docs/original-brainstorm.md)** — complete product development journey
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+kovo/
+├── src/
+│   ├── app/              # Next.js pages (App Router)
+│   ├── components/       # React components
+│   └── data/             # Product & module data (source of truth)
+├── docs/                 # Product development documentation
+├── public/               # Static assets
+└── .windsurf/
+    └── skills/           # Frontend design skill
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Proprietary — Kovačka radnja Cotrić, Loznica.
