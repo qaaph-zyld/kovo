@@ -165,7 +165,7 @@ export default function ONamaPage() {
           <div className="grid items-center gap-16 lg:grid-cols-12">
             {/* Image — large, atmospheric */}
             <ScrollReveal className="lg:col-span-7" direction="left">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-workshop-gray">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-workshop-gray">
                 <Image
                   src="/images/products/set-family-garden.png"
                   alt="KOVO set u bašti — kovani nameštaj na terasi"
@@ -238,7 +238,7 @@ export default function ONamaPage() {
           </ScrollReveal>
 
           {/* Comparison table */}
-          <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:grid-cols-2">
+          <div className="mt-16 grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/5 sm:grid-cols-2">
             {/* Header */}
             <div className="bg-white/[0.03] px-8 py-5">
               <span className="text-sm font-semibold uppercase tracking-[0.1em] text-white/30">
@@ -388,7 +388,7 @@ export default function ONamaPage() {
             <ScrollReveal className="lg:col-span-5" delay={0.2}>
               <div className="sticky top-28 space-y-6">
                 {/* Connection system */}
-                <div className="rounded-2xl border border-border/60 bg-workshop-gray p-6 sm:p-7">
+                <div className="rounded-xl border border-border/60 bg-workshop-gray p-6 sm:p-7">
                   <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber">
                     Sistem spojeva
                   </p>
@@ -428,7 +428,7 @@ export default function ONamaPage() {
                 </div>
 
                 {/* Packing result */}
-                <div className="rounded-2xl border border-border/60 bg-card p-6 sm:p-7">
+                <div className="rounded-xl border border-border/60 bg-card p-6 sm:p-7">
                   <p className="mb-3 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber">
                     Rezultat pakovanja
                   </p>
@@ -462,7 +462,7 @@ export default function ONamaPage() {
                 <ScrollReveal
                   key={part.title}
                   delay={i * 0.1}
-                  className="rounded-2xl border border-border/50 bg-card p-6 transition-all duration-300 hover:shadow-warm"
+                  className="rounded-xl border border-border/50 bg-card p-6 transition-all duration-300 hover:shadow-warm"
                 >
                   <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-forge-amber/10">
                     <part.icon className="h-5 w-5 text-forge-amber" />
@@ -536,9 +536,9 @@ export default function ONamaPage() {
               <ScrollReveal
                 key={item.title}
                 delay={i * 0.1}
-                className="group rounded-2xl border border-border/50 bg-card p-8 transition-all duration-300 hover:shadow-warm-lg sm:p-10"
+                className="group rounded-xl border border-border/50 bg-card p-8 transition-all duration-300 hover:shadow-warm-lg sm:p-10"
               >
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-forge-amber/10 transition-colors duration-300 group-hover:bg-forge-amber/15">
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-forge-amber/10 transition-colors duration-300 group-hover:bg-forge-amber/15">
                   <item.icon className="h-6 w-6 text-forge-amber" />
                 </div>
                 <h3 className="font-display text-xl tracking-tight sm:text-2xl">

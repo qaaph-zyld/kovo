@@ -78,7 +78,7 @@ export default function DostavaPage() {
           {zones.map((zone) => (
             <div
               key={zone.zone}
-              className={`rounded-2xl border p-7 transition-all duration-300 hover:shadow-warm ${
+              className={`rounded-xl border p-7 transition-all duration-300 hover:shadow-warm ${
                 zone.highlight ? "border-forge-amber/40 ring-2 ring-forge-amber/20" : "border-border/50"
               }`}
             >
@@ -165,7 +165,7 @@ export default function DostavaPage() {
           </div>
           <div className="grid gap-5 sm:grid-cols-2">
             {faq.map((item) => (
-              <div key={item.q} className="rounded-2xl border border-border/50 bg-card p-7 transition-all duration-300 hover:shadow-warm">
+              <div key={item.q} className="rounded-xl border border-border/50 bg-card p-7 transition-all duration-300 hover:shadow-warm">
                 <h3 className="font-semibold tracking-tight">{item.q}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                   {item.a}

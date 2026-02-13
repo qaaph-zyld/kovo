@@ -16,7 +16,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const addItem = useCartStore((s) => s.addItem);
 
   return (
-    <div className="group overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-warm-lg">
+    <div className="group overflow-hidden rounded-xl border border-border/50 bg-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-warm-lg">
       <Link href={`/proizvodi/${product.slug}`}>
         <div className="relative aspect-[4/3] overflow-hidden bg-workshop-gray">
           <Image

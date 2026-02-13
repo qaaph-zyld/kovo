@@ -15,7 +15,7 @@ export default function ReplacementParts({ productId }: ReplacementPartsProps) {
   if (replaceable.length === 0) return null;
 
   return (
-    <div className="rounded-2xl border border-border/60 bg-workshop-gray p-6 sm:p-8">
+    <div className="rounded-xl border border-border/60 bg-workshop-gray p-6 sm:p-8">
       <div className="mb-5 flex items-center gap-3">
         <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-green-100">
           <RefreshCw className="h-4 w-4 text-green-700" />
@@ -48,7 +48,7 @@ function PartRow({ mod, index }: { mod: Module; index: number }) {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.06, duration: 0.3 }}
-      className="flex items-center justify-between rounded-xl border border-border/50 bg-white px-4 py-3 transition-colors hover:border-forge-amber/20"
+      className="flex items-center justify-between rounded-xl border border-border/50 bg-card px-4 py-3 transition-colors hover:border-forge-amber/20"
     >
       <div className="min-w-0 flex-1">
         <p className="text-sm font-medium">{mod.name}</p>

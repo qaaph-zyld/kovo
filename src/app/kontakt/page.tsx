@@ -27,7 +27,7 @@ function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-green-200 bg-green-50/50 p-14 text-center">
+      <div className="flex flex-col items-center justify-center rounded-xl border border-green-200 bg-green-50/50 p-14 text-center">
         <CheckCircle2 className="h-16 w-16 text-green-600" />
         <h3 className="mt-5 font-display text-xl">Poruka poslata!</h3>
         <p className="mt-2 text-muted-foreground">
@@ -167,7 +167,7 @@ export default function KontaktPage() {
       <div className="grid gap-10 lg:grid-cols-3">
         {/* Contact info */}
         <div className="space-y-6">
-          <div className="rounded-2xl border border-border/50 bg-card p-7">
+          <div className="rounded-xl border border-border/50 bg-card p-7">
             <h3 className="mb-5 font-semibold tracking-tight">Podaci za kontakt</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
@@ -217,7 +217,7 @@ export default function KontaktPage() {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-forge-amber/20 bg-forge-amber/5 p-7">
+          <div className="rounded-xl border border-forge-amber/20 bg-forge-amber/5 p-7">
             <h3 className="font-semibold tracking-tight text-foreground">
               Lično preuzimanje
             </h3>

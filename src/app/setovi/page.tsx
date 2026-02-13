@@ -29,7 +29,7 @@ export default function SetoviPage() {
       </div>
 
       {/* Upsell */}
-      <div className="mt-20 rounded-2xl border border-border/50 bg-workshop-gray p-8 text-center sm:p-10">
+      <div className="mt-20 rounded-xl border border-border/50 bg-workshop-gray p-8 text-center sm:p-10">
         <h2 className="font-display text-2xl tracking-tight">Nedostaje vam klupa?</h2>
         <p className="mt-2 text-muted-foreground">
           Dodajte LINEA Klupu 120 uz bilo koji set za kompletnu terasu.
@@ -43,7 +43,7 @@ export default function SetoviPage() {
       </div>
 
       {/* B2B note */}
-      <div className="mt-8 rounded-2xl border border-forge-amber/20 bg-forge-amber/5 p-7">
+      <div className="mt-8 rounded-xl border border-forge-amber/20 bg-forge-amber/5 p-7">
         <h3 className="font-semibold tracking-tight text-foreground">Za veće porudžbine</h3>
         <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
           Opremite kafić, restoran ili hotel. Za 10+ komada kontaktirajte nas za

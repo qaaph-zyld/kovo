@@ -38,7 +38,7 @@ export default function ModuleExplodedView({ productId }: ModuleExplodedViewProp
   const totalTime = assembly.assemblySteps.reduce((sum, s) => sum + s.timeMinutes, 0);
 
   return (
-    <div className="rounded-2xl border border-border/60 bg-workshop-gray p-6 sm:p-8">
+    <div className="rounded-xl border border-border/60 bg-workshop-gray p-6 sm:p-8">
       {/* Header */}
       <div className="mb-6 flex items-start justify-between">
         <div>
@@ -50,11 +50,11 @@ export default function ModuleExplodedView({ productId }: ModuleExplodedViewProp
           </h3>
         </div>
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1.5 rounded-xl border border-border/50 bg-white px-3 py-1.5 text-sm">
+          <div className="flex items-center gap-1.5 rounded-xl border border-border/50 bg-card px-3 py-1.5 text-sm">
             <Clock className="h-3.5 w-3.5 text-forge-amber" />
             <span className="font-mono text-xs font-medium">{totalTime} min</span>
           </div>
-          <div className="flex items-center gap-1.5 rounded-xl border border-border/50 bg-white px-3 py-1.5 text-sm">
+          <div className="flex items-center gap-1.5 rounded-xl border border-border/50 bg-card px-3 py-1.5 text-sm">
             <Wrench className="h-3.5 w-3.5 text-forge-amber" />
             <span className="font-mono text-xs font-medium">{assembly.slots.length} modula</span>
           </div>
@@ -77,7 +77,7 @@ export default function ModuleExplodedView({ productId }: ModuleExplodedViewProp
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.08, duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="group relative overflow-hidden rounded-xl border border-border/50 bg-white p-4 transition-all duration-200 hover:border-forge-amber/30 hover:shadow-warm"
+              className="group relative overflow-hidden rounded-xl border border-border/50 bg-card p-4 transition-all duration-200 hover:border-forge-amber/30 hover:shadow-warm"
             >
               {/* Module number badge */}
               <div className="absolute -right-1 -top-1 flex h-7 w-7 items-center justify-center rounded-bl-lg bg-forge-amber/10 font-mono text-[10px] font-bold text-forge-amber">
@@ -123,7 +123,7 @@ export default function ModuleExplodedView({ productId }: ModuleExplodedViewProp
       <div>
         <button
           onClick={() => setShowAll(!showAll)}
-          className="mb-4 flex w-full items-center justify-between rounded-xl border border-border/50 bg-white px-4 py-3 text-left transition-colors hover:border-forge-amber/30"
+          className="mb-4 flex w-full items-center justify-between rounded-xl border border-border/50 bg-card px-4 py-3 text-left transition-colors hover:border-forge-amber/30"
         >
           <span className="text-sm font-semibold tracking-tight">
             Koraci montaže ({assembly.assemblySteps.length} koraka)
@@ -196,7 +196,7 @@ function StepCard({
       initial={{ opacity: 0, x: -12 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: index * 0.1, duration: 0.3 }}
-      className="rounded-xl border border-border/50 bg-white transition-all duration-200 hover:border-forge-amber/20"
+      className="rounded-xl border border-border/50 bg-card transition-all duration-200 hover:border-forge-amber/20"
     >
       <button
         onClick={onToggle}

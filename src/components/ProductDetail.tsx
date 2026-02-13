@@ -59,7 +59,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Image area */}
         <div className="space-y-3">
-          <div className="relative aspect-square overflow-hidden rounded-2xl bg-workshop-gray">
+          <div className="relative aspect-square overflow-hidden rounded-xl bg-workshop-gray">
             <Image
               src={product.images[activeImage]}
               alt={`${product.name} — fotografija ${activeImage + 1}`}

@@ -58,7 +58,7 @@ export default function ModuleConfigurator({
   const totalPrice = basePrice + priceDelta;
 
   return (
-    <div className="rounded-2xl border border-forge-amber/20 bg-forge-amber/[0.03] p-6 sm:p-8">
+    <div className="rounded-xl border border-forge-amber/20 bg-forge-amber/[0.03] p-6 sm:p-8">
       <div className="mb-5 flex items-center gap-3">
         <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-forge-amber/10">
           <Sparkles className="h-4 w-4 text-forge-amber" />
@@ -103,8 +103,8 @@ export default function ModuleConfigurator({
                     }
                     className={`relative rounded-xl border-2 p-4 text-left transition-all duration-200 ${
                       isSelected
-                        ? "border-forge-amber bg-white shadow-warm"
-                        : "border-border/50 bg-white hover:border-forge-amber/30"
+                        ? "border-forge-amber bg-card shadow-warm"
+                        : "border-border/50 bg-card hover:border-forge-amber/30"
                     }`}
                   >
                     {/* Selected checkmark */}
@@ -153,7 +153,7 @@ export default function ModuleConfigurator({
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-4 rounded-xl border border-forge-amber/20 bg-white p-4"
+          className="mt-4 rounded-xl border border-forge-amber/20 bg-card p-4"
         >
           <div className="flex items-center justify-between">
             <span className="text-sm text-muted-foreground">

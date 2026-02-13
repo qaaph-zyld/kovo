@@ -87,7 +87,7 @@ export default function KorpaPage() {
   if (step === "success") {
     return (
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-28 text-center sm:px-6 lg:px-8">
-        <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-green-100 text-green-600">
+        <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-green-100 text-green-600">
           <ShoppingBag className="h-10 w-10" />
         </div>
         <h1 className="mt-6 font-display text-2xl tracking-tight">Porudžbina primljena!</h1>
@@ -123,7 +123,7 @@ export default function KorpaPage() {
           {step === "cart" && (
             <div className="space-y-4">
               {items.map((item) => (
-                <div key={item.product.id} className="flex gap-4 rounded-2xl border border-border/50 bg-card p-5">
+                <div key={item.product.id} className="flex gap-4 rounded-xl border border-border/50 bg-card p-5">
                     <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-xl bg-workshop-gray">
                       <div className="absolute inset-0 dot-grid opacity-30" />
                     </div>
@@ -194,7 +194,7 @@ export default function KorpaPage() {
           {step === "checkout" && (
             <div className="space-y-7">
               {/* Contact info */}
-              <div className="rounded-2xl border border-border/50 bg-card p-7">
+              <div className="rounded-xl border border-border/50 bg-card p-7">
                   <h3 className="mb-5 flex items-center gap-2 font-semibold tracking-tight">
                     <MapPin className="h-4 w-4 text-forge-amber" />
                     Podaci za dostavu
@@ -311,7 +311,7 @@ export default function KorpaPage() {
               </div>
 
               {/* Delivery method */}
-              <div className="rounded-2xl border border-border/50 bg-card p-7">
+              <div className="rounded-xl border border-border/50 bg-card p-7">
                   <h3 className="mb-5 flex items-center gap-2 font-semibold tracking-tight">
                     <Truck className="h-4 w-4 text-forge-amber" />
                     Način dostave
@@ -353,7 +353,7 @@ export default function KorpaPage() {
               </div>
 
               {/* Payment method */}
-              <div className="rounded-2xl border border-border/50 bg-card p-7">
+              <div className="rounded-xl border border-border/50 bg-card p-7">
                   <h3 className="mb-5 flex items-center gap-2 font-semibold tracking-tight">
                     <CreditCard className="h-4 w-4 text-forge-amber" />
                     Način plaćanja
@@ -415,7 +415,7 @@ export default function KorpaPage() {
 
         {/* Order summary sidebar */}
         <div>
-          <div className="sticky top-24 rounded-2xl border border-border/50 bg-card p-7">
+          <div className="sticky top-24 rounded-xl border border-border/50 bg-card p-7">
               <h3 className="mb-5 font-semibold tracking-tight">Pregled porudžbine</h3>
 
               <div className="space-y-2.5">

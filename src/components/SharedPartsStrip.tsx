@@ -38,7 +38,7 @@ export default function SharedPartsStrip({ productId }: SharedPartsStripProps) {
     .filter(Boolean);
 
   return (
-    <div className="rounded-2xl border border-border/60 bg-workshop-gray p-6 sm:p-8">
+    <div className="rounded-xl border border-border/60 bg-workshop-gray p-6 sm:p-8">
       <p className="mb-1 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber">
         Deljeni moduli
       </p>
@@ -67,7 +67,7 @@ export default function SharedPartsStrip({ productId }: SharedPartsStripProps) {
             >
               <Link
                 href={`/proizvodi/${product.slug}`}
-                className="group flex items-center justify-between rounded-xl border border-border/50 bg-white p-4 transition-all duration-200 hover:border-forge-amber/30 hover:shadow-warm"
+                className="group flex items-center justify-between rounded-xl border border-border/50 bg-card p-4 transition-all duration-200 hover:border-forge-amber/30 hover:shadow-warm"
               >
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-semibold tracking-tight group-hover:text-forge-amber">

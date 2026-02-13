@@ -109,7 +109,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hidden lg:block">
-            <div className="animate-settle stagger-2 relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+            <div className="animate-settle stagger-2 relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10 shadow-2xl">
               <Image
                 src="/images/products/set-family-garden.png"
                 alt="LINEA Family Set — baštanski nameštaj od kovanog gvožđa"
@@ -201,7 +201,7 @@ export default function Home() {
               <ScrollReveal
                 key={s.step}
                 delay={i * 0.1}
-                className="group relative rounded-2xl border border-border/60 bg-card p-8 text-center transition-all duration-300 hover:shadow-warm"
+                className="group relative rounded-xl border border-border/60 bg-card p-8 text-center transition-all duration-300 hover:shadow-warm"
               >
                 {/* Connection line between steps */}
                 {i < steps.length - 1 && (

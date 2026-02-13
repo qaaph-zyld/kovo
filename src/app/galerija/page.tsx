@@ -36,7 +36,7 @@ export default function GalerijaPage() {
         {galleryImages.map((item) => (
           <div
             key={item.src}
-            className={`group relative aspect-[4/3] overflow-hidden rounded-2xl bg-workshop-gray ${item.span}`}
+            className={`group relative aspect-[4/3] overflow-hidden rounded-xl bg-workshop-gray ${item.span}`}
           >
             <Image
               src={item.src}
@@ -52,7 +52,7 @@ export default function GalerijaPage() {
         ))}
       </div>
 
-      <div className="mt-16 rounded-2xl border border-border/50 bg-workshop-gray p-10 text-center sm:p-14">
+      <div className="mt-16 rounded-xl border border-border/50 bg-workshop-gray p-10 text-center sm:p-14">
         <h2 className="font-display text-xl tracking-tight">Sviđa vam se ono što vidite?</h2>
         <p className="mx-auto mt-3 max-w-md text-muted-foreground">
           Pogledajte kompletnu LINEA kolekciju i pronađite savršen nameštaj za
