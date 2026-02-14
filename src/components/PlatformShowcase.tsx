@@ -55,7 +55,7 @@ export default function PlatformShowcase() {
             <br />
             <span className="text-forge-amber-light">više lica</span>
           </h2>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-white/50">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-white/60">
             Svi LINEA proizvodi dele isti konstrukcioni DNK — iste profile, iste spojeve,
             isti alat. Menjate samo module koji definišu oblik i namenu.
           </p>
@@ -73,7 +73,7 @@ export default function PlatformShowcase() {
                 <principle.icon className="h-5 w-5 text-forge-amber-light" />
               </div>
               <h3 className="text-lg font-semibold tracking-tight">{principle.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/50">
+              <p className="mt-2 text-sm leading-relaxed text-white/60">
                 {principle.description}
               </p>
               <div className="mt-4 inline-flex rounded-lg border border-forge-amber/20 bg-forge-amber/10 px-3 py-1 text-xs font-semibold text-forge-amber-light">

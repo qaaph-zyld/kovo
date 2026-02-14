@@ -253,6 +253,8 @@ export default function DesignCanvas({ width, height }: DesignCanvasProps) {
         width={width}
         height={height}
         className="design-canvas"
+        role="img"
+        aria-label="Platno za dizajn kovanog nameštaja"
         onMouseDown={handleCanvasMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
@@ -266,6 +268,43 @@ export default function DesignCanvas({ width, height }: DesignCanvasProps) {
         
         {/* Grid */}
         {renderGrid()}
+        
+        {/* Empty state hint */}
+        {placedPrimitives.length === 0 && (
+          <g>
+            <text
+              x={width / 2}
+              y={height / 2 - 24}
+              textAnchor="middle"
+              fill="var(--color-ash)"
+              fontSize="16"
+              fontFamily="var(--font-sans)"
+              opacity="0.6"
+            >
+              Prevucite elemente sa leve strane
+            </text>
+            <text
+              x={width / 2}
+              y={height / 2 + 4}
+              textAnchor="middle"
+              fill="var(--color-ash)"
+              fontSize="13"
+              fontFamily="var(--font-sans)"
+              opacity="0.4"
+            >
+              ili izaberite patern za početak
+            </text>
+            <rect
+              x={width / 2 - 40}
+              y={height / 2 + 16}
+              width="80"
+              height="2"
+              rx="1"
+              fill="var(--color-forge-amber)"
+              opacity="0.3"
+            />
+          </g>
+        )}
         
         {/* Canvas content group */}
         <g transform={`translate(${panX}, ${panY}) scale(${zoom})`}>

@@ -56,6 +56,7 @@ export default function CartDrawer({ onClose }: CartDrawerProps) {
                     size="icon"
                     className="h-7 w-7 rounded-lg border-border/60"
                     onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
+                    aria-label="Smanji količinu"
                   >
                     <Minus className="h-3 w-3" />
                   </Button>
@@ -65,6 +66,7 @@ export default function CartDrawer({ onClose }: CartDrawerProps) {
                     size="icon"
                     className="h-7 w-7 rounded-lg border-border/60"
                     onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                    aria-label="Povećaj količinu"
                   >
                     <Plus className="h-3 w-3" />
                   </Button>
@@ -78,6 +80,7 @@ export default function CartDrawer({ onClose }: CartDrawerProps) {
                     size="icon"
                     className="h-7 w-7 text-muted-foreground hover:text-destructive"
                     onClick={() => removeItem(item.product.id)}
+                    aria-label="Ukloni proizvod"
                   >
                     <Trash2 className="h-3.5 w-3.5" />
                   </Button>

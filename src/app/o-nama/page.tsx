@@ -121,7 +121,7 @@ export default function ONamaPage() {
               <br />
               <span className="text-forge-amber-light">Ruke.</span>
             </h1>
-            <p className="animate-settle stagger-2 mt-8 max-w-xl text-lg font-light leading-relaxed text-white/50 sm:text-xl">
+            <p className="animate-settle stagger-2 mt-8 max-w-xl text-lg font-light leading-relaxed text-white/60 sm:text-xl">
               Modularni kovani nameštaj koji se ne prenosi — već se
               šalje. Projektovan da preživi put i godine na vašoj terasi.
             </p>
@@ -230,7 +230,7 @@ export default function ONamaPage() {
               <br />
               <span className="text-forge-amber-light">problem transporta</span>
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-white/50">
+            <p className="mt-6 text-lg leading-relaxed text-white/60">
               Fermob, EMU, HAY — svi uspešni proizvođači nameštaja rešili su
               istu stvar: kako napraviti komad koji izgleda premium, a stiže
               bez stresa. Mi smo to primenili na kovano gvožđe.
@@ -615,7 +615,7 @@ export default function ONamaPage() {
               Pogledajte šta{" "}
               <span className="text-forge-amber-light">pravimo</span>
             </h2>
-            <p className="mt-5 text-lg leading-relaxed text-white/50">
+            <p className="mt-5 text-lg leading-relaxed text-white/60">
               LINEA kolekcija — moderna linija kovanog nameštaja za terase,
               dvorišta i ugostiteljske objekte. Sve modularno. Sve iz jednog
               sistema.

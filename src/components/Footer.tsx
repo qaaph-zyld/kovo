@@ -14,7 +14,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-5">
             <KovoLogo className="h-10 w-auto" inverted showTagline />
-            <p className="text-sm leading-relaxed text-white/50">
+            <p className="text-sm leading-relaxed text-white/60">
               Modularni kovani nameštaj premium izgleda. Projektovan za isplativ
               transport, brzu montažu i trajnost.
             </p>
@@ -37,7 +37,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/50 transition-colors duration-200 hover:text-forge-amber-light"
+                    className="inline-block min-h-[44px] py-1.5 text-sm text-white/60 transition-colors duration-200 hover:text-forge-amber-light sm:min-h-0 sm:py-0"
                   >
                     {link.label}
                   </Link>
@@ -52,23 +52,23 @@ export default function Footer() {
               Kontakt
             </h4>
             <ul className="space-y-3.5">
-              <li className="flex items-start gap-2.5 text-sm text-white/50">
+              <li className="flex items-start gap-2.5 text-sm text-white/60">
                 <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-forge-amber" />
                 <span>Loznica, Srbija</span>
               </li>
-              <li className="flex items-start gap-2.5 text-sm text-white/50">
+              <li className="flex items-start gap-2.5 text-sm text-white/60">
                 <Phone className="mt-0.5 h-4 w-4 flex-shrink-0 text-forge-amber" />
                 <a href="tel:+381600000000" className="transition-colors hover:text-white">
                   +381 60 000 0000
                 </a>
               </li>
-              <li className="flex items-start gap-2.5 text-sm text-white/50">
+              <li className="flex items-start gap-2.5 text-sm text-white/60">
                 <Mail className="mt-0.5 h-4 w-4 flex-shrink-0 text-forge-amber" />
                 <a href="mailto:info@kovo.rs" className="transition-colors hover:text-white">
                   info@kovo.rs
                 </a>
               </li>
-              <li className="flex items-start gap-2.5 text-sm text-white/50">
+              <li className="flex items-start gap-2.5 text-sm text-white/60">
                 <Clock className="mt-0.5 h-4 w-4 flex-shrink-0 text-forge-amber" />
                 <span>Pon–Pet: 08–16h<br />Sub: 08–13h</span>
               </li>
@@ -80,7 +80,7 @@ export default function Footer() {
             <h4 className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-white/40">
               Za ugostiteljstvo
             </h4>
-            <p className="mb-4 text-sm leading-relaxed text-white/50">
+            <p className="mb-4 text-sm leading-relaxed text-white/60">
               Opremite vaš kafić, restoran ili hotel. Setovi na paleti, montaža za 45 min.
             </p>
             <Link

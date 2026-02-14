@@ -129,7 +129,7 @@ export default function DostavaPage() {
             Pakovanje
           </p>
           <h2 className="font-display text-2xl tracking-tight sm:text-3xl">Kako pakujemo</h2>
-          <p className="mt-4 text-white/50">
+          <p className="mt-4 text-white/60">
             Svaki proizvod je dizajniran da putuje sigurno. Naš standard
             pakovanja:
           </p>

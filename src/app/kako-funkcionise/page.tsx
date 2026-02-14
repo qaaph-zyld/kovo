@@ -113,7 +113,7 @@ export default function KakoFunkcionisePage() {
             <h2 className="font-display text-2xl tracking-tight sm:text-3xl lg:text-4xl">
               Šta znači &ldquo;modularno&rdquo; kod nas
             </h2>
-            <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/50">
+            <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/60">
               Svaki LINEA proizvod je sastavljen od standardizovanih modula — delova
               koji se dele između različitih proizvoda, menjaju se nezavisno, i spajaju
               istim spojevima.
@@ -126,7 +126,7 @@ export default function KakoFunkcionisePage() {
                 <Repeat2 className="h-5 w-5 text-forge-amber-light" />
               </div>
               <h3 className="text-lg font-semibold">Zamenljivi nasloni</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/50">
+              <p className="mt-2 text-sm leading-relaxed text-white/60">
                 Stolica i klupa koriste isti naslon panel. Birate između 3 dizajna:
                 Klasik, Rešetka ili Luk. Iste rupe, isti šrafovi — zamena za 3 minuta.
               </p>
@@ -140,7 +140,7 @@ export default function KakoFunkcionisePage() {
                 <Layers className="h-5 w-5 text-forge-amber-light" />
               </div>
               <h3 className="text-lg font-semibold">Univerzalna baza stola</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/50">
+              <p className="mt-2 text-sm leading-relaxed text-white/60">
                 Jedna čelična nogara nosi okruglu Ø60cm i kvadratnu 80×80cm ploču.
                 Kupite Bistro danas, nadogradite na Family sutra — baza ostaje.
               </p>
@@ -154,7 +154,7 @@ export default function KakoFunkcionisePage() {
                 <Replace className="h-5 w-5 text-forge-amber-light" />
               </div>
               <h3 className="text-lg font-semibold">Zamena drvenih delova</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/50">
+              <p className="mt-2 text-sm leading-relaxed text-white/60">
                 Sedište stolice, daske klupe, ploča stola — svaki drveni modul se
                 skida i menja nezavisno. Osvežite nameštaj novim drvom posle 5+ sezona.
               </p>

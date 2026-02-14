@@ -52,11 +52,11 @@ export default function ProizvodiPage() {
             variant={activeCategory === cat.value ? "default" : "outline"}
             size="sm"
             onClick={() => setActiveCategory(cat.value)}
-            className={
+            className={`min-h-[44px] sm:min-h-0 ${
               activeCategory === cat.value
                 ? "bg-iron-black text-white hover:bg-forge-amber"
                 : "border-border/60 hover:border-forge-amber/40 hover:text-forge-amber"
-            }
+            }`}
           >
             {cat.label}
           </Button>

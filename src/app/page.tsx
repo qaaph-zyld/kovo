@@ -284,7 +284,7 @@ export default function Home() {
               <h2 className="font-display text-3xl tracking-tight sm:text-4xl">
                 Za kafiće, restorane i hotele
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-white/50">
+              <p className="mt-4 text-base leading-relaxed text-white/60">
                 Setovi za bašte i lokale — stižu na paleti, montiraju se za
                 30–45 min. Zatražite ponudu za veće količine i posebne uslove.
               </p>
