@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -101,6 +102,12 @@ const comparisonItems = [
     kovo: "Zamena modula na licu mesta, bez alata ili sa jednim imbusom",
   },
 ];
+
+export const metadata: Metadata = {
+  title: "O nama",
+  description:
+    "Kovačka radnja Cotrić iz Loznice. Tri generacije zanatskog iskustva u kovanom gvožđu. Modularni pristup koji rešava problem transporta.",
+};
 
 export default function ONamaPage() {
   return (

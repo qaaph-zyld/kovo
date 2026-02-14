@@ -23,7 +23,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "KOVO — Modularni kovani nameštaj",
+  metadataBase: new URL("https://kovo.rs"),
+  title: {
+    default: "KOVO — Modularni kovani nameštaj",
+    template: "%s | KOVO",
+  },
   description:
     "Kovani nameštaj premium izgleda, projektovan za isplativ transport. Rastavljiv, brz za montažu, bez kompromisa u čvrstini. LINEA kolekcija za terase i dvorišta.",
   keywords: [
@@ -34,7 +38,42 @@ export const metadata: Metadata = {
     "KOVO",
     "LINEA",
     "nameštaj za terase",
+    "kovačka radnja",
+    "Loznica",
   ],
+  authors: [{ name: "Kovačka radnja Cotrić" }],
+  creator: "KOVO",
+  openGraph: {
+    type: "website",
+    locale: "sr_RS",
+    url: "https://kovo.rs",
+    siteName: "KOVO",
+    title: "KOVO — Modularni kovani nameštaj",
+    description:
+      "Kovani nameštaj premium izgleda. Rastavljiv, brz za montažu, bez kompromisa u čvrstini. LINEA kolekcija.",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "KOVO — Modularni kovani nameštaj za terase i dvorišta",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KOVO — Modularni kovani nameštaj",
+    description:
+      "Kovani nameštaj premium izgleda. Rastavljiv, brz za montažu. LINEA kolekcija.",
+    images: ["/images/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  other: {
+    "theme-color": "#1a1a1a",
+  },
 };
 
 export default function RootLayout({

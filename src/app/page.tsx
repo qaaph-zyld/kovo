@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import ScrollReveal from "@/components/ScrollReveal";
 import PlatformShowcase from "@/components/PlatformShowcase";
+import JsonLd from "@/components/JsonLd";
 
 const features = [
   {
@@ -43,9 +44,31 @@ const features = [
 ];
 
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "KOVO",
+  legalName: "Kovačka radnja Cotrić",
+  url: "https://kovo.rs",
+  description:
+    "Modularni kovani nameštaj premium izgleda. LINEA kolekcija za terase i dvorišta.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Loznica",
+    addressCountry: "RS",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+381600000000",
+    contactType: "customer service",
+    availableLanguage: "Serbian",
+  },
+};
+
 export default function Home() {
   return (
     <>
+      <JsonLd data={organizationJsonLd} />
       {/* Hero */}
       <section className="noise-overlay relative min-h-[70vh] overflow-hidden bg-iron-deep text-white">
         {/* Atmospheric gradients */}

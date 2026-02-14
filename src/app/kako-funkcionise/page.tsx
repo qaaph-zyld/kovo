@@ -1,10 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Package,
   Truck,
   Wrench,
   Timer,
-  Shield,
   CheckCircle2,
   ArrowRight,
   QrCode,
@@ -77,6 +77,12 @@ const guarantees = [
     description: "60-sekundni video korak po korak — skenirajte QR iz paketa.",
   },
 ];
+
+export const metadata: Metadata = {
+  title: "Kako funkcioniše",
+  description:
+    "Kako funkcioniše modularni kovani nameštaj. Flat-pack isporuka, montaža za 15-45 min sa priloženim alatom, QR video uputstva.",
+};
 
 export default function KakoFunkcionisePage() {
   return (

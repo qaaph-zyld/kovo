@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { useDesignStore, useSelectedPrimitive } from "@/store/design";
 import { getPrimitiveById } from "@/data/design-primitives";
 
@@ -114,10 +113,10 @@ export default function DesignCanvas({ width, height }: DesignCanvasProps) {
   }, [selectedId, removePrimitive]);
 
   // Add keyboard event listener
-  useState(() => {
+  useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  });
+  }, [handleKeyDown]);
 
   // Render grid
   const renderGrid = () => {

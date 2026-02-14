@@ -4,6 +4,59 @@ All changes made during the AI-assisted frontend redesign process.
 
 ---
 
+## [2026-02-14] Phase 17-21: Build Fix, SEO, Animation Audit, Final Polish
+
+### Build Verification (Phase 17)
+- **`DesignCanvas.tsx`**: Fixed SSR crash — `useState` misused as `useEffect` caused `document is not defined` on `/dizajner` prerender
+- **`DesignProperties.tsx`**: Same `useState` → `useEffect` fix for selection sync
+- **Unused imports cleaned**: Removed `motion`, `Shield`, `Link`, `RotateCw`, `Maximize2` across 4 files
+- **Build result**: 22/22 pages prerender successfully, 0 errors
+
+### SEO & Meta (Phase 18)
+- **`layout.tsx`**: Added title template (`%s | KOVO`), Open Graph, Twitter cards, theme color, metadataBase, authors, creator
+- **Page metadata**: Added to 8 pages via layouts (proizvodi, kontakt, dizajner) and direct exports (o-nama, kako-funkcionise, dostava, galerija)
+- **`proizvodi/[slug]/page.tsx`**: Dynamic `generateMetadata` with product-specific title, description, OG image
+- **`JsonLd.tsx`**: New component for structured data injection
+- **`page.tsx`**: Organization JSON-LD structured data added
+- **`sitemap.ts`**: Dynamic sitemap with all static + product pages
+- **`robots.ts`**: Robots rules allowing all except /api/ and /korpa
+
+### Animation Consistency (Phase 19)
+- Verified: `ease-settle` (600ms) used consistently for entrance animations
+- Verified: `duration-200` for micro-interactions, `duration-300` for card hovers, `duration-500` for image zoom
+- No changes needed — animation system is consistent
+
+### Final Polish (Phase 20)
+- Typography: `font-display` (53 uses), `font-mono` (64 uses), `font-sans` (body) — all consistent
+- Spacing: No arbitrary values in KOVO code
+- Dark mode: CSS variables already defined in `.dark` block — structurally ready
+
+### Handoff (Phase 21)
+- **`CHANGELOG.md`**: Updated with Phase 17-21 entries
+- **`HANDOFF.md`**: Created comprehensive handoff document
+
+### Files Created
+- `src/app/proizvodi/layout.tsx`
+- `src/app/kontakt/layout.tsx`
+- `src/app/dizajner/layout.tsx`
+- `src/app/sitemap.ts`
+- `src/app/robots.ts`
+- `src/components/JsonLd.tsx`
+- `ai-context/HANDOFF.md`
+
+### Files Modified
+- `src/app/layout.tsx` (metadata overhaul)
+- `src/app/page.tsx` (JsonLd import + Organization schema)
+- `src/app/o-nama/page.tsx` (metadata)
+- `src/app/kako-funkcionise/page.tsx` (metadata + unused import)
+- `src/app/dostava/page.tsx` (metadata)
+- `src/app/galerija/page.tsx` (metadata)
+- `src/app/proizvodi/[slug]/page.tsx` (generateMetadata + unused import)
+- `src/components/design-generator/DesignCanvas.tsx` (SSR fix + unused import)
+- `src/components/design-generator/DesignProperties.tsx` (SSR fix + unused imports)
+
+---
+
 ## [2026-02-14] Phase 12-16: Mobile, Performance, Accessibility, Designer Polish
 
 ### Mobile Responsiveness (Phase 12)

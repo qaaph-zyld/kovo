@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Truck, MapPin, Package, Clock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+
+export const metadata: Metadata = {
+  title: "Dostava",
+  description:
+    "Dostava kovanog nameštaja širom Srbije. Kurirska dostava za manje pakete, paletna za setove. Flat-pack pakovanje, sigurno i transparentno.",
+};
 
 const zones = [
   {

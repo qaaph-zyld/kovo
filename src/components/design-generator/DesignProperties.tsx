@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Trash2, RotateCw, Maximize2, FlipHorizontal, FlipVertical } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Trash2, FlipHorizontal, FlipVertical } from "lucide-react";
 import { useDesignStore, useSelectedPrimitive } from "@/store/design";
 import { getPrimitiveById } from "@/data/design-primitives";
 
@@ -19,10 +18,10 @@ export default function DesignProperties() {
   const [scaleInput, setScaleInput] = useState(selectedPrimitive?.scale || 1);
 
   // Update inputs when selection changes
-  useState(() => {
+  useEffect(() => {
     setRotationInput(selectedPrimitive?.rotation || 0);
     setScaleInput(selectedPrimitive?.scale || 1);
-  });
+  }, [selectedPrimitive?.rotation, selectedPrimitive?.scale]);
 
   if (!selectedPrimitive) {
     return (

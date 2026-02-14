@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Galerija",
+  description:
+    "Fotografije LINEA kolekcije kovanog nameštaja. Stolice, stolovi, klupe i setovi u baštama, na terasama i u restoranima.",
+};
 
 const galleryImages = [
   { src: "/images/products/set-family-garden.png", alt: "LINEA Family Set — baštanski nameštaj na travi", span: "lg:col-span-2 lg:row-span-2" },
