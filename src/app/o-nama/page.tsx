@@ -59,7 +59,7 @@ const chairModules = [
     weight: "1.8 kg",
     dims: "40×40×2.5 cm",
     badge: "ZAMENLJIVO",
-    badgeColor: "border-green-300/50 bg-green-50 text-green-700",
+    badgeColor: "border-green-600/20 bg-green-600/10 text-green-700",
     desc: "Masivno drvo sa zaobljenim ivicama — novo drvo posle 5+ sezona",
     connection: null,
   },
@@ -307,7 +307,7 @@ export default function ONamaPage() {
                         <div
                           className={`mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg ${
                             mod.material === "Drvo"
-                              ? "bg-amber-100 text-amber-800"
+                              ? "bg-forge-amber/10 text-forge-amber"
                               : "bg-iron-black/10 text-iron-black"
                           }`}
                         >

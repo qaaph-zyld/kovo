@@ -14,6 +14,7 @@ const navLinks = [
   { href: "/", label: "Početna" },
   { href: "/proizvodi", label: "Proizvodi" },
   { href: "/setovi", label: "Setovi" },
+  { href: "/dizajner", label: "Dizajner" },
   { href: "/kako-funkcionise", label: "Kako funkcioniše" },
   { href: "/o-nama", label: "O nama" },
   { href: "/kontakt", label: "Kontakt" },
@@ -38,7 +39,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="nav-underline px-3 py-2 text-[13px] font-medium uppercase tracking-[0.08em] text-foreground/70 transition-colors hover:text-foreground"
+              className="nav-underline px-3 py-2 text-xs font-medium uppercase tracking-[0.08em] text-foreground/70 transition-colors hover:text-foreground"
             >
               {link.label}
             </Link>
@@ -49,7 +50,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <a
             href="tel:+381600000000"
-            className="hidden items-center gap-1.5 text-[13px] font-medium tracking-wide text-muted-foreground transition-colors hover:text-foreground sm:flex"
+            className="hidden items-center gap-1.5 text-xs font-medium tracking-wide text-muted-foreground transition-colors hover:text-foreground sm:flex"
           >
             <Phone className="h-3.5 w-3.5" />
             <span className="hidden xl:inline">Pozovite nas</span>
@@ -92,7 +93,7 @@ export default function Header() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className="animate-slide-right rounded-lg px-4 py-3.5 text-[15px] font-medium tracking-wide text-white/80 transition-colors hover:bg-white/5 hover:text-white"
+                      className="animate-slide-right rounded-lg px-4 py-3.5 text-sm font-medium tracking-wide text-white/80 transition-colors hover:bg-white/5 hover:text-white"
                       style={{ animationDelay: `${i * 60}ms` }}
                     >
                       {link.label}

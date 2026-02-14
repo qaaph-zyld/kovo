@@ -20,9 +20,9 @@ const difficultyLabels: Record<DesignPattern["difficulty"], string> = {
 };
 
 const difficultyColors: Record<DesignPattern["difficulty"], string> = {
-  easy: "bg-green-100 text-green-700 border-green-200",
-  medium: "bg-yellow-100 text-yellow-700 border-yellow-200",
-  complex: "bg-red-100 text-red-700 border-red-200",
+  easy: "bg-green-600/10 text-green-700 border-green-600/20",
+  medium: "bg-forge-amber/10 text-forge-amber border-forge-amber/20",
+  complex: "bg-destructive/10 text-destructive border-destructive/20",
 };
 
 export default function PatternPresets() {

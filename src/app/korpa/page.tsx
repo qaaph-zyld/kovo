@@ -87,7 +87,7 @@ export default function KorpaPage() {
   if (step === "success") {
     return (
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-center px-4 py-28 text-center sm:px-6 lg:px-8">
-        <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-green-100 text-green-600">
+        <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-green-600/10 text-green-600">
           <ShoppingBag className="h-10 w-10" />
         </div>
         <h1 className="mt-6 font-display text-2xl tracking-tight">Porudžbina primljena!</h1>

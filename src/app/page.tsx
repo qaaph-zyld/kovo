@@ -12,7 +12,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import FeaturedProducts from "@/components/FeaturedProducts";
-import KovoLogo from "@/components/KovoLogo";
 import ScrollReveal from "@/components/ScrollReveal";
 import PlatformShowcase from "@/components/PlatformShowcase";
 
@@ -43,23 +42,6 @@ const features = [
   },
 ];
 
-const steps = [
-  {
-    step: "01",
-    title: "Izaberite",
-    description: "Odaberite proizvode ili set iz LINEA kolekcije",
-  },
-  {
-    step: "02",
-    title: "Primite",
-    description: "Stiže flat-pack na paleti, sigurno zapakovano",
-  },
-  {
-    step: "03",
-    title: "Sklopite",
-    description: "Montaža za 15–45 min sa priloženim alatom",
-  },
-];
 
 export default function Home() {
   return (
@@ -180,51 +162,105 @@ export default function Home() {
       {/* Platform Showcase — modularity explained */}
       <PlatformShowcase />
 
-      {/* How it works */}
+      {/* How it works — asymmetric progressive reveal */}
       <section className="relative overflow-hidden bg-workshop-gray py-20 sm:py-28">
-        {/* Subtle gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-forge-amber/[0.02] to-transparent" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal className="mb-14 text-center">
+          {/* Header — left-aligned for asymmetry */}
+          <ScrollReveal className="mb-14 max-w-xl">
             <p className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber">
               3 jednostavna koraka
             </p>
             <h2 className="font-display text-3xl tracking-tight sm:text-4xl">
-              Kako funkcioniše
+              Od porudžbine do
+              <br />
+              <span className="text-forge-amber">gotovog nameštaja</span>
             </h2>
-            <p className="mx-auto mt-3 max-w-lg text-muted-foreground">
-              Od porudžbine do gotovog nameštaja u 3 koraka
-            </p>
           </ScrollReveal>
-          <div className="grid gap-8 sm:grid-cols-3">
-            {steps.map((s, i) => (
-              <ScrollReveal
-                key={s.step}
-                delay={i * 0.1}
-                className="group relative rounded-xl border border-border/60 bg-card p-8 text-center transition-all duration-300 hover:shadow-warm"
-              >
-                {/* Connection line between steps */}
-                {i < steps.length - 1 && (
-                  <div className="absolute -right-4 top-1/2 hidden h-px w-8 bg-gradient-to-r from-border to-transparent sm:block" />
-                )}
-                <span className="font-mono text-4xl font-bold text-forge-amber/15">
-                  {s.step}
-                </span>
-                <h3 className="mt-3 text-xl font-bold tracking-tight">{s.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  {s.description}
-                </p>
+
+          {/* Asymmetric layout: featured step + two smaller steps */}
+          <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
+            {/* Step 01 — featured, large */}
+            <ScrollReveal delay={0} className="lg:col-span-7">
+              <div className="group relative overflow-hidden rounded-xl border border-border/60 bg-card p-8 transition-all duration-300 hover:shadow-warm sm:p-10">
+                <div className="flex items-start gap-6">
+                  <div className="flex-shrink-0">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-forge-amber/10">
+                      <Package className="h-7 w-7 text-forge-amber" />
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-baseline gap-3">
+                      <span className="font-mono text-5xl font-bold text-forge-amber/15">01</span>
+                      <h3 className="font-display text-2xl tracking-tight">Izaberite</h3>
+                    </div>
+                    <p className="mt-3 max-w-md text-base leading-relaxed text-muted-foreground">
+                      Odaberite proizvode ili set iz LINEA kolekcije. Poručite online
+                      sa dostavom ili ličnim preuzimanjem u Loznici.
+                    </p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      <span className="inline-flex items-center rounded-md border border-forge-amber/20 bg-forge-amber/5 px-2.5 py-1 text-xs font-medium text-forge-amber">
+                        Pojedinačno ili set
+                      </span>
+                      <span className="inline-flex items-center rounded-md border border-border/50 bg-workshop-gray px-2.5 py-1 text-xs font-medium text-muted-foreground">
+                        Kartica ili pouzeće
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Steps 02 + 03 — stacked, smaller, offset */}
+            <div className="flex flex-col gap-6 lg:col-span-5">
+              <ScrollReveal delay={0.12}>
+                <div className="group relative overflow-hidden rounded-xl border border-border/60 bg-card p-6 transition-all duration-300 hover:shadow-warm sm:p-7">
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-forge-amber/10">
+                      <Truck className="h-5 w-5 text-forge-amber" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-baseline gap-2">
+                        <span className="font-mono text-3xl font-bold text-forge-amber/15">02</span>
+                        <h3 className="text-lg font-bold tracking-tight">Primite</h3>
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        Stiže flat-pack na paleti, sigurno zapakovano. Pena, kartonski uglovi, ništa metal-na-metal.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </ScrollReveal>
-            ))}
+
+              <ScrollReveal delay={0.24}>
+                <div className="group relative overflow-hidden rounded-xl border border-border/60 bg-card p-6 transition-all duration-300 hover:shadow-warm sm:p-7">
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-forge-amber/10">
+                      <Wrench className="h-5 w-5 text-forge-amber" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-baseline gap-2">
+                        <span className="font-mono text-3xl font-bold text-forge-amber/15">03</span>
+                        <h3 className="text-lg font-bold tracking-tight">Sklopite</h3>
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                        Montaža za 15–45 min sa priloženim alatom. QR kod vodi do video uputstva.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
-          <div className="mt-12 text-center">
+
+          <ScrollReveal delay={0.3} className="mt-10">
             <Button asChild variant="outline" className="px-8">
               <Link href="/kako-funkcionise">
-                Saznajte više
+                Saznajte više o procesu
                 <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </Button>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 

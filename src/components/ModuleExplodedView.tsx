@@ -16,9 +16,9 @@ interface ModuleExplodedViewProps {
 
 const materialColors: Record<string, string> = {
   steel: "bg-iron-black/10 text-iron-black border-iron-black/20",
-  wood: "bg-amber-100 text-amber-900 border-amber-300/50",
+  wood: "bg-forge-amber/10 text-forge-amber border-forge-amber/30",
   hardware: "bg-forge-amber/10 text-forge-amber border-forge-amber/30",
-  upholstery: "bg-purple-100 text-purple-900 border-purple-300/50",
+  upholstery: "bg-copper/10 text-copper border-copper/30",
 };
 
 const materialLabels: Record<string, string> = {
@@ -94,7 +94,7 @@ export default function ModuleExplodedView({ productId }: ModuleExplodedViewProp
                   </span>
                 )}
                 {mod.replaceable && (
-                  <span className="inline-flex rounded-md border border-green-300/50 bg-green-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-green-700">
+                  <span className="inline-flex rounded-md border border-green-600/20 bg-green-600/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-green-700">
                     Zamenljiv
                   </span>
                 )}

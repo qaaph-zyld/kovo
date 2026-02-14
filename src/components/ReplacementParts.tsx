@@ -17,8 +17,8 @@ export default function ReplacementParts({ productId }: ReplacementPartsProps) {
   return (
     <div className="rounded-xl border border-border/60 bg-workshop-gray p-6 sm:p-8">
       <div className="mb-5 flex items-center gap-3">
-        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-green-100">
-          <RefreshCw className="h-4 w-4 text-green-700" />
+        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-green-600/10">
+          <RefreshCw className="h-4 w-4 text-green-600" />
         </div>
         <div>
           <h3 className="font-display text-lg tracking-tight">Zamenski delovi</h3>

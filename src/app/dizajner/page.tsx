@@ -182,7 +182,7 @@ export default function DesignGeneratorPage() {
                 variant="outline"
                 size="sm"
                 onClick={clearCanvas}
-                className="h-8 px-3 text-red-600 border-red-200 hover:bg-red-50"
+                className="h-8 px-3 text-destructive border-destructive/20 hover:bg-destructive/5"
               >
                 <Trash2 className="h-4 w-4 mr-1" />
                 Obriši
@@ -195,7 +195,7 @@ export default function DesignGeneratorPage() {
       {/* Main content */}
       <main className="flex h-[calc(100vh-4rem)]">
         {/* Left sidebar - Palette/Patterns */}
-        <aside className="w-80 border-r border-border bg-white flex flex-col">
+        <aside className="w-80 border-r border-border bg-card flex flex-col">
           {/* Tab switcher */}
           <div className="flex border-b border-border">
             <button
@@ -231,7 +231,7 @@ export default function DesignGeneratorPage() {
         {/* Center - Canvas */}
         <section className="flex-1 flex flex-col bg-workshop-gray">
           {/* Canvas toolbar */}
-          <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-white">
+          <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-card">
             <div className="flex items-center gap-2">
               {/* Zoom controls */}
               <Button variant="outline" size="sm" onClick={handleZoomOut} className="h-8 w-8 p-0">
@@ -276,13 +276,13 @@ export default function DesignGeneratorPage() {
         </section>
 
         {/* Right sidebar - Properties */}
-        <aside className="w-80 border-l border-border bg-white">
+        <aside className="w-80 border-l border-border bg-card">
           <DesignProperties />
         </aside>
       </main>
 
       {/* Keyboard shortcuts help */}
-      <div className="fixed bottom-4 left-4 bg-black/80 text-white p-3 rounded-lg text-xs max-w-xs">
+      <div className="fixed bottom-4 left-4 bg-iron-deep/90 text-white p-3 rounded-lg text-xs max-w-xs">
         <div className="font-semibold mb-1">Prečice:</div>
         <div className="space-y-0.5">
           <div>Ctrl+Z: Poništi</div>

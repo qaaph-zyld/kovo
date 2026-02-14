@@ -27,7 +27,7 @@ function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-xl border border-green-200 bg-green-50/50 p-14 text-center">
+      <div className="flex flex-col items-center justify-center rounded-xl border border-green-600/20 bg-green-600/5 p-14 text-center">
         <CheckCircle2 className="h-16 w-16 text-green-600" />
         <h3 className="mt-5 font-display text-xl">Poruka poslata!</h3>
         <p className="mt-2 text-muted-foreground">
