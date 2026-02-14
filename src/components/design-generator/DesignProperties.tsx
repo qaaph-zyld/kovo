@@ -139,25 +139,25 @@ export default function DesignProperties() {
             <div className="flex gap-1 mt-2">
               <button
                 onClick={() => handleRotationChange(0)}
-                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors"
+                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors outline-none focus-visible:ring-[2px] focus-visible:ring-forge-amber/30"
               >
                 0°
               </button>
               <button
                 onClick={() => handleRotationChange(45)}
-                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors"
+                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors outline-none focus-visible:ring-[2px] focus-visible:ring-forge-amber/30"
               >
                 45°
               </button>
               <button
                 onClick={() => handleRotationChange(90)}
-                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors"
+                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors outline-none focus-visible:ring-[2px] focus-visible:ring-forge-amber/30"
               >
                 90°
               </button>
               <button
                 onClick={() => handleRotationChange(180)}
-                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors"
+                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors outline-none focus-visible:ring-[2px] focus-visible:ring-forge-amber/30"
               >
                 180°
               </button>
@@ -193,25 +193,25 @@ export default function DesignProperties() {
             <div className="flex gap-1 mt-2">
               <button
                 onClick={() => handleScaleChange(0.5)}
-                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors"
+                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors outline-none focus-visible:ring-[2px] focus-visible:ring-forge-amber/30"
               >
                 0.5×
               </button>
               <button
                 onClick={() => handleScaleChange(1)}
-                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors"
+                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors outline-none focus-visible:ring-[2px] focus-visible:ring-forge-amber/30"
               >
                 1×
               </button>
               <button
                 onClick={() => handleScaleChange(1.5)}
-                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors"
+                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors outline-none focus-visible:ring-[2px] focus-visible:ring-forge-amber/30"
               >
                 1.5×
               </button>
               <button
                 onClick={() => handleScaleChange(2)}
-                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors"
+                className="px-2 py-1 text-xs border border-border/50 rounded-md hover:border-forge-amber/30 transition-colors outline-none focus-visible:ring-[2px] focus-visible:ring-forge-amber/30"
               >
                 2×
               </button>

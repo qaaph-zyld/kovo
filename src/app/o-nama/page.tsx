@@ -503,10 +503,10 @@ export default function ONamaPage() {
         </div>
       </section>
 
-      {/* ═══ WHO IT'S FOR — B2C + B2B ═══ */}
+      {/* ═══ WHO IT'S FOR — B2C + B2B, asymmetric ═══ */}
       <section className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <ScrollReveal className="mb-16 text-center">
+          <ScrollReveal className="mb-16 max-w-xl">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-forge-amber">
               Za koga
             </p>
@@ -515,40 +515,66 @@ export default function ONamaPage() {
             </h2>
           </ScrollReveal>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                icon: Home,
-                title: "Vaša terasa",
-                desc: "Bistro set za jutarnju kafu. Family set za nedeljni ručak. Klupa za predah. Stiže na kućnu adresu, sklopite sami.",
-              },
-              {
-                icon: UtensilsCrossed,
-                title: "Kafići & restorani",
-                desc: "Setovi na paleti, montaža za 45 min. Stolice koje se slažu do 6 komada — lako skladištenje van sezone.",
-              },
-              {
-                icon: Hotel,
-                title: "Hoteli & vikendice",
-                desc: "Jedna kolekcija za ceo objekat. Uniforman izgled, zamenjivi delovi, jednostavno održavanje.",
-              },
-            ].map((item, i) => (
-              <ScrollReveal
-                key={item.title}
-                delay={i * 0.1}
-                className="group rounded-xl border border-border/50 bg-card p-8 transition-all duration-300 hover:shadow-warm-lg sm:p-10"
-              >
+          <div className="grid gap-6 lg:grid-cols-2">
+            {/* Primary audience — featured, full height */}
+            <ScrollReveal delay={0} className="lg:row-span-2">
+              <div className="group flex h-full flex-col rounded-xl border border-border/50 bg-card p-8 transition-all duration-300 hover:shadow-warm-lg sm:p-10">
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-forge-amber/10 transition-colors duration-300 group-hover:bg-forge-amber/15">
-                  <item.icon className="h-6 w-6 text-forge-amber" />
+                  <Home className="h-6 w-6 text-forge-amber" />
                 </div>
                 <h3 className="font-display text-xl tracking-tight sm:text-2xl">
-                  {item.title}
+                  Vaša terasa
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  {item.desc}
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  Bistro set za jutarnju kafu. Family set za nedeljni ručak. Klupa za predah. Stiže na kućnu adresu, sklopite sami.
                 </p>
-              </ScrollReveal>
-            ))}
+                <div className="mt-6 flex flex-wrap gap-2">
+                  <span className="inline-flex items-center rounded-md border border-forge-amber/20 bg-forge-amber/5 px-2.5 py-1 text-xs font-medium text-forge-amber">
+                    Dostava na adresu
+                  </span>
+                  <span className="inline-flex items-center rounded-md border border-border/50 bg-workshop-gray px-2.5 py-1 text-xs font-medium text-muted-foreground">
+                    Montaža 15–45 min
+                  </span>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* B2B audiences — stacked smaller */}
+            <ScrollReveal delay={0.1}>
+              <div className="group rounded-xl border border-border/50 bg-card p-7 transition-all duration-300 hover:shadow-warm-lg sm:p-8">
+                <div className="flex items-start gap-5">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-forge-amber/10 transition-colors duration-300 group-hover:bg-forge-amber/15">
+                    <UtensilsCrossed className="h-5 w-5 text-forge-amber" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-lg tracking-tight sm:text-xl">
+                      Kafići & restorani
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      Setovi na paleti, montaža za 45 min. Stolice koje se slažu do 6 komada — lako skladištenje van sezone.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={0.2}>
+              <div className="group rounded-xl border border-border/50 bg-card p-7 transition-all duration-300 hover:shadow-warm-lg sm:p-8">
+                <div className="flex items-start gap-5">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-forge-amber/10 transition-colors duration-300 group-hover:bg-forge-amber/15">
+                    <Hotel className="h-5 w-5 text-forge-amber" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-lg tracking-tight sm:text-xl">
+                      Hoteli & vikendice
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      Jedna kolekcija za ceo objekat. Uniforman izgled, zamenjivi delovi, jednostavno održavanje.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

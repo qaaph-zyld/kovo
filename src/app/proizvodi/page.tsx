@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/ProductCard";
+import ProductCardHero from "@/components/ProductCardHero";
+import ScrollReveal from "@/components/ScrollReveal";
 import { products, Product } from "@/data/products";
 
 const categories: { value: Product["category"] | "all"; label: string }[] = [
@@ -24,6 +26,11 @@ export default function ProizvodiPage() {
     activeCategory === "all"
       ? products
       : products.filter((p) => p.category === activeCategory);
+
+  // When showing all products, feature the first one as hero
+  const showHero = activeCategory === "all" && filtered.length > 1;
+  const heroProduct = showHero ? filtered.find((p) => p.featured) || filtered[0] : null;
+  const gridProducts = heroProduct ? filtered.filter((p) => p.id !== heroProduct.id) : filtered;
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
@@ -56,10 +63,19 @@ export default function ProizvodiPage() {
         ))}
       </div>
 
+      {/* Hero product — featured when showing all */}
+      {heroProduct && (
+        <ScrollReveal className="mb-8">
+          <ProductCardHero product={heroProduct} />
+        </ScrollReveal>
+      )}
+
       {/* Product grid */}
       <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((product) => (
-          <ProductCard key={product.id} product={product} />
+        {gridProducts.map((product, i) => (
+          <ScrollReveal key={product.id} delay={i * 0.05}>
+            <ProductCard product={product} />
+          </ScrollReveal>
         ))}
       </div>
 

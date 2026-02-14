@@ -101,7 +101,7 @@ export default function ModuleConfigurator({
                         [slot.slotId]: mod.id,
                       }))
                     }
-                    className={`relative rounded-xl border-2 p-4 text-left transition-all duration-200 ${
+                    className={`relative rounded-xl border-2 p-4 text-left transition-all duration-200 outline-none focus-visible:ring-[3px] focus-visible:ring-forge-amber/30 ${
                       isSelected
                         ? "border-forge-amber bg-card shadow-warm"
                         : "border-border/50 bg-card hover:border-forge-amber/30"

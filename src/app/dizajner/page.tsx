@@ -200,7 +200,7 @@ export default function DesignGeneratorPage() {
           <div className="flex border-b border-border">
             <button
               onClick={() => setActiveTab("primitives")}
-              className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium transition-colors ${
+              className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium transition-colors outline-none focus-visible:ring-[3px] focus-visible:ring-forge-amber/30 ${
                 activeTab === "primitives"
                   ? "bg-forge-amber/10 text-forge-amber border-b-2 border-forge-amber"
                   : "text-muted-foreground hover:text-foreground hover:bg-workshop-gray/50"
@@ -211,7 +211,7 @@ export default function DesignGeneratorPage() {
             </button>
             <button
               onClick={() => setActiveTab("patterns")}
-              className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium transition-colors ${
+              className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium transition-colors outline-none focus-visible:ring-[3px] focus-visible:ring-forge-amber/30 ${
                 activeTab === "patterns"
                   ? "bg-forge-amber/10 text-forge-amber border-b-2 border-forge-amber"
                   : "text-muted-foreground hover:text-foreground hover:bg-workshop-gray/50"

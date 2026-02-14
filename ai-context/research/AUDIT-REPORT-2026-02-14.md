@@ -137,17 +137,137 @@
 
 ---
 
-## 8. Remaining Recommendations
+## 8. Phase 8: Visual Verification & Product Grid Refinement
 
-1. **Product grid hierarchy**: Consider making one product card larger (hero product) on the products page — would require data model `featured` flag
-2. **`text-[10px]` micro-labels**: 20+ instances exist below the `text-xs` token. Consider defining a `text-2xs` token if this pattern persists
-3. **Green semantic color**: Multiple components use `green-600/green-700` for success states. Consider adding a formal `success` color token to `globals.css` for consistency
-4. **Homepage hero image**: Currently a static image — could benefit from a subtle parallax or scale-on-scroll effect for more visual impact
-5. **B2B CTA section**: Strong but could use a quantified proof point (e.g., "50+ kafića opremljeno") for more conversion impact
+### 8A. Signature Moment Verification (Homepage)
+
+The "How it works" asymmetric layout was verified:
+- ✅ Asymmetric 7+5 column grid (`lg:grid-cols-12` with `lg:col-span-7` / `lg:col-span-5`)
+- ✅ ScrollReveal stagger delays (0ms → 120ms → 240ms → 300ms)
+- ✅ Step 01 featured large (bigger icon, `text-5xl` number, `font-display text-2xl` title, detail badges)
+- ✅ Steps 02+03 stacked smaller (`text-3xl` numbers, `text-lg` titles)
+- ✅ Left-aligned header with amber accent text
+- ✅ All tokens compliant
+
+**No issues found.**
+
+### 8B. Product Grid Signature Moment
+
+**Problem**: Product grid was completely uniform — all cards identical size, no visual hierarchy.
+
+**Solution**: Created `ProductCardHero.tsx` component and updated `proizvodi/page.tsx`:
+- When viewing "Sve" (all), the first featured product renders as a hero card with horizontal layout (image left, content right), spanning full width
+- Remaining products flow in standard 3-column grid below
+- When filtered by category, standard uniform grid is used (fewer items don't need hierarchy)
+- Hero card includes "Preporučujemo" badge, larger typography, dual CTAs ("Dodaj u korpu" + "Detaljnije")
+- Responsive: stacks vertically on mobile, horizontal on md+
+
+**Files changed**:
+- `src/components/ProductCardHero.tsx` (new)
+- `src/app/proizvodi/page.tsx` (updated)
+
+### 8C. Anti-Pattern Refinements
+
+**o-nama/page.tsx — "Who it's for" section**:
+- **Before**: Perfect 3-column grid (AP-1.2) — Home/Restaurant/Hotel all equal weight
+- **After**: Asymmetric 2-column layout — "Vaša terasa" (B2C primary) spans full height as featured card with detail badges; B2B cards (Kafići, Hoteli) stacked smaller with horizontal icon+text layout
+- Section header changed from centered to left-aligned (`max-w-xl`)
+
+**kontakt/page.tsx**:
+- **Before**: No ScrollReveal animations (only page without entrance animations)
+- **After**: Added ScrollReveal to page header (delay 0), contact info sidebar (delay 0.1), and form section (delay 0.15)
+- Added `hover:shadow-warm` to "Lično preuzimanje" card
 
 ---
 
-*Report Version: 1.0*
-*Files Audited: 35+*
-*Violations Found: 18*
-*Violations Fixed: 18*
+## 9. Phase 9: Research Folder Population
+
+Three detailed reference analysis files created in `ai-context/research/`:
+
+### reference-linear.md — Key Principles for KOVO
+1. **Push typographic contrast further** — Bigger headlines, tighter tracking
+2. **Audit forge-amber usage** — Every amber element must earn its place
+3. **Keep motion functional** — No decorative animations
+4. **Increase density in technical sections** — Module specs should feel precise
+5. **Lead with product** — Hero images should show real furniture in real settings
+6. **Monospace for data** — Continue using `font-mono` for specs/prices
+
+### reference-vercel.md — Key Principles for KOVO
+1. **Opacity-based text hierarchy on dark sections** — Standardize to 3 levels (100%, 60%, 30%)
+2. **Continue gradient mesh atmospherics** — Already well-applied
+3. **Consider backdrop-blur on navigation** — Frosted glass effect when scrolled
+4. **Dot grid and noise textures** — Continue as brand signature
+5. **Accent color scarcity** — forge-amber most powerful on dark backgrounds
+6. **Smooth fade-in animations** — Keep transitions under 600ms
+7. **Border glow on hover** — `hover:border-forge-amber/30` as standard pattern
+
+### reference-stripe.md — Key Principles for KOVO
+1. **Add persistent subtle shadows to key cards** — Not just on hover
+2. **Continue gradient mesh technique** — Consider second gradient layer
+3. **Visual polish = trust** — Every inconsistency undermines craftsman brand
+4. **Dual-path CTAs** — Already implemented; maintain for B2C/B2B
+5. **Feature grids with hierarchy** — Never flat equal-weight grids for 3+ items
+6. **Generous section spacing** — Push editorial sections to `py-24 sm:py-32`
+7. **Progressive disclosure** — Maintain hero → overview → details → CTA flow
+
+---
+
+## 10. Phase 10: Component Polish Pass
+
+### Animation Timing Audit
+| Duration | Usage | Count | Status |
+|----------|-------|-------|--------|
+| `duration-200` | Buttons, links, micro-interactions | 8 | ✅ Consistent |
+| `duration-300` | Cards, containers, hover states | 6 | ✅ Consistent |
+| `duration-500` | Image scale on hover | 2 | ✅ Consistent |
+
+### Shadow Audit
+| Shadow | Usage | Status |
+|--------|-------|--------|
+| `shadow-warm` | Hover on cards, selected states | ✅ Token-compliant |
+| `shadow-warm-lg` | Hover on product cards, hero card | ✅ Token-compliant |
+| `shadow-sm` | shadcn `card.tsx` default | **FIXED** → removed (KOVO uses shadow-warm on hover) |
+| `shadow-xs` | shadcn input/button defaults | ✅ Acceptable for form elements |
+| `shadow-lg` | Sheet/dialog overlays | ✅ Acceptable for overlays |
+
+### Focus State Audit
+| Component | Issue | Status |
+|-----------|-------|--------|
+| `ModuleConfigurator.tsx` | Custom `<button>` missing focus-visible | **FIXED** → added `focus-visible:ring-[3px] focus-visible:ring-forge-amber/30` |
+| `dizajner/page.tsx` tabs | Custom `<button>` missing focus-visible | **FIXED** → added `focus-visible:ring-[3px] focus-visible:ring-forge-amber/30` |
+| `DesignProperties.tsx` | 8 preset buttons missing focus-visible | **FIXED** → added `focus-visible:ring-[2px] focus-visible:ring-forge-amber/30` |
+| All shadcn/ui components | Have built-in `focus-visible:border-ring focus-visible:ring-ring/50` | ✅ Already compliant |
+| ProductCard, ProductCardHero | Non-interactive containers (div), interactive children have focus | ✅ No issue |
+
+### Hover State Consistency
+- All card components use `hover:border-forge-amber/30` — **consistent**
+- All CTA buttons use `hover:bg-forge-amber-light` or `hover:bg-forge-amber` — **consistent**
+- ProductCard has `hover:-translate-y-1.5` lift; ProductCardHero does not (intentional — hero is too large for lift) — **acceptable**
+
+---
+
+## 11. Updated Recommendations (Prioritized by Impact)
+
+### High Impact
+1. **Backdrop-blur navigation** — Add frosted glass effect to Header when scrolled (Vercel pattern)
+2. **Homepage hero image** — Replace with lifestyle/atmospheric shot showing furniture in context
+3. **B2B CTA proof point** — Add quantified credibility (e.g., "50+ kafića opremljeno")
+
+### Medium Impact
+4. **`text-[10px]` micro-labels** — 20+ instances below `text-xs`. Consider defining `text-2xs` token
+5. **Green semantic color** — Add formal `success` token to `globals.css`
+6. **FeaturedProducts on homepage** — Apply same hero pattern as products page (first featured product larger)
+
+### Low Impact
+7. **Homepage hero parallax** — Subtle scale-on-scroll for hero image
+8. **Section spacing audit** — Push editorial sections (o-nama) to `py-24 sm:py-32` per Stripe pattern
+9. **Persistent card shadows** — Consider subtle base shadow on key cards (not just hover)
+
+---
+
+*Report Version: 2.0*
+*Files Audited: 40+*
+*Total Violations Found: 18 (Phase 2-7) + 5 (Phase 8-10) = 23*
+*Total Violations Fixed: 23*
+*Research Files Created: 3 (Linear, Vercel, Stripe)*
+*New Components: 1 (ProductCardHero)*

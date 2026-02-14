@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Suspense } from "react";
+import ScrollReveal from "@/components/ScrollReveal";
 
 function ContactForm() {
   const searchParams = useSearchParams();
@@ -154,7 +155,7 @@ function ContactForm() {
 export default function KontaktPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-      <div className="mb-12">
+      <ScrollReveal className="mb-12">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber">
           Javite nam se
         </p>
@@ -162,11 +163,11 @@ export default function KontaktPage() {
         <p className="mt-3 text-muted-foreground">
           Javite nam se za pitanja, ponude ili saradnju.
         </p>
-      </div>
+      </ScrollReveal>
 
       <div className="grid gap-10 lg:grid-cols-3">
         {/* Contact info */}
-        <div className="space-y-6">
+        <ScrollReveal delay={0.1} className="space-y-6">
           <div className="rounded-xl border border-border/50 bg-card p-7">
             <h3 className="mb-5 font-semibold tracking-tight">Podaci za kontakt</h3>
             <ul className="space-y-4">
@@ -217,7 +218,7 @@ export default function KontaktPage() {
             </ul>
           </div>
 
-          <div className="rounded-xl border border-forge-amber/20 bg-forge-amber/5 p-7">
+          <div className="rounded-xl border border-forge-amber/20 bg-forge-amber/5 p-7 transition-all duration-300 hover:shadow-warm">
             <h3 className="font-semibold tracking-tight text-foreground">
               Lično preuzimanje
             </h3>
@@ -226,14 +227,14 @@ export default function KontaktPage() {
               porudžbinu. Vidite nameštaj uživo pre kupovine!
             </p>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Form */}
-        <div className="lg:col-span-2">
+        <ScrollReveal delay={0.15} className="lg:col-span-2">
           <Suspense fallback={<div>Učitavanje...</div>}>
             <ContactForm />
           </Suspense>
-        </div>
+        </ScrollReveal>
       </div>
     </div>
   );
