@@ -90,7 +90,7 @@ export default function PlatformShowcase() {
               Zajednički DNK
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {sharedDNA.map((item, i) => (
+              {sharedDNA.map((item) => (
                 <div key={item.label} className="flex flex-col">
                   <span className="text-sm font-semibold">{item.label}</span>
                   <span className="mt-0.5 font-mono text-xs text-white/40">{item.detail}</span>
