@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Trash2, FlipHorizontal, FlipVertical } from "lucide-react";
 import { useDesignStore, useSelectedPrimitive } from "@/store/design";
 import { getPrimitiveById } from "@/data/design-primitives";
@@ -17,11 +17,16 @@ export default function DesignProperties() {
   const [rotationInput, setRotationInput] = useState(selectedPrimitive?.rotation || 0);
   const [scaleInput, setScaleInput] = useState(selectedPrimitive?.scale || 1);
 
-  // Update inputs when selection changes
-  useEffect(() => {
-    setRotationInput(selectedPrimitive?.rotation || 0);
-    setScaleInput(selectedPrimitive?.scale || 1);
-  }, [selectedPrimitive?.rotation, selectedPrimitive?.scale]);
+  // Keep inputs in sync with selected primitive WITHOUT using useEffect
+  // This is a cleaner pattern for derived state
+  const prevSelectedId = useRef(selectedPrimitive?.id);
+  if (selectedPrimitive?.id !== prevSelectedId.current) {
+    prevSelectedId.current = selectedPrimitive?.id;
+    if (selectedPrimitive) {
+      setRotationInput(selectedPrimitive.rotation || 0);
+      setScaleInput(selectedPrimitive.scale || 1);
+    }
+  }
 
   if (!selectedPrimitive) {
     return (
