@@ -78,54 +78,85 @@ export default function Home() {
         <div className="absolute right-0 top-0 h-full w-1/2 opacity-30 dot-grid" />
 
         <div className="relative z-10 mx-auto flex min-h-[70vh] max-w-7xl items-center px-4 py-24 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-          <div className="max-w-2xl">
-            <Badge className="animate-settle mb-8 border border-forge-amber/30 bg-forge-amber/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-forge-amber-light hover:bg-forge-amber/15">
-              LINEA Kolekcija — Novo
-            </Badge>
-            <h1 className="animate-settle stagger-1 font-display text-5xl leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              Jedna platforma,
-              <br />
-              <span className="text-forge-amber-light">više lica</span>
-            </h1>
-            <p className="animate-settle stagger-2 mt-8 max-w-lg text-lg font-light leading-relaxed text-white/60">
-              Modularan kovani nameštaj: zamenljivi nasloni, univerzalne baze stolova,
-              delovi koji se dele između proizvoda. Stiže flat-pack, sklapa se za 15–45 min.
-            </p>
-            <div className="animate-settle stagger-3 mt-10 flex flex-col gap-3 sm:flex-row">
-              <Button
-                asChild
-                size="lg"
-                className="bg-forge-amber px-8 text-white transition-all duration-200 hover:bg-forge-amber-light hover:scale-[1.02]"
-              >
-                <Link href="/proizvodi">
-                  Pogledajte kolekciju
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-white/15 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/5"
-              >
-                <Link href="/kako-funkcionise">Kako funkcioniše</Link>
-              </Button>
+          <div className="grid items-center gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-5">
+              <Badge className="animate-settle mb-8 border border-forge-amber/30 bg-forge-amber/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-forge-amber-light hover:bg-forge-amber/15">
+                LINEA Kolekcija — Novo
+              </Badge>
+              <h1 className="animate-settle stagger-1 font-display text-5xl leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+                Jedna platforma,
+                <br />
+                <span className="text-forge-amber-light">više lica</span>
+              </h1>
+              <p className="animate-settle stagger-2 mt-8 max-w-lg text-lg font-light leading-relaxed text-white/60">
+                Modularan kovani nameštaj: zamenljivi nasloni, univerzalne baze stolova,
+                delovi koji se dele između proizvoda. Stiže flat-pack, sklapa se za 15–45 min.
+              </p>
+              <div className="animate-settle stagger-3 mt-10 flex flex-col gap-3 sm:flex-row">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-forge-amber px-8 text-white transition-all duration-200 hover:bg-forge-amber-light hover:scale-[1.02]"
+                >
+                  <Link href="/proizvodi">
+                    Pogledajte kolekciju
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="border-white/15 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/5"
+                >
+                  <Link href="/kako-funkcionise">Kako funkcioniše</Link>
+                </Button>
+              </div>
             </div>
-          </div>
-          <div className="hidden lg:block">
-            <div className="animate-settle stagger-2 relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10 shadow-2xl">
-              <Image
-                src="/images/products/set-family-garden.png"
-                alt="LINEA Family Set — baštanski nameštaj od kovanog gvožđa"
-                fill
-                className="object-cover"
-                sizes="50vw"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-iron-deep/30 to-transparent" />
+            
+            {/* Signature Moment: Asymmetric layered product showcase */}
+            <div className="hidden lg:col-span-7 lg:block">
+              <div className="relative h-[600px] w-full">
+                {/* Main large image */}
+                <div className="animate-settle stagger-2 absolute right-0 top-0 z-10 aspect-[4/3] w-4/5 overflow-hidden rounded-xl border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
+                  <Image
+                    src="/images/products/set-family-garden.png"
+                    alt="LINEA Family Set — baštanski nameštaj od kovanog gvožđa"
+                    fill
+                    className="object-cover"
+                    sizes="50vw"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-iron-deep/40 via-transparent to-transparent" />
+                </div>
+                
+                {/* Secondary overlapping image (detail) */}
+                <div className="animate-settle stagger-3 absolute bottom-12 left-0 z-20 aspect-square w-2/5 overflow-hidden rounded-xl border border-white/10 shadow-2xl transition-transform duration-500 hover:-translate-y-2 hover:scale-105">
+                  <Image
+                    src="/images/products/linea-stolica-klasik.png"
+                    alt="LINEA Stolica detalj"
+                    fill
+                    className="object-cover bg-workshop-gray/10"
+                    sizes="25vw"
+                  />
+                  {/* Decorative badge on secondary image */}
+                  <div className="absolute bottom-4 left-4 rounded-md border border-white/20 bg-black/40 px-3 py-1.5 backdrop-blur-md">
+                    <span className="font-mono text-[10px] font-semibold text-forge-amber-light uppercase tracking-widest">Detalj spoja</span>
+                  </div>
+                </div>
+                
+                {/* Floating data card */}
+                <div className="animate-settle stagger-4 absolute right-12 bottom-0 z-30 flex items-center gap-4 rounded-xl border border-white/10 bg-iron-deep/80 p-5 shadow-warm backdrop-blur-xl transition-all duration-300 hover:border-forge-amber/30 hover:bg-iron-deep">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-forge-amber/10">
+                    <Package className="h-6 w-6 text-forge-amber" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-white">Flat-pack isporuka</p>
+                    <p className="mt-0.5 font-mono text-[11px] text-white/50">Na paleti, bez ogrebotina</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
           </div>
         </div>
       </section>
