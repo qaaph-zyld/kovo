@@ -114,7 +114,7 @@ export default function ModuleConfigurator({
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
                           exit={{ scale: 0 }}
-                          className="absolute -right-1.5 -top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-forge-amber text-white"
+                          className="absolute -right-1.5 -top-1.5 flex h-6 w-6 items-center justify-center rounded-sm bg-forge-amber text-white"
                         >
                           <Check className="h-3.5 w-3.5" />
                         </motion.div>
@@ -130,7 +130,7 @@ export default function ModuleConfigurator({
 
                     <div className="mt-2 flex items-center gap-2">
                       {isDefault && (
-                        <span className="rounded-md bg-workshop-gray px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
+                        <span className="rounded-sm bg-workshop-gray px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
                           Podrazumevano
                         </span>
                       )}

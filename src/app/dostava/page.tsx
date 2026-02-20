@@ -107,6 +107,14 @@ export default function DostavaPage() {
               <p className="mt-1 text-sm text-muted-foreground">
                 {zone.location}
               </p>
+              <ul className="mt-6 space-y-4">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-sm bg-forge-amber" />
+                  <span className="text-sm leading-relaxed text-muted-foreground">
+                    Lično preuzimanje u Loznici je moguće svakog radnog dana uz prethodni dogovor.
+                  </span>
+                </li>
+              </ul>
               <div className="mt-5 space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">Cena</span>

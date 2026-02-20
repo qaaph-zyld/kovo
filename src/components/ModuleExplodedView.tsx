@@ -80,22 +80,22 @@ export default function ModuleExplodedView({ productId }: ModuleExplodedViewProp
               className="group relative overflow-hidden rounded-xl border border-border/50 bg-card p-4 transition-all duration-200 hover:border-forge-amber/30 hover:shadow-warm"
             >
               {/* Module number badge */}
-              <div className="absolute -right-1 -top-1 flex h-7 w-7 items-center justify-center rounded-bl-lg bg-forge-amber/10 font-mono text-[10px] font-bold text-forge-amber">
+              <div className="absolute -right-1 -top-1 flex h-7 w-7 items-center justify-center rounded-bl-sm bg-forge-amber/10 font-mono text-[10px] font-bold text-forge-amber">
                 {i + 1}
               </div>
 
               <div className="mb-2 flex items-center gap-2">
-                <span className={`inline-flex rounded-md border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${matClass}`}>
+                <span className={`inline-flex rounded-sm border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${matClass}`}>
                   {materialLabels[mod.material]}
                 </span>
                 {isConfigurable && (
-                  <span className="inline-flex rounded-md border border-forge-amber/30 bg-forge-amber/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-forge-amber">
+                  <span className="inline-flex rounded-sm border border-forge-amber/30 bg-forge-amber/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-forge-amber">
                     Birljiv
                   </span>
                 )}
-                {mod.replaceable && (
-                  <span className="inline-flex rounded-md border border-green-600/20 bg-green-600/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-green-700">
-                    Zamenljiv
+                {mod.material === "wood" && (
+                  <span className="inline-flex rounded-sm border border-green-600/20 bg-green-600/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-green-700">
+                    Zamenljivo
                   </span>
                 )}
               </div>
@@ -237,7 +237,7 @@ function StepCard({
                   mod ? (
                     <span
                       key={mod.id}
-                      className={`inline-flex rounded-md border px-2 py-0.5 text-[10px] font-medium ${
+                      className={`inline-flex rounded-sm border px-2 py-0.5 text-[10px] font-medium ${
                         materialColors[mod.material]
                       }`}
                     >

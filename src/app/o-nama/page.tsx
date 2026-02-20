@@ -245,29 +245,28 @@ export default function ONamaPage() {
           </ScrollReveal>
 
           {/* Comparison table */}
-          <div className="mt-16 grid gap-px overflow-hidden rounded-xl border border-white/10 bg-white/5 sm:grid-cols-2">
-            {/* Header */}
-            <div className="bg-white/[0.03] px-8 py-5">
-              <span className="text-sm font-semibold uppercase tracking-[0.1em] text-white/30">
-                Tradicionalno kovano
-              </span>
+          <div className="mt-16 grid gap-px overflow-hidden rounded-xl border border-border/10 bg-card sm:grid-cols-2">
+            <div className="bg-card px-8 py-5">
+              <h3 className="font-display text-xl">Klasičan nameštaj</h3>
+              <p className="mt-1 text-sm text-muted-foreground">Krut, masivan, skup za transport</p>
             </div>
-            <div className="bg-forge-amber/10 px-8 py-5">
-              <span className="text-sm font-semibold uppercase tracking-[0.1em] text-forge-amber-light">
-                KOVO modularno
-              </span>
+            <div className="bg-card px-8 py-5">
+              <h3 className="font-display text-xl text-forge-amber">LINEA pristup</h3>
+              <p className="mt-1 text-sm text-muted-foreground">Modularno, flat-pack, pametno pakovanje</p>
             </div>
 
             {/* Rows */}
             {comparisonItems.map((item, i) => (
               <div key={i} className="contents">
-                <div className="border-t border-white/5 bg-white/[0.02] px-8 py-6">
-                  <p className="text-sm leading-relaxed text-white/40">
+                <div className="border-t border-border/5 bg-card px-8 py-6">
+                  <p className="text-sm leading-relaxed text-muted-foreground">
                     {item.traditional}
                   </p>
                 </div>
-                <div className="border-t border-white/5 bg-forge-amber/[0.03] px-8 py-6">
-                  <p className="text-sm font-medium leading-relaxed text-white/80">
+                <div className="border-t border-border/5 bg-card px-8 py-6 relative">
+                  {/* Highlight bar */}
+                  <div className="absolute left-0 top-0 h-full w-1 bg-forge-amber" />
+                  <p className="text-sm font-medium leading-relaxed text-forge-amber">
                     {item.kovo}
                   </p>
                 </div>

@@ -107,10 +107,10 @@ export default function KorpaPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
       {/* Progress indicator */}
-      <div className="mb-10 flex items-center gap-3">
-        <div className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ${step === "cart" ? "bg-forge-amber text-white" : "bg-workshop-gray text-muted-foreground"}`}>1</div>
-        <div className="h-px flex-1 bg-border" />
-        <div className={`flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold ${step === "checkout" ? "bg-forge-amber text-white" : "bg-workshop-gray text-muted-foreground"}`}>2</div>
+      <div className="mb-8 flex items-center gap-4">
+        <div className={`flex h-8 w-8 items-center justify-center rounded-lg text-xs font-bold ${step === "cart" ? "bg-forge-amber text-white" : "bg-workshop-gray text-muted-foreground"}`}>1</div>
+        <div className={`h-px w-8 ${step === "checkout" ? "bg-forge-amber" : "bg-border"}`} />
+        <div className={`flex h-8 w-8 items-center justify-center rounded-lg text-xs font-bold ${step === "checkout" ? "bg-forge-amber text-white" : "bg-workshop-gray text-muted-foreground"}`}>2</div>
       </div>
 
       <h1 className="mb-10 font-display text-3xl tracking-tight sm:text-4xl">

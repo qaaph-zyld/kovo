@@ -107,7 +107,7 @@ export default function Home() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-white/15 text-white/80 transition-all duration-200 hover:border-white/30 hover:bg-white/5 hover:text-white"
+                className="border-white/15 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/5"
               >
                 <Link href="/kako-funkcionise">Kako funkcioniše</Link>
               </Button>
@@ -327,7 +327,7 @@ export default function Home() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-white/15 text-white/80 transition-all duration-200 hover:border-white/30 hover:bg-white/5 hover:text-white"
+                className="border-white/15 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/5"
               >
                 <Link href="/setovi">Pogledajte setove</Link>
               </Button>

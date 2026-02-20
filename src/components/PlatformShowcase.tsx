@@ -67,7 +67,7 @@ export default function PlatformShowcase() {
             <ScrollReveal
               key={principle.title}
               delay={i * 0.1}
-              className="group rounded-xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-sm transition-all duration-300 hover:border-forge-amber/30 hover:bg-white/[0.06]"
+              className="group rounded-xl border border-white/10 bg-card p-7 backdrop-blur-sm transition-all duration-300 hover:border-forge-amber/30 hover:bg-card/80"
             >
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-forge-amber/10">
                 <principle.icon className="h-5 w-5 text-forge-amber-light" />
@@ -85,7 +85,7 @@ export default function PlatformShowcase() {
 
         {/* Shared DNA strip */}
         <ScrollReveal delay={0.2}>
-          <div className="rounded-xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-sm sm:p-8">
+          <div className="rounded-xl border border-white/10 bg-card p-7 backdrop-blur-sm sm:p-8">
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber-light">
               Zajednički DNK
             </p>
@@ -116,7 +116,7 @@ export default function PlatformShowcase() {
             asChild
             variant="outline"
             size="lg"
-            className="border-white/15 text-white/80 transition-all duration-200 hover:border-white/30 hover:bg-white/5 hover:text-white"
+            className="border-white/15 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/5"
           >
             <Link href="/kako-funkcionise">Kako se sklapa</Link>
           </Button>

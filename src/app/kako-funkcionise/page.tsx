@@ -127,7 +127,7 @@ export default function KakoFunkcionisePage() {
           </ScrollReveal>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <ScrollReveal delay={0} className="rounded-xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-sm">
+            <ScrollReveal delay={0} className="rounded-xl border border-white/10 bg-card p-7 backdrop-blur-sm">
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-forge-amber/10">
                 <Repeat2 className="h-5 w-5 text-forge-amber-light" />
               </div>
@@ -141,7 +141,7 @@ export default function KakoFunkcionisePage() {
               </p>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.1} className="rounded-xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-sm">
+            <ScrollReveal delay={0.1} className="rounded-xl border border-white/10 bg-card p-7 backdrop-blur-sm">
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-forge-amber/10">
                 <Layers className="h-5 w-5 text-forge-amber-light" />
               </div>
@@ -155,7 +155,7 @@ export default function KakoFunkcionisePage() {
               </p>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.2} className="rounded-xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-sm">
+            <ScrollReveal delay={0.2} className="rounded-xl border border-white/10 bg-card p-7 backdrop-blur-sm">
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-forge-amber/10">
                 <Replace className="h-5 w-5 text-forge-amber-light" />
               </div>
@@ -171,7 +171,7 @@ export default function KakoFunkcionisePage() {
           </div>
 
           {/* Connection system detail */}
-          <ScrollReveal delay={0.3} className="mt-10 rounded-xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-sm sm:p-8">
+          <ScrollReveal delay={0.3} className="mt-10 rounded-xl border border-white/10 bg-card p-7 backdrop-blur-sm sm:p-8">
             <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-forge-amber-light">
               Sistem spojeva
             </p>

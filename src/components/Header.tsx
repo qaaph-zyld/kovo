@@ -62,7 +62,7 @@ export default function Header() {
               <Button variant="ghost" size="icon" className="relative h-10 w-10" aria-label="Korpa">
                 <ShoppingCart className="h-5 w-5" />
                 {itemCount > 0 && (
-                  <Badge className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-forge-amber p-0 text-[10px] font-semibold text-white">
+                  <Badge className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-sm bg-forge-amber p-0 text-[10px] font-semibold text-white">
                     {itemCount}
                   </Badge>
                 )}
@@ -93,7 +93,7 @@ export default function Header() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className="animate-slide-right rounded-lg px-4 py-3.5 text-sm font-medium tracking-wide text-white/80 transition-colors hover:bg-white/5 hover:text-white"
+                      className="animate-slide-right rounded-lg px-4 py-3.5 text-sm font-medium tracking-wide text-white transition-colors hover:bg-white/5"
                       style={{ animationDelay: `${i * 60}ms` }}
                     >
                       {link.label}
