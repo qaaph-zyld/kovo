@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { Trash2, FlipHorizontal, FlipVertical } from "lucide-react";
 import { useDesignStore, useSelectedPrimitive } from "@/store/design";
 import { getPrimitiveById } from "@/data/design-primitives";
