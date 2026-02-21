@@ -48,3 +48,23 @@ While KOVO applies this to heavy wrought iron, the *logic* is inspired by modern
 *   **USM Haller:** The ultimate modular furniture system based on a ball-and-tube node connection. KOVO takes the idea of a universal joint but applies it to flat-pack outdoor iron.
 *   **IKEA (Democratic Design):** The flat-pack delivery and standardized tooling (the Allen key).
 *   **Kettal / Gandia Blasco:** High-end outdoor furniture brands that use architectural metal frames contrasting with warm natural materials, focusing on thick, confident proportions rather than thin wireframes.
+
+## 6. Bill of Materials (BOM) Examples
+
+### Module: LINEA Dining Chair Base (Baza stolice)
+*   **Structural Frame:** 4x Legs (25x25mm square tube, L=42cm), 1x Seat Ring (25x25mm square tube, 40x40cm inner).
+*   **Connection Points:** 4x M8 threaded inserts (for attaching the seat), 2x vertical slots on the rear legs (for attaching the backrest).
+*   **Hardware Required:** 4x M8x40mm Hex bolts (seat), 2x M8x45mm Hex bolts (backrest).
+*   **Finish:** Iron-deep powder coat with zinc-rich anti-corrosion primer.
+
+### Module: LINEA Rešetka Backrest (Naslon panel)
+*   **Structural Frame:** 1x U-shaped outer boundary (30x6mm flat bar, bent to 40cm width).
+*   **Internal Pattern:** 5x Vertical round bars (Ø10mm solid rod).
+*   **Connection Points:** 2x M8 threaded inserts on the bottom flat face.
+*   **Finish:** Iron-deep powder coat with zinc-rich anti-corrosion primer.
+
+### Module: Solid Oak Seat (Drveno sedište)
+*   **Material:** 30mm thick solid European Oak (Hrast masiv).
+*   **Dimensions:** 42x42cm with subtle 5mm radiused edges for comfort.
+*   **Connection Points:** 4x pre-drilled counter-sunk holes matching the chair base.
+*   **Finish:** Outdoor-grade, UV-resistant transparent oil (Warm amber tone).

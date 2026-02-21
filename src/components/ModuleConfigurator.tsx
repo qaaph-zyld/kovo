@@ -128,7 +128,29 @@ export default function ModuleConfigurator({
                       {mod.description}
                     </p>
 
-                    <div className="mt-2 flex items-center gap-2">
+                    {/* Technical Specifications (DNK) */}
+                    <div className="mt-3 flex flex-col gap-1.5 border-t border-border/50 pt-3">
+                      {mod.dimensions && (
+                        <div className="flex items-center justify-between text-[10px] text-muted-foreground">
+                          <span className="font-medium text-foreground/70">Dimenzije:</span>
+                          <span className="font-mono">{mod.dimensions.w}×{mod.dimensions.d}×{mod.dimensions.h}cm</span>
+                        </div>
+                      )}
+                      <div className="flex items-center justify-between text-[10px] text-muted-foreground">
+                        <span className="font-medium text-foreground/70">Težina:</span>
+                        <span className="font-mono">{mod.weight}kg</span>
+                      </div>
+                      {mod.connections && mod.connections.length > 0 && (
+                        <div className="flex items-center justify-between text-[10px] text-muted-foreground">
+                          <span className="font-medium text-foreground/70">Spojevi:</span>
+                          <span className="font-mono text-forge-amber/80">
+                            {mod.connections[0].type.replace("_", " ")}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="mt-3 flex items-center gap-2">
                       {isDefault && (
                         <span className="rounded-sm bg-workshop-gray px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
                           Podrazumevano
