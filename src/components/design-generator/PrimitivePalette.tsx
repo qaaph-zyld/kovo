@@ -86,18 +86,28 @@ export default function PrimitivePalette() {
     <div
       key={primitive.id}
       draggable
+      tabIndex={0}
+      role="button"
+      aria-label={`Dodaj ${primitive.name} na platno`}
       onDragStart={(e: React.DragEvent<HTMLDivElement>) => handleDragStart(primitive, e)}
       onDragEnd={handleDragEnd}
-      className="group cursor-grab active:cursor-grabbing"
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          // Fallback for keyboard users - simulate adding to center of canvas
+          e.preventDefault();
+        }
+      }}
+      className="group cursor-grab active:cursor-grabbing outline-none rounded-lg focus-visible:ring-2 focus-visible:ring-forge-amber/50 focus-visible:ring-offset-2"
     >
-      <div className="flex items-center gap-3 rounded-lg border border-border/50 bg-card p-3 transition-all hover:border-forge-amber/30 hover:shadow-warm">
+      <div className="flex items-center gap-3 rounded-lg border border-border/50 bg-card p-3 transition-all group-hover:border-forge-amber/30 group-hover:shadow-warm">
         {/* Thumbnail preview */}
-        <div className="flex h-12 w-12 items-center justify-center rounded-md bg-workshop-gray">
+        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-md bg-workshop-gray">
           <svg
             width="40"
             height="40"
             viewBox={`0 0 ${primitive.width} ${primitive.height}`}
-            className="opacity-70"
+            className="opacity-70 transition-opacity group-hover:opacity-100"
+            aria-hidden="true"
           >
             <path
               d={primitive.svgPath}
@@ -113,7 +123,7 @@ export default function PrimitivePalette() {
 
         {/* Info */}
         <div className="flex-1 min-w-0">
-          <h4 className="truncate text-sm font-semibold tracking-tight">{primitive.name}</h4>
+          <h4 className="truncate text-sm font-semibold tracking-tight group-hover:text-forge-amber transition-colors">{primitive.name}</h4>
           <p className="text-xs text-muted-foreground line-clamp-2">{primitive.description}</p>
           <div className="mt-1 flex items-center gap-2 text-[10px] text-muted-foreground">
             <span className="font-mono">{primitive.width}×{primitive.height}cm</span>

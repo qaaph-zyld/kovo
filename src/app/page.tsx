@@ -115,8 +115,8 @@ export default function Home() {
             </div>
             
             {/* Signature Moment: Asymmetric layered product showcase */}
-            <div className="hidden lg:col-span-7 lg:block">
-              <div className="relative h-[600px] w-full">
+            <div className="mt-16 lg:col-span-7 lg:mt-0">
+              <div className="relative h-[350px] w-full sm:h-[500px] lg:h-[600px]">
                 {/* Main large image */}
                 <div className="animate-settle stagger-2 absolute right-0 top-0 z-10 aspect-[4/3] w-4/5 overflow-hidden rounded-xl border border-white/10 shadow-2xl transition-transform duration-500 hover:scale-[1.02]">
                   <Image
@@ -162,7 +162,7 @@ export default function Home() {
       </section>
 
       {/* Features Strip */}
-      <section className="relative bg-workshop-gray py-14 sm:py-16">
+      <section className="relative bg-workshop-gray py-12 sm:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {features.map((feature, i) => (

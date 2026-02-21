@@ -59,7 +59,7 @@ export default function Header() {
           {/* Cart button */}
           <Sheet open={cartOpen} onOpenChange={setCartOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="relative h-10 w-10" aria-label="Korpa">
+              <Button variant="ghost" size="icon" className="relative h-11 w-11" aria-label="Korpa">
                 <ShoppingCart className="h-5 w-5" />
                 {itemCount > 0 && (
                   <Badge className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-sm bg-forge-amber p-0 text-[10px] font-semibold text-white">
@@ -77,7 +77,7 @@ export default function Header() {
           {/* Mobile menu trigger */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-10 w-10 lg:hidden" aria-label="Meni">
+              <Button variant="ghost" size="icon" className="h-11 w-11 lg:hidden" aria-label="Meni">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
