@@ -133,7 +133,7 @@ export default function Home() {
                 {/* Secondary overlapping image (detail) */}
                 <div className="animate-settle stagger-3 absolute bottom-12 left-0 z-20 aspect-square w-2/5 overflow-hidden rounded-xl border border-white/10 shadow-2xl transition-transform duration-500 hover:-translate-y-2 hover:scale-105">
                   <Image
-                    src="/images/products/linea-stolica-klasik.png"
+                    src="/images/products/chair-2.png"
                     alt="LINEA Stolica detalj"
                     fill
                     className="object-cover bg-workshop-gray/10"

@@ -131,8 +131,8 @@ export default function KakoFunkcionisePage() {
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-forge-amber/10">
                 <Repeat2 className="h-5 w-5 text-forge-amber-light" />
               </div>
-              <h3 className="text-lg font-semibold">Zamenljivi nasloni</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">
+              <h3 className="text-lg font-semibold text-white">Zamenljivi nasloni</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/80">
                 Stolica i klupa koriste isti naslon panel. Birate između 3 dizajna:
                 Klasik, Rešetka ili Luk. Iste rupe, isti šrafovi — zamena za 3 minuta.
               </p>
@@ -145,8 +145,8 @@ export default function KakoFunkcionisePage() {
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-forge-amber/10">
                 <Layers className="h-5 w-5 text-forge-amber-light" />
               </div>
-              <h3 className="text-lg font-semibold">Univerzalna baza stola</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">
+              <h3 className="text-lg font-semibold text-white">Univerzalna baza stola</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/80">
                 Jedna čelična nogara nosi okruglu Ø60cm i kvadratnu 80×80cm ploču.
                 Kupite Bistro danas, nadogradite na Family sutra — baza ostaje.
               </p>
@@ -159,8 +159,8 @@ export default function KakoFunkcionisePage() {
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-forge-amber/10">
                 <Replace className="h-5 w-5 text-forge-amber-light" />
               </div>
-              <h3 className="text-lg font-semibold">Zamena drvenih delova</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">
+              <h3 className="text-lg font-semibold text-white">Zamena drvenih delova</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/80">
                 Sedište stolice, daske klupe, ploča stola — svaki drveni modul se
                 skida i menja nezavisno. Osvežite nameštaj novim drvom posle 5+ sezona.
               </p>
@@ -177,20 +177,20 @@ export default function KakoFunkcionisePage() {
             </p>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               <div>
-                <p className="text-sm font-semibold">M8/M10 inox hex</p>
-                <p className="mt-0.5 text-xs text-white/40">Standardni šrafovi za sve spojeve</p>
+                <p className="text-sm font-semibold text-white">M8/M10 inox hex</p>
+                <p className="mt-0.5 text-xs text-white/80">Standardni šrafovi za sve spojeve</p>
               </div>
               <div>
-                <p className="text-sm font-semibold">Pozicioni pinovi</p>
-                <p className="mt-0.5 text-xs text-white/40">Delovi se sami poravnavaju</p>
+                <p className="text-sm font-semibold text-white">Pozicioni pinovi</p>
+                <p className="mt-0.5 text-xs text-white/80">Delovi se sami poravnavaju</p>
               </div>
               <div>
-                <p className="text-sm font-semibold">Slot rupe</p>
-                <p className="mt-0.5 text-xs text-white/40">Tolerancije za farbanu površinu</p>
+                <p className="text-sm font-semibold text-white">Slot rupe</p>
+                <p className="mt-0.5 text-xs text-white/80">Tolerancije za farbanu površinu</p>
               </div>
               <div>
-                <p className="text-sm font-semibold">Skriveni spojevi</p>
-                <p className="mt-0.5 text-xs text-white/40">Sve sa unutrašnje strane</p>
+                <p className="text-sm font-semibold text-white">Skriveni spojevi</p>
+                <p className="mt-0.5 text-xs text-white/80">Sve sa unutrašnje strane</p>
               </div>
             </div>
           </ScrollReveal>

@@ -72,8 +72,8 @@ export default function PlatformShowcase() {
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-forge-amber/10">
                 <principle.icon className="h-5 w-5 text-forge-amber-light" />
               </div>
-              <h3 className="text-lg font-semibold tracking-tight">{principle.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-white/60">
+              <h3 className="text-lg font-semibold tracking-tight text-white">{principle.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-white/80">
                 {principle.description}
               </p>
               <div className="mt-4 inline-flex rounded-lg border border-forge-amber/20 bg-forge-amber/10 px-3 py-1 text-xs font-semibold text-forge-amber-light">
@@ -92,8 +92,8 @@ export default function PlatformShowcase() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {sharedDNA.map((item) => (
                 <div key={item.label} className="flex flex-col">
-                  <span className="text-sm font-semibold">{item.label}</span>
-                  <span className="mt-0.5 font-mono text-xs text-white/40">{item.detail}</span>
+                  <span className="text-sm font-semibold text-white">{item.label}</span>
+                  <span className="mt-0.5 font-mono text-xs text-white/80">{item.detail}</span>
                 </div>
               ))}
             </div>
