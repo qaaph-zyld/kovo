@@ -59,6 +59,7 @@ function FamilyBase() {
 function RoundOakTop() {
   return (
     <mesh position={[0, 0.715, 0]}>
+      {/* 70cm diameter -> 0.35m radius */}
       <cylinderGeometry args={[0.35, 0.35, 0.03]} />
       {/* Amber/Oak wood approximation */}
       <meshStandardMaterial color="#c08457" roughness={0.4} />
@@ -69,6 +70,7 @@ function RoundOakTop() {
 function SquareOakTop() {
   return (
     <mesh position={[0, 0.715, 0]}>
+      {/* 160x90cm -> 1.6x0.9m */}
       <boxGeometry args={[1.6, 0.03, 0.9]} />
       <meshStandardMaterial color="#c08457" roughness={0.4} />
     </mesh>

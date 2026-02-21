@@ -11,7 +11,7 @@
 export type MaterialType = "steel" | "wood" | "hardware" | "upholstery";
 
 export interface ConnectionPoint {
-  type: "M8_hex" | "M10_hex" | "centering_pin" | "slot_hole" | "flange_plate";
+  type: "M8_weld_nut" | "M10_weld_nut" | "M8_hex" | "M10_hex" | "dowel_pin_6mm" | "slot_hole" | "flange_plate";
   description: string;
 }
 
@@ -61,10 +61,10 @@ export interface AssemblyStep {
 // ---------------------------------------------------------------------------
 
 export const connectionSystem = {
-  standard: "M8/M10 inox hex bolts + centering pins",
+  standard: "M8/M10 inox hex bolts + DIN 929 zavarene matice",
   tools: "Imbus ključ (priložen u paketu)",
   tolerance: "Slot rupe za tolerancije farbanja",
-  positioning: "Pozicioni pinovi — delovi se sami poravnavaju",
+  positioning: "Ø6mm čelični pinovi (DIN 7) — delovi se sami poravnavaju",
   hidden: "Svi spojevi sa unutrašnje strane — izgled ostaje premium",
 };
 
@@ -79,14 +79,14 @@ export const modules: Module[] = [
     name: "Bočni ram stolice (L/D)",
     nameLatin: "bocni-ram-stolice",
     description:
-      "Par čeličnih bočnih ramova sa blagim lukom — potpis LINEA dizajna. Isti vizuelni jezik kao klupa. Kvadratna cev 25×25mm + ravna traka 30×6mm za detalje.",
+      "Zavareni sklop: zadnja noga integrisana sa naslonom, prednja noga i vezna prečka. Kvadratna cev 25×25mm (S235JR).",
     material: "steel",
     weight: 3.5,
-    dimensions: { w: 42, d: 42, h: 90 },
+    dimensions: { w: 45, d: 45, h: 90 },
     connections: [
-      { type: "M8_hex", description: "4× za sedalni okvir" },
-      { type: "M8_hex", description: "2–4× za naslon panel" },
-      { type: "centering_pin", description: "2× za pozicioniranje sedalnog okvira" },
+      { type: "M8_weld_nut", description: "4× navarene matice za sedalni okvir" },
+      { type: "M8_weld_nut", description: "2× navarene matice za naslon panel (80x120mm grid)" },
+      { type: "dowel_pin_6mm", description: "2× pin za precizno poravnanje sedišta" },
     ],
     sharedAcross: ["linea-stolica"],
     interchangeableWith: [],
@@ -102,9 +102,9 @@ export const modules: Module[] = [
     weight: 5,
     dimensions: { w: 45, d: 45, h: 70 },
     connections: [
-      { type: "M8_hex", description: "4× za sedalni okvir klupe" },
-      { type: "M8_hex", description: "2× za naslon (opciono)" },
-      { type: "centering_pin", description: "2× za pozicioniranje" },
+      { type: "M8_weld_nut", description: "4× za sedalni okvir klupe" },
+      { type: "M8_weld_nut", description: "2× za naslon panel" },
+      { type: "dowel_pin_6mm", description: "2× pin za pozicioniranje" },
     ],
     sharedAcross: ["linea-klupa-120"],
     interchangeableWith: [],
@@ -115,14 +115,14 @@ export const modules: Module[] = [
     name: "Sedalni okvir stolice",
     nameLatin: "sedalni-okvir-stolice",
     description:
-      "Pravougaoni čelični okvir koji spaja bočne ramove. Nosi drveno sedište. Navarene matice za brzu montažu.",
+      "Pravougaoni čelični okvir (40x40cm unutra) koji spaja bočne ramove. Nosi drveno sedište. Zavareni sklop.",
     material: "steel",
     weight: 1.5,
-    dimensions: { w: 42, d: 42, h: 5 },
+    dimensions: { w: 45, d: 45, h: 5 },
     connections: [
       { type: "M8_hex", description: "4× prema bočnim ramovima" },
       { type: "M8_hex", description: "4× za drveno sedište" },
-      { type: "centering_pin", description: "2× od bočnih ramova" },
+      { type: "slot_hole", description: "2× rupe za pinove od bočnih ramova" },
     ],
     sharedAcross: ["linea-stolica"],
     interchangeableWith: [],
@@ -133,14 +133,14 @@ export const modules: Module[] = [
     name: "Sedalni okvir klupe",
     nameLatin: "sedalni-okvir-klupe",
     description:
-      "Širi čelični okvir za klupu 120cm. Prima 3 drvene daske. Iste navarene matice i slot rupe kao stolica.",
+      "Širi čelični okvir za 2-sed klupu. Standard 90cm širine.",
     material: "steel",
     weight: 3,
-    dimensions: { w: 120, d: 45, h: 5 },
+    dimensions: { w: 90, d: 45, h: 5 },
     connections: [
       { type: "M8_hex", description: "4× prema bočnim stranama" },
       { type: "M8_hex", description: "6× za drvene daske" },
-      { type: "centering_pin", description: "2× od bočnih strana" },
+      { type: "slot_hole", description: "2× rupe za pinove od bočnih strana" },
     ],
     sharedAcross: ["linea-klupa-120"],
     interchangeableWith: [],
@@ -157,7 +157,7 @@ export const modules: Module[] = [
     dimensions: { w: 50, d: 50, h: 73 },
     connections: [
       { type: "flange_plate", description: "Flanš pločica sa 4× M10" },
-      { type: "centering_pin", description: "1× centralni za poravnanje ploče" },
+      { type: "dowel_pin_6mm", description: "1× centralni za poravnanje ploče" },
     ],
     sharedAcross: ["linea-sto-bistro", "linea-sto-family"],
     interchangeableWith: [],
@@ -173,9 +173,9 @@ export const modules: Module[] = [
       "Čist, ravan panel sa blagim LINEA lukom na vrhu. Standardni naslon koji dolazi sa svakom stolicom i klupom. Šrafi se na bočne ramove sa 2–4 vijka.",
     material: "steel",
     weight: 1.2,
-    dimensions: { w: 40, d: 2, h: 45 },
+    dimensions: { w: 45, d: 2, h: 45 },
     connections: [
-      { type: "M8_hex", description: "2–4× na bočne ramove" },
+      { type: "M8_hex", description: "4× na bočne ramove" },
       { type: "slot_hole", description: "Slot rupe za tolerancije" },
     ],
     sharedAcross: ["linea-stolica", "linea-klupa-120"],
@@ -191,9 +191,9 @@ export const modules: Module[] = [
       "Horizontalne šipke u ravnomernom rasporedu. Moderniji, industrijski izgled. Iste rupe za montažu kao Klasik — zamena bez alata promene.",
     material: "steel",
     weight: 1.4,
-    dimensions: { w: 40, d: 2, h: 45 },
+    dimensions: { w: 45, d: 2, h: 45 },
     connections: [
-      { type: "M8_hex", description: "2–4× na bočne ramove" },
+      { type: "M8_hex", description: "4× na bočne ramove" },
       { type: "slot_hole", description: "Slot rupe za tolerancije" },
     ],
     sharedAcross: ["linea-stolica", "linea-klupa-120"],
@@ -209,9 +209,9 @@ export const modules: Module[] = [
       "Elegantni zaobljeni panel sa jednim centralnim lukom. Premium varijanta za one koji žele mekši, sofisticiraniji izgled. Iste montažne tačke.",
     material: "steel",
     weight: 1.3,
-    dimensions: { w: 40, d: 2, h: 45 },
+    dimensions: { w: 45, d: 2, h: 45 },
     connections: [
-      { type: "M8_hex", description: "2–4× na bočne ramove" },
+      { type: "M8_hex", description: "4× na bočne ramove" },
       { type: "slot_hole", description: "Slot rupe za tolerancije" },
     ],
     sharedAcross: ["linea-stolica", "linea-klupa-120"],
@@ -229,7 +229,7 @@ export const modules: Module[] = [
       "Masivno drvo (hrast/bukva/bagrem) sa zaobljenim ivicama. Montira se na sedalni okvir sa 4 šrafa. Zamenjivo — kupite novo posle 5+ sezona.",
     material: "wood",
     weight: 1.8,
-    dimensions: { w: 40, d: 40, h: 2.5 },
+    dimensions: { w: 45, d: 45, h: 3 },
     connections: [
       { type: "M8_hex", description: "4× na sedalni okvir" },
     ],
@@ -246,7 +246,7 @@ export const modules: Module[] = [
       "Set od 3 masivne drvene daske sa zaobljenim ivicama. Montiraju se na sedalni okvir klupe. Zamenjive — osvežite klupu novim drvom.",
     material: "wood",
     weight: 4,
-    dimensions: { w: 120, d: 14, h: 2.5 },
+    dimensions: { w: 135, d: 14, h: 3 },
     connections: [
       { type: "M8_hex", description: "6× na sedalni okvir (2 po dasci)" },
     ],
@@ -257,16 +257,16 @@ export const modules: Module[] = [
   },
   {
     id: "table-top-round-60",
-    name: "Drvena ploča Ø60cm",
-    nameLatin: "ploca-okrugla-60",
+    name: "Drvena ploča Ø70cm",
+    nameLatin: "ploca-okrugla-70",
     description:
       "Okrugla ploča od masivnog drveta sa zaobljenim ivicama. Montira se na univerzalnu bazu flanš pločicom. Zamenjiva — promenite veličinu ili obnovite.",
     material: "wood",
     weight: 5,
-    dimensions: { w: 60, d: 60, h: 3 },
+    dimensions: { w: 70, d: 70, h: 3 },
     connections: [
       { type: "flange_plate", description: "4× M10 na bazu" },
-      { type: "centering_pin", description: "1× centralni" },
+      { type: "dowel_pin_6mm", description: "1× centralni" },
     ],
     sharedAcross: ["linea-sto-bistro"],
     interchangeableWith: ["table-top-round-60", "table-top-square-80"],
@@ -275,16 +275,16 @@ export const modules: Module[] = [
   },
   {
     id: "table-top-square-80",
-    name: "Drvena ploča 80×80cm",
-    nameLatin: "ploca-kvadratna-80",
+    name: "Drvena ploča 160×90cm",
+    nameLatin: "ploca-pravougaona-160",
     description:
-      "Kvadratna ploča od masivnog drveta za porodični sto. Montira se na istu univerzalnu bazu kao bistro ploča. Zamenjiva i nadogradiva.",
+      "Pravougaona ploča od masivnog drveta za porodični sto. Montira se na istu univerzalnu bazu (2 komada) kao bistro ploča. Zamenjiva i nadogradiva.",
     material: "wood",
-    weight: 8,
-    dimensions: { w: 80, d: 80, h: 3 },
+    weight: 15,
+    dimensions: { w: 160, d: 90, h: 3 },
     connections: [
-      { type: "flange_plate", description: "4× M10 na bazu" },
-      { type: "centering_pin", description: "1× centralni" },
+      { type: "flange_plate", description: "8× M10 na bazu (2 flanš ploče)" },
+      { type: "dowel_pin_6mm", description: "2× centralni" },
     ],
     sharedAcross: ["linea-sto-family"],
     interchangeableWith: ["table-top-round-60", "table-top-square-80"],
