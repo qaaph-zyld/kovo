@@ -5,8 +5,10 @@ import { OrbitControls, Environment, ContactShadows, Center } from "@react-three
 import { Suspense, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Check, Layers } from "lucide-react";
 import Link from "next/link";
+import { formatPrice } from "@/data/products";
+import { QuoteModal } from "@/components/QuoteModal";
 
 // --- Placeholder 3D Components ---
 // In a real application, these would load actual .glb files using useGLTF()
@@ -77,30 +79,70 @@ function SquareOakTop() {
   );
 }
 
+const BASES = [
+  { id: "bistro", price: 100 },
+  { id: "family", price: 150 },
+];
+
+const TOPS = [
+  { id: "round", price: 50 },
+  { id: "rectangular", price: 75 },
+];
+
 export default function ThreeDTestPage() {
   const [baseType, setBaseType] = useState<"bistro" | "family">("bistro");
   const [topType, setTopType] = useState<"round" | "rectangular">("round");
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+
+  const basePrice = BASES.find(b => b.id === baseType)?.price || 0;
+  const topPrice = TOPS.find(t => t.id === topType)?.price || 0;
+  const totalPrice = basePrice + topPrice;
 
   return (
     <div className="flex min-h-screen flex-col bg-iron-black text-white">
       {/* Header */}
       <header className="border-b border-white/10 p-4">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between">
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="icon" asChild className="text-white hover:bg-white/10">
               <Link href="/">
                 <ArrowLeft className="h-5 w-5" />
               </Link>
             </Button>
-            <h1 className="font-display text-xl">3D PoC: Modularni Sto</h1>
+            <div>
+              <h1 className="font-display text-xl">LINEA Sto — 3D Konfigurator</h1>
+              <p className="text-xs text-white/50">Univerzalne baze + drvene ploče (Flanš spojevi)</p>
+            </div>
           </div>
-          <div className="flex gap-2">
-            <Badge variant="outline" className="border-forge-amber/30 text-forge-amber-light">
-              React Three Fiber
-            </Badge>
+          <div className="flex items-center gap-4">
+            <div className="text-right hidden sm:block">
+              <p className="text-xs text-white/50 uppercase tracking-widest">Ukupna Cena</p>
+              <p className="font-mono text-lg text-forge-amber">{formatPrice(totalPrice)}</p>
+            </div>
+            <Button 
+              className="bg-forge-amber text-white hover:bg-forge-amber-light"
+              onClick={() => setIsQuoteModalOpen(true)}
+            >
+              Zatražite ponudu
+            </Button>
           </div>
         </div>
       </header>
+
+      {/* Tabs / Cross-links */}
+      <div className="border-b border-white/10 bg-iron-deep px-4 py-2">
+        <div className="mx-auto flex max-w-[1400px] gap-4">
+          <Link href="/3d-chair" className="text-sm font-medium text-white/60 hover:text-white px-3 py-1 transition-colors">
+            Stolica (45cm)
+          </Link>
+          <Link href="/3d-klupa" className="text-sm font-medium text-white/60 hover:text-white px-3 py-1 transition-colors">
+            Klupa (120cm)
+          </Link>
+          <Link href="/3d-test" className="text-sm font-medium text-forge-amber px-3 py-1 border-b-2 border-forge-amber">
+            Sto (Baze)
+          </Link>
+        </div>
+      </div>
 
       <main className="flex flex-1 flex-col lg:flex-row">
         {/* Controls Sidebar */}
@@ -212,6 +254,17 @@ export default function ThreeDTestPage() {
           </div>
         </div>
       </main>
+
+      <QuoteModal 
+        isOpen={isQuoteModalOpen} 
+        onClose={() => setIsQuoteModalOpen(false)} 
+        productName="LINEA Sto"
+        configuration={{
+          base: baseType === "bistro" ? "Bistro Baza" : "Porodična Baza",
+          top: topType === "round" ? "Okrugla Ploča (Ø70cm)" : "Pravougaona Ploča (160×90cm)",
+          unitPrice: totalPrice
+        }}
+      />
     </div>
   );
 }

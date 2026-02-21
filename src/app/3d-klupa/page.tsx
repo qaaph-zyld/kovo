@@ -2,10 +2,10 @@
 
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment, ContactShadows, Center } from "@react-three/drei";
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Check, Layers, Palette } from "lucide-react";
+import { ArrowLeft, Check, Layers, Info } from "lucide-react";
 import Link from "next/link";
 import { formatPrice } from "@/data/products";
 import { RAL_COLORS, RALColor } from "@/data/colors";
@@ -19,16 +19,16 @@ const BACKRESTS = [
 ];
 
 const SEATS = [
-  { id: "oak-natural", name: "Hrast Natur", color: "#c08457", price: 1900 },
-  { id: "oak-dark", name: "Tamni Hrast", color: "#3e2723", price: 1900 },
+  { id: "oak-natural", name: "Hrast Natur", color: "#c08457", price: 3400 },
+  { id: "oak-dark", name: "Tamni Hrast", color: "#3e2723", price: 3400 },
 ];
 
-// --- 3D Chair Components (Parametric 450mm Grid) ---
+// --- 3D Bench Components (Parametric 1200mm width, 450mm backrest module) ---
 // Scale: 1 unit = 1 meter
 // Tube thickness = 25x25mm (0.025m)
 
-function SideFrame({ position, isLeft, color }: { position: [number, number, number], isLeft: boolean, color: RALColor }) {
-  const x = isLeft ? -0.2125 : 0.2125; // 450mm width / 2 - half tube
+function BenchSideFrame({ position, isLeft, color }: { position: [number, number, number], isLeft: boolean, color: RALColor }) {
+  const x = isLeft ? -0.5875 : 0.5875; // 1200mm width / 2 - half tube
   const zFront = 0.2125;
   const zBack = -0.2125;
   
@@ -40,9 +40,9 @@ function SideFrame({ position, isLeft, color }: { position: [number, number, num
         <meshStandardMaterial color={color.hex} roughness={color.roughness ?? 0.8} metalness={color.metalness ?? 0.6} />
       </mesh>
       
-      {/* Rear Leg (Extended for backrest) */}
-      <mesh position={[x, 0.45, zBack]}>
-        <boxGeometry args={[0.025, 0.9, 0.025]} />
+      {/* Rear Leg (Extended for backrest, but lower than chair - total 700mm) */}
+      <mesh position={[x, 0.35, zBack]}>
+        <boxGeometry args={[0.025, 0.7, 0.025]} />
         <meshStandardMaterial color={color.hex} roughness={color.roughness ?? 0.8} metalness={color.metalness ?? 0.6} />
       </mesh>
       
@@ -55,37 +55,53 @@ function SideFrame({ position, isLeft, color }: { position: [number, number, num
   );
 }
 
-function CrossRails({ color }: { color: RALColor }) {
+function BenchCrossRails({ color }: { color: RALColor }) {
   return (
     <group>
-      {/* Front Cross Rail */}
+      {/* Front Cross Rail (1200mm - 50mm for legs = 1150mm inner) */}
       <mesh position={[0, 0.4375, 0.2125]}>
-        <boxGeometry args={[0.4, 0.025, 0.025]} />
+        <boxGeometry args={[1.15, 0.025, 0.025]} />
         <meshStandardMaterial color={color.hex} roughness={color.roughness ?? 0.8} metalness={color.metalness ?? 0.6} />
       </mesh>
       {/* Rear Cross Rail */}
       <mesh position={[0, 0.4375, -0.2125]}>
-        <boxGeometry args={[0.4, 0.025, 0.025]} />
+        <boxGeometry args={[1.15, 0.025, 0.025]} />
+        <meshStandardMaterial color={color.hex} roughness={color.roughness ?? 0.8} metalness={color.metalness ?? 0.6} />
+      </mesh>
+      {/* Center Support Rail (prevents wood sagging) */}
+      <mesh position={[0, 0.4375, 0]}>
+        <boxGeometry args={[0.025, 0.025, 0.45]} />
         <meshStandardMaterial color={color.hex} roughness={color.roughness ?? 0.8} metalness={color.metalness ?? 0.6} />
       </mesh>
     </group>
   );
 }
 
-function WoodSeat({ color }: { color: string }) {
+function BenchWoodSeat({ color }: { color: string }) {
+  // 3 planks instead of 1 solid piece for the bench
   return (
-    <mesh position={[0, 0.465, 0]}>
-      <boxGeometry args={[0.45, 0.03, 0.45]} />
-      {/* Beveled edge approximation through material smoothing */}
-      <meshStandardMaterial color={color} roughness={0.6} />
-    </mesh>
+    <group position={[0, 0.465, 0]}>
+      <mesh position={[0, 0, 0.14]}>
+        <boxGeometry args={[1.2, 0.03, 0.12]} />
+        <meshStandardMaterial color={color} roughness={0.6} />
+      </mesh>
+      <mesh position={[0, 0, 0]}>
+        <boxGeometry args={[1.2, 0.03, 0.12]} />
+        <meshStandardMaterial color={color} roughness={0.6} />
+      </mesh>
+      <mesh position={[0, 0, -0.14]}>
+        <boxGeometry args={[1.2, 0.03, 0.12]} />
+        <meshStandardMaterial color={color} roughness={0.6} />
+      </mesh>
+    </group>
   );
 }
 
+// These are exactly the same backrests as the chair, just mounted on the bench
 function BackrestGrid({ color }: { color: RALColor }) {
   return (
-    <group position={[0, 0.7, -0.2125]}>
-      {/* Top and Bottom Rails (30x6mm flat bar approximation) */}
+    <group position={[0, 0.6, -0.2125]}>
+      {/* Top and Bottom Rails */}
       <mesh position={[0, 0.15, 0]}>
         <boxGeometry args={[0.4, 0.03, 0.006]} />
         <meshStandardMaterial color={color.hex} roughness={color.roughness ?? 0.8} metalness={color.metalness ?? 0.6} />
@@ -95,7 +111,7 @@ function BackrestGrid({ color }: { color: RALColor }) {
         <meshStandardMaterial color={color.hex} roughness={color.roughness ?? 0.8} metalness={color.metalness ?? 0.6} />
       </mesh>
       
-      {/* Vertical Grid Bars (10mm rods) */}
+      {/* Vertical Grid Bars */}
       {[-0.15, -0.075, 0, 0.075, 0.15].map((x, i) => (
         <mesh key={i} position={[x, 0, 0]}>
           <cylinderGeometry args={[0.005, 0.005, 0.3]} />
@@ -108,16 +124,13 @@ function BackrestGrid({ color }: { color: RALColor }) {
 
 function BackrestArch({ color }: { color: RALColor }) {
   return (
-    <group position={[0, 0.7, -0.2125]}>
-      {/* The LINEA Arch (Approximated with a torus segment) */}
+    <group position={[0, 0.6, -0.2125]}>
       <mesh position={[0, 0, 0]} rotation={[0, 0, 0]}>
-        {/* We use a thin box for the bottom rail */}
         <mesh position={[0, -0.15, 0]}>
           <boxGeometry args={[0.4, 0.03, 0.006]} />
           <meshStandardMaterial color={color.hex} roughness={color.roughness ?? 0.8} metalness={color.metalness ?? 0.6} />
         </mesh>
         
-        {/* The Arch */}
         <mesh position={[0, -0.15, 0]}>
           <torusGeometry args={[0.2, 0.005, 16, 50, Math.PI]} />
           <meshStandardMaterial color={color.hex} roughness={color.roughness ?? 0.8} metalness={color.metalness ?? 0.6} />
@@ -129,8 +142,7 @@ function BackrestArch({ color }: { color: RALColor }) {
 
 function BackrestClassic({ color }: { color: RALColor }) {
   return (
-    <group position={[0, 0.7, -0.2125]}>
-      {/* Top and Bottom Rails */}
+    <group position={[0, 0.6, -0.2125]}>
       <mesh position={[0, 0.15, 0]}>
         <boxGeometry args={[0.4, 0.03, 0.006]} />
         <meshStandardMaterial color={color.hex} roughness={color.roughness ?? 0.8} metalness={color.metalness ?? 0.6} />
@@ -140,7 +152,6 @@ function BackrestClassic({ color }: { color: RALColor }) {
         <meshStandardMaterial color={color.hex} roughness={color.roughness ?? 0.8} metalness={color.metalness ?? 0.6} />
       </mesh>
       
-      {/* Center "X" or Scroll approximation */}
       <mesh position={[0, 0, 0]} rotation={[0, 0, Math.PI / 4]}>
         <boxGeometry args={[0.01, 0.35, 0.006]} />
         <meshStandardMaterial color={color.hex} roughness={color.roughness ?? 0.8} metalness={color.metalness ?? 0.6} />
@@ -153,16 +164,24 @@ function BackrestClassic({ color }: { color: RALColor }) {
   );
 }
 
-export default function ChairConfiguratorPage() {
+export default function BenchConfiguratorPage() {
   const [backrest, setBackrest] = useState<string>("grid");
   const [seat, setSeat] = useState<string>("oak-natural");
   const [frameColor, setFrameColor] = useState<string>("jet-black");
+  const [showTooltip, setShowTooltip] = useState<boolean>(false);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+
+  // Show tooltip when backrest changes
+  useEffect(() => {
+    setShowTooltip(true);
+    const timer = setTimeout(() => setShowTooltip(false), 4000);
+    return () => clearTimeout(timer);
+  }, [backrest]);
 
   const selectedSeatColor = SEATS.find(s => s.id === seat)?.color || "#c08457";
   const selectedFrameColor = RAL_COLORS.find(c => c.id === frameColor) || RAL_COLORS[0];
   
-  const basePrice = 12500;
+  const basePrice = 24500; // Bench frame is more expensive than chair
   const backrestPrice = BACKRESTS.find(b => b.id === backrest)?.price || 0;
   const colorPremium = basePrice * (selectedFrameColor.premiumPercent / 100);
   const totalPrice = basePrice + backrestPrice + colorPremium;
@@ -179,7 +198,7 @@ export default function ChairConfiguratorPage() {
               </Link>
             </Button>
             <div>
-              <h1 className="font-display text-xl">LINEA Stolica — 3D Konfigurator</h1>
+              <h1 className="font-display text-xl">LINEA Klupa — 3D Konfigurator</h1>
               <p className="text-xs text-white/50">Zavareni ramovi + modularni nasloni (M8 spojevi)</p>
             </div>
           </div>
@@ -201,10 +220,10 @@ export default function ChairConfiguratorPage() {
       {/* Tabs / Cross-links */}
       <div className="border-b border-white/10 bg-iron-deep px-4 py-2">
         <div className="mx-auto flex max-w-[1400px] gap-4">
-          <Link href="/3d-chair" className="text-sm font-medium text-forge-amber px-3 py-1 border-b-2 border-forge-amber">
+          <Link href="/3d-chair" className="text-sm font-medium text-white/60 hover:text-white px-3 py-1 transition-colors">
             Stolica (45cm)
           </Link>
-          <Link href="/3d-klupa" className="text-sm font-medium text-white/60 hover:text-white px-3 py-1 transition-colors">
+          <Link href="/3d-klupa" className="text-sm font-medium text-forge-amber px-3 py-1 border-b-2 border-forge-amber">
             Klupa (120cm)
           </Link>
           <Link href="/3d-test" className="text-sm font-medium text-white/60 hover:text-white px-3 py-1 transition-colors">
@@ -216,10 +235,22 @@ export default function ChairConfiguratorPage() {
       <main className="flex flex-1 flex-col lg:flex-row">
         {/* 3D Canvas */}
         <div className="relative flex-1 bg-workshop-gray min-h-[500px] lg:min-h-auto">
-          {/* Atmospheric background gradient */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_oklch(0.55_0.14_55_/_0.15),transparent_70%)] pointer-events-none" />
           
-          <Canvas shadows camera={{ position: [-1.5, 1.2, 1.5], fov: 45 }}>
+          {/* Interchangeability Tooltip */}
+          <div className={`absolute top-6 left-1/2 -translate-x-1/2 z-10 transition-all duration-500 ${showTooltip ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+            <div className="flex items-center gap-3 rounded-xl border border-forge-amber/30 bg-iron-black/90 px-4 py-3 backdrop-blur-md shadow-2xl">
+              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-forge-amber/20 text-forge-amber">
+                <Info className="h-4 w-4" />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-white">Isti naslon panel kao LINEA Stolica</p>
+                <p className="text-xs text-white/70">Zamenljivi između proizvoda (450mm modul)</p>
+              </div>
+            </div>
+          </div>
+          
+          <Canvas shadows camera={{ position: [-2, 1.5, 2.5], fov: 45 }}>
             <Suspense fallback={null}>
               <ambientLight intensity={0.5} />
               <spotLight
@@ -234,16 +265,16 @@ export default function ChairConfiguratorPage() {
               <Center>
                 <group>
                   {/* Primary Welded Structure */}
-                  <SideFrame position={[0, 0, 0]} isLeft={true} color={selectedFrameColor} />
-                  <SideFrame position={[0, 0, 0]} isLeft={false} color={selectedFrameColor} />
+                  <BenchSideFrame position={[0, 0, 0]} isLeft={true} color={selectedFrameColor} />
+                  <BenchSideFrame position={[0, 0, 0]} isLeft={false} color={selectedFrameColor} />
                   
                   {/* Secondary Bolted Structure */}
-                  <CrossRails color={selectedFrameColor} />
+                  <BenchCrossRails color={selectedFrameColor} />
                   
                   {/* Replaceable Wear Part */}
-                  <WoodSeat color={selectedSeatColor} />
+                  <BenchWoodSeat color={selectedSeatColor} />
                   
-                  {/* Interchangeable Module (80x120mm M8 pitch circle) */}
+                  {/* Shared Interchangeable Module (450mm, centered) */}
                   {backrest === "grid" && <BackrestGrid color={selectedFrameColor} />}
                   {backrest === "arch" && <BackrestArch color={selectedFrameColor} />}
                   {backrest === "classic" && <BackrestClassic color={selectedFrameColor} />}
@@ -264,16 +295,15 @@ export default function ChairConfiguratorPage() {
                 maxPolarAngle={Math.PI / 2 - 0.05}
                 enableZoom={true}
                 minDistance={1}
-                maxDistance={4}
+                maxDistance={5}
               />
             </Suspense>
           </Canvas>
 
-          {/* Overlay Instructions */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full border border-white/10 bg-iron-black/80 px-4 py-2 backdrop-blur-md flex items-center gap-2">
             <Layers className="h-4 w-4 text-forge-amber" />
             <p className="text-xs font-medium text-white/80">
-              Uživo vizualizacija 450mm modula
+              Cross-product modularnost
             </p>
           </div>
         </div>
@@ -289,16 +319,16 @@ export default function ChairConfiguratorPage() {
               </h3>
               <ul className="space-y-2 text-xs text-white/70">
                 <li className="flex justify-between">
-                  <span>Osnovni modul:</span>
-                  <span className="font-mono text-white">450mm (širina)</span>
+                  <span>Širina klupe:</span>
+                  <span className="font-mono text-white">1200mm</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Naslon modul:</span>
+                  <span className="font-mono text-white">450mm (deljeno)</span>
                 </li>
                 <li className="flex justify-between">
                   <span>Sistem spojeva:</span>
                   <span className="font-mono text-white">M8 + DIN 929 matice</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Pozicioniranje:</span>
-                  <span className="font-mono text-white">Ø6mm pinovi (DIN 7)</span>
                 </li>
               </ul>
             </div>
@@ -310,7 +340,7 @@ export default function ChairConfiguratorPage() {
                   1. Zamenljivi Naslon
                 </h3>
                 <Badge variant="outline" className="border-forge-amber/30 text-forge-amber text-[10px]">
-                  4 M8 Vijka
+                  Univerzalni deo
                 </Badge>
               </div>
               <div className="grid gap-3">
@@ -386,7 +416,7 @@ export default function ChairConfiguratorPage() {
             <div>
               <div className="mb-4 flex items-center justify-between">
                 <h3 className="text-sm font-semibold tracking-tight uppercase text-white">
-                  3. Drveno Sedište
+                  3. Drveno Sedište (×3 Daske)
                 </h3>
                 <Badge variant="outline" className="border-white/20 text-white/60 text-[10px]">
                   Zamenljivo
@@ -420,7 +450,7 @@ export default function ChairConfiguratorPage() {
       <QuoteModal 
         isOpen={isQuoteModalOpen} 
         onClose={() => setIsQuoteModalOpen(false)} 
-        productName="LINEA Stolica"
+        productName="LINEA Klupa (120cm)"
         configuration={{
           backrest: BACKRESTS.find(b => b.id === backrest)?.name,
           seat: SEATS.find(s => s.id === seat)?.name,
