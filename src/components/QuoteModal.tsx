@@ -21,33 +21,97 @@ interface QuoteModalProps {
 export function QuoteModal({ isOpen, onClose, productName, configuration }: QuoteModalProps) {
   const [quantity, setQuantity] = useState<number>(1);
   const [isB2B, setIsB2B] = useState<boolean>(false);
+  const [companyName, setCompanyName] = useState("");
+  const [bulkQuantity, setBulkQuantity] = useState<number | "">("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  if (!isOpen) return null;
-
-  const isB2BLead = isB2B || quantity > 4;
+  const isB2BLead = isB2B || quantity > 4 || companyName.trim().length > 0;
   const subtotal = configuration.unitPrice * quantity;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate network request since Netlify Forms handles the actual submission
-    // via the HTML form action automatically.
-    setTimeout(() => {
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    formData.set("is_b2b", isB2BLead ? "yes" : "no");
+    formData.set("quantity", String(quantity));
+    formData.set("company", companyName);
+    formData.set("bulk_quantity", isB2B && bulkQuantity ? String(bulkQuantity) : "");
+
+    const encoded = new URLSearchParams();
+    formData.forEach((value, key) => {
+      encoded.append(key, String(value));
+    });
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encoded.toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error("Netlify form submission failed");
+      }
+
       setIsSubmitting(false);
       setIsSuccess(true);
-      // Optional: hide success message after 3 seconds and close modal
       setTimeout(() => {
         setIsSuccess(false);
         onClose();
       }, 3000);
-    }, 1000);
+    } catch {
+      setIsSubmitting(false);
+      const subject = encodeURIComponent(`B2B ponuda - ${productName}`);
+      const body = encodeURIComponent(
+        [
+          `Proizvod: ${productName}`,
+          configuration.color ? `Boja: ${configuration.color}` : "",
+          configuration.backrest ? `Naslon: ${configuration.backrest}` : "",
+          configuration.base ? `Baza: ${configuration.base}` : "",
+          configuration.top ? `Ploča: ${configuration.top}` : "",
+          `Količina: ${quantity}`,
+          `Ukupno: ${subtotal.toLocaleString("sr-RS")} RSD`,
+        ]
+          .filter(Boolean)
+          .join("\n")
+      );
+      window.location.href = `mailto:info@kovo.rs?subject=${subject}&body=${body}`;
+    }
   };
 
+  const netlifyFormStub = (
+    <form name="b2b-quote" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="b2b-quote" />
+      <input type="hidden" name="bot-field" />
+      <input type="text" name="product" />
+      <input type="text" name="color" />
+      <input type="text" name="backrest" />
+      <input type="text" name="seat" />
+      <input type="text" name="base" />
+      <input type="text" name="top" />
+      <input type="text" name="unit_price" />
+      <input type="text" name="quantity" />
+      <input type="text" name="bulk_quantity" />
+      <input type="text" name="is_b2b" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="company" />
+      <textarea name="message" />
+    </form>
+  );
+
+  if (!isOpen) {
+    return netlifyFormStub;
+  }
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm sm:p-6">
+    <>
+      {netlifyFormStub}
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm sm:p-6" onClick={onClose}>
       <div 
         className="w-full max-w-lg bg-iron-deep border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
@@ -174,6 +238,7 @@ export function QuoteModal({ isOpen, onClose, productName, configuration }: Quot
               <label className="flex items-start gap-3 p-3 bg-white/5 border border-white/10 rounded-xl cursor-pointer hover:bg-white/10 transition-colors">
                 <input 
                   type="checkbox" 
+                  name="b2b_interest"
                   checked={isB2B}
                   onChange={(e) => setIsB2B(e.target.checked)}
                   className="mt-1 w-4 h-4 rounded border-white/30 text-forge-amber focus:ring-forge-amber focus:ring-offset-iron-deep bg-iron-black"
@@ -183,6 +248,21 @@ export function QuoteModal({ isOpen, onClose, productName, configuration }: Quot
                   <span className="block text-xs text-white/50 mt-0.5">Za opremanje bašti, restorana ili hotela odobravamo rabate na količinu.</span>
                 </div>
               </label>
+
+              {isB2B && (
+                <div>
+                  <label htmlFor="bulkQuantity" className="block text-sm font-medium text-white/80 mb-1.5">Koliko komada? *</label>
+                  <input
+                    type="number"
+                    id="bulkQuantity"
+                    min="5"
+                    required={isB2B}
+                    value={bulkQuantity}
+                    onChange={(e) => setBulkQuantity(Number(e.target.value) || "")}
+                    className="w-full bg-iron-black border border-forge-amber/30 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-forge-amber focus:ring-1 focus:ring-forge-amber transition-all"
+                  />
+                </div>
+              )}
 
               {/* Contact Info */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -218,18 +298,17 @@ export function QuoteModal({ isOpen, onClose, productName, configuration }: Quot
                     className="w-full bg-iron-black border border-white/20 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-forge-amber focus:ring-1 focus:ring-forge-amber transition-all"
                   />
                 </div>
-                {(isB2B || quantity > 4) && (
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-white/80 mb-1.5">Naziv firme *</label>
-                    <input 
-                      type="text" 
-                      id="company"
-                      name="company" 
-                      required={isB2B || quantity > 4}
-                      className="w-full bg-iron-black border border-forge-amber/30 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-forge-amber focus:ring-1 focus:ring-forge-amber transition-all"
-                    />
-                  </div>
-                )}
+                <div>
+                  <label htmlFor="company" className="block text-sm font-medium text-white/80 mb-1.5">Naziv firme (opciono)</label>
+                  <input 
+                    type="text" 
+                    id="company"
+                    name="company"
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)}
+                    className="w-full bg-iron-black border border-white/20 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-forge-amber focus:ring-1 focus:ring-forge-amber transition-all"
+                  />
+                </div>
               </div>
 
               <div>
@@ -261,6 +340,7 @@ export function QuoteModal({ isOpen, onClose, productName, configuration }: Quot
           </div>
         )}
       </div>
-    </div>
+      </div>
+    </>
   );
 }

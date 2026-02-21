@@ -15,6 +15,7 @@ const navLinks = [
   { href: "/proizvodi", label: "Proizvodi" },
   { href: "/setovi", label: "Setovi" },
   { href: "/dizajner", label: "Dizajner" },
+  { href: "/3d-chair", label: "3D Konfigurator" },
   { href: "/kako-funkcionise", label: "Kako funkcioniše" },
   { href: "/o-nama", label: "O nama" },
   { href: "/kontakt", label: "Kontakt" },
@@ -48,6 +49,14 @@ export default function Header() {
 
         {/* Actions */}
         <div className="flex items-center gap-3">
+          <Button
+            asChild
+            size="sm"
+            className="hidden bg-forge-amber px-4 text-xs font-semibold text-white transition-all duration-200 hover:bg-forge-amber-light lg:inline-flex"
+          >
+            <Link href="/kontakt?tip=b2b">Zatražite B2B ponudu</Link>
+          </Button>
+
           <a
             href="tel:+381600000000"
             className="hidden items-center gap-1.5 text-xs font-medium tracking-wide text-muted-foreground transition-colors hover:text-foreground sm:flex"
@@ -101,6 +110,13 @@ export default function Header() {
                   ))}
                 </nav>
                 <div className="border-t border-white/10 px-6 py-5">
+                  <Button
+                    asChild
+                    className="mb-4 w-full bg-forge-amber text-sm font-semibold text-white hover:bg-forge-amber-light"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    <Link href="/kontakt?tip=b2b">Zatražite B2B ponudu</Link>
+                  </Button>
                   <a
                     href="tel:+381600000000"
                     className="flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-white"

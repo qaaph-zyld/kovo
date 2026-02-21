@@ -11,12 +11,14 @@ import {
   CheckCircle2,
   Building2,
   User,
+  ArrowRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Suspense } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
+import Link from "next/link";
 
 function ContactForm() {
   const searchParams = useSearchParams();
@@ -226,6 +228,20 @@ export default function KontaktPage() {
               Dođite u našu radionicu u Loznici i uštedite 5% na celokupnu
               porudžbinu. Vidite nameštaj uživo pre kupovine!
             </p>
+          </div>
+
+          <div className="rounded-xl border border-border/50 bg-card p-7">
+            <h3 className="font-semibold tracking-tight text-foreground">Precizna ponuda kroz 3D konfigurator</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Koristite naš 3D konfigurator za preciznu ponudu — izaberite model,
+              boju i naslon, pa odmah pošaljite zahtev.
+            </p>
+            <Button asChild className="mt-4 bg-forge-amber text-white hover:bg-forge-amber-light">
+              <Link href="/3d-chair">
+                Otvorite 3D konfigurator
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </ScrollReveal>
 
